@@ -3,126 +3,169 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>agreyfox — fmr one-pager</title>
-<meta name="description" content="One-page case: fmr by agreyfox — local-first family medical records.">
-<meta name="theme-color" content="#173828">
+<title>agreyfox — fmr case one-pager</title>
+<meta name="description" content="One-page case study: fmr by agreyfox — local-first family medical records.">
+<meta name="theme-color" content="#f4f1ea">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#173828;--muted:#5c6b61;--paper:#f7f5ef;--line:rgba(23,56,40,.14);
-  --coral:#c85a3c;--stem:#3f7d73;
-  --serif:"Source Serif 4",Georgia,serif;
-  --sans:"DM Sans",system-ui,sans-serif;
+  --ink:#14261c;--muted:#5e6b63;--paper:#f4f1ea;--card:#fffcf7;
+  --line:rgba(20,38,28,.12);--coral:#c45a38;--stem:#2f6b56;
+  --serif:"Instrument Serif",Georgia,"Songti SC",serif;
+  --sans:"DM Sans","PingFang SC","Noto Sans SC",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+html[lang="en"] .zh{display:none!important}
+html[lang="zh-Hans"] .en{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55}
+.bar{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(244,241,234,.9);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);font-size:13px
+}
+.bar a{color:var(--muted);text-decoration:none;font-weight:600;margin-right:12px}
+.bar a:hover{color:var(--ink)}
+.bar button{
+  border:1px solid var(--line);background:#fff;padding:7px 12px;border-radius:999px;
+  font:600 12px var(--sans);cursor:pointer;color:var(--ink)
+}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:8px}
+.lang button{border:0;border-radius:0;padding:7px 10px;background:transparent}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .page{
-  width:min(800px,calc(100% - 32px));margin:28px auto 48px;
-  background:#fff;border:1px solid var(--line);border-radius:18px;
-  padding:36px 40px 32px;box-shadow:0 18px 50px rgba(23,56,40,.08)
+  width:min(780px,calc(100% - 32px));margin:28px auto 48px;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:40px 42px 36px;box-shadow:0 18px 48px rgba(20,38,28,.07)
 }
-.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-bottom:22px}
-.brand{font:700 18px/1 var(--serif)}
-.brand span{color:var(--coral)}
-.meta{font-size:12px;color:var(--muted);text-align:right}
-h1{font:700 34px/1.1 var(--serif);letter-spacing:-.03em;margin:0 0 8px}
-.sub{margin:0 0 22px;color:var(--muted);font-size:15px;max-width:52ch}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.page{padding:24px}}
+.brand{font-family:var(--serif);font-size:1.25rem}
+.brand em{font-style:italic;color:var(--coral)}
+.meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,4vw,2.35rem);letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.sub{margin:0 0 24px;color:var(--muted);font-size:15px;max-width:48ch;line-height:1.65}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.page{padding:24px 20px}}
 .card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fbfaf7}
-.card h2{margin:0 0 8px;font:700 13px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
+.card h2{margin:0 0 8px;font:700 11px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
 .card ul{margin:0;padding-left:1.1rem;color:var(--muted);font-size:13.5px}
-.card li{margin:.28rem 0}
-.row{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}
+.card li{margin:.3rem 0}
+.row{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:12px}
 @media(max-width:640px){.row{grid-template-columns:1fr}}
-.proof{font-size:13.5px;color:var(--muted);margin:0}
+.proof{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5}
 .proof strong{color:var(--ink)}
-.cta{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.cta{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 .cta a{color:var(--coral);font-weight:700;font-size:14px;text-decoration:none}
-.cta a:hover{text-decoration:underline}
-.btn{
-  display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;
-  background:var(--ink);color:#fff!important;text-decoration:none!important;font-size:13px
-}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.actions button,.actions a.ghost{
-  border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;
-  font:600 12px var(--sans);cursor:pointer;color:var(--ink);text-decoration:none
-}
+.btn{display:inline-flex;padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff!important;font-size:13px}
 @media print{
+  .bar{display:none!important}
   body{background:#fff}
-  .actions{display:none!important}
-  .page{box-shadow:none;border:0;margin:0;width:100%;border-radius:0;padding:12mm}
+  .page{box-shadow:none;border:0;margin:0;width:100%;border-radius:0}
 }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="actions">
-    <a class="ghost" href="./">← Profile</a>
-    <button type="button" onclick="window.print()">Print / Save PDF</button>
-    <a class="ghost" href="https://agreyfox.github.io/fmr/">fmr site</a>
+<div class="bar">
+  <div>
+    <a href="./"><span class="en">← Profile</span><span class="zh">← 个人主页</span></a>
+    <a href="https://agreyfox.github.io/fmr/">fmr</a>
   </div>
+  <div>
+    <button type="button" onclick="window.print()">
+      <span class="en">Print / Save PDF</span><span class="zh">打印 / 另存 PDF</span>
+    </button>
+    <span class="lang" role="group" aria-label="Language">
+      <button type="button" id="langEn" aria-pressed="true">EN</button>
+      <button type="button" id="langZh" aria-pressed="false">中文</button>
+    </span>
+  </div>
+</div>
 
+<div class="page">
   <div class="top">
     <div>
-      <div class="brand">agre<span>y</span>fox</div>
+      <div class="brand">agre<em>y</em>fox</div>
       <h1>fmr — Family Medical Records</h1>
-      <p class="sub">Local-first encrypted archive for family lab reports. AI assists extraction; humans confirm before anything is saved.</p>
+      <p class="sub en">Local-first encrypted archive for family lab reports. AI assists extraction; people confirm before anything is saved.</p>
+      <p class="sub zh">面向家庭化验资料的本地优先加密档案。AI 辅助提取指标；入库前必须经过人工确认。</p>
     </div>
     <div class="meta">
-      One-pager · Case snapshot<br>
-      Developer: agreyfox<br>
-      Package: com.agreyfox.fmr
+      <span class="en">One-pager · Case snapshot</span>
+      <span class="zh">一页案例 · 摘要</span><br>
+      agreyfox<br>
+      com.agreyfox.fmr
     </div>
   </div>
 
   <div class="grid">
     <div class="card">
-      <h2>Problem</h2>
-      <ul>
-        <li>Family lab PDFs/photos scatter across phones and folders</li>
+      <h2><span class="en">Problem</span><span class="zh">问题</span></h2>
+      <ul class="en">
+        <li>Lab PDFs and photos scatter across phones and folders</li>
         <li>Cloud health apps raise privacy concerns</li>
-        <li>OCR/AI dumps metrics without a clear review step</li>
+        <li>OCR dumps numbers without a clear review step</li>
+      </ul>
+      <ul class="zh">
+        <li>化验 PDF 与照片散落在手机与文件夹中</li>
+        <li>云端健康应用带来隐私顾虑</li>
+        <li>OCR 直接抛出数值，缺少清晰审核步骤</li>
       </ul>
     </div>
     <div class="card">
-      <h2>Approach</h2>
-      <ul>
-        <li>Local encrypted storage by default</li>
+      <h2><span class="en">Approach</span><span class="zh">做法</span></h2>
+      <ul class="en">
+        <li>Encrypted local storage by default</li>
         <li>Import → AI parse → editable table → confirm</li>
         <li>AI paths: BYOK → local Ollama → limited free demo</li>
       </ul>
-    </div>
-    <div class="card">
-      <h2>Role</h2>
-      <ul>
-        <li>Solo · product · design · engineering</li>
-        <li>IT consultant / full-stack / AI collaborator</li>
-        <li>20+ years information systems background</li>
+      <ul class="zh">
+        <li>默认本地加密存储</li>
+        <li>导入 → AI 解析 → 可编辑表格 → 确认入库</li>
+        <li>识别路径：自备密钥 → 本地 Ollama → 有限免费演示</li>
       </ul>
     </div>
     <div class="card">
-      <h2>Status</h2>
-      <ul>
+      <h2><span class="en">Role</span><span class="zh">角色</span></h2>
+      <ul class="en">
+        <li>Solo · product · design · engineering</li>
+        <li>IT advisor / full-stack / AI collaborator</li>
+        <li>20+ years in information systems</li>
+      </ul>
+      <ul class="zh">
+        <li>独立完成：产品、设计、工程</li>
+        <li>IT 顾问 / 全栈 / AI 合作者</li>
+        <li>二十余年信息化系统经验</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2><span class="en">Status</span><span class="zh">现状</span></h2>
+      <ul class="en">
         <li>Android app in active development</li>
-        <li>Play listing prep · membership UI coming soon</li>
-        <li>Product site + Privacy live on GitHub Pages</li>
+        <li>Play listing preparation underway</li>
+        <li>Product site and privacy policy live</li>
+      </ul>
+      <ul class="zh">
+        <li>Android 应用持续开发中</li>
+        <li>Google Play 上架材料准备中</li>
+        <li>产品站与隐私政策已上线</li>
       </ul>
     </div>
   </div>
 
   <div class="row">
     <div class="card">
-      <h2>Proof points</h2>
-      <p class="proof"><strong>Human-in-the-loop:</strong> no silent auto-commit of AI metrics.</p>
-      <p class="proof" style="margin-top:8px"><strong>Privacy-first:</strong> raw medical files stay on device unless the user opts into a cloud path.</p>
-      <p class="proof" style="margin-top:8px"><strong>Stack:</strong> Flutter · Riverpod · Drift/SQLCipher · go_router.</p>
+      <h2><span class="en">Proof points</span><span class="zh">可核验要点</span></h2>
+      <p class="proof en"><strong>Human-in-the-loop:</strong> no silent auto-commit of AI metrics.</p>
+      <p class="proof zh"><strong>人在环路：</strong>AI 指标禁止在无人确认时静默入库。</p>
+      <p class="proof en" style="margin-top:8px"><strong>Privacy-first:</strong> raw files stay on device unless the user opts into a cloud path.</p>
+      <p class="proof zh" style="margin-top:8px"><strong>隐私优先：</strong>原始文件默认留在本机；仅在用户主动选择时走云端路径。</p>
+      <p class="proof en" style="margin-top:8px"><strong>Stack:</strong> Flutter · Riverpod · Drift / SQLCipher · go_router.</p>
+      <p class="proof zh" style="margin-top:8px"><strong>技术栈：</strong>Flutter · Riverpod · Drift / SQLCipher · go_router。</p>
     </div>
     <div class="card">
-      <h2>Links</h2>
+      <h2><span class="en">Links</span><span class="zh">链接</span></h2>
       <p class="proof"><strong>Product:</strong> agreyfox.github.io/fmr</p>
       <p class="proof" style="margin-top:8px"><strong>Privacy:</strong> …/fmr/privacy.html</p>
       <p class="proof" style="margin-top:8px"><strong>Profile:</strong> agreyfox.github.io</p>
@@ -132,10 +175,32 @@ h1{font:700 34px/1.1 var(--serif);letter-spacing:-.03em;margin:0 0 8px}
   </div>
 
   <div class="cta">
-    <a class="btn" href="mailto:e_raeb@yahoo.com?subject=fmr%20/%20consulting">Email agreyfox</a>
-    <a href="https://agreyfox.github.io/fmr/">Product site →</a>
-    <a href="https://agreyfox.github.io/">Full profile →</a>
+    <a class="btn" href="mailto:e_raeb@yahoo.com?subject=fmr%20/%20consulting">
+      <span class="en">Email agreyfox</span><span class="zh">邮件联系</span>
+    </a>
+    <a href="https://agreyfox.github.io/fmr/">
+      <span class="en">Product site →</span><span class="zh">产品站 →</span>
+    </a>
+    <a href="./">
+      <span class="en">Full profile →</span><span class="zh">完整主页 →</span>
+    </a>
   </div>
 </div>
+<script>
+(function(){
+  var KEY="agreyfox-lang";
+  function apply(lang){
+    var zh=lang==="zh";
+    document.documentElement.lang=zh?"zh-Hans":"en";
+    document.getElementById("langEn").setAttribute("aria-pressed",zh?"false":"true");
+    document.getElementById("langZh").setAttribute("aria-pressed",zh?"true":"false");
+    try{localStorage.setItem(KEY,zh?"zh":"en")}catch(e){}
+  }
+  var s=null;try{s=localStorage.getItem(KEY)}catch(e){}
+  apply(s==="zh"?"zh":"en");
+  document.getElementById("langEn").onclick=function(){apply("en")};
+  document.getElementById("langZh").onclick=function(){apply("zh")};
+})();
+</script>
 </body>
 </html>

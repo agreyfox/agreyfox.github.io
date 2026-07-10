@@ -3,1062 +3,604 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>agreyfox — The Restless Vine</title>
-<meta name="description" content="agreyfox — IT consultant, full-stack developer & AI collaborator. AI systems for work that still requires human judgment.">
-<meta property="og:title" content="agreyfox — The Restless Vine">
-<meta property="og:description" content="agreyfox — IT consultant, full-stack developer, AI collaborator. 20+ years. Systems that ship under real constraints.">
+<title>agreyfox — IT advisor · full-stack · AI</title>
+<meta name="description" content="agreyfox — IT consultant, full-stack developer, and AI collaborator with 20+ years in information systems. Building software and AI that stay under human judgment.">
+<meta property="og:title" content="agreyfox">
+<meta property="og:description" content="IT advisor · full-stack builder · AI collaborator. Systems that ship under real constraints.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#edf1e8">
+<meta name="theme-color" content="#f4f1ea">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <style>
+/* —— agreyfox profile · restrained editorial —— */
 :root{
-  --paper:#edf1e8;
-  --paper-warm:#f5f0e7;
-  --ink:#173828;
-  --muted:#68746b;
-  /* two accents only: coral + forest; chapter hues = tints of these */
-  --coral:#c85a3c;
-  --accent:#c85a3c;
-  --blue:#2f5c48;
-  --plum:#3d6b58;
-  --bronze:#4a6f55;
-  --teal:#3f7d73;
-  --violet:#264a3a;
-  --stem:#38683f;
-  --stem-light:#6a9458;
-  --shadow:rgba(26,58,40,.16);
-  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --sans:"DM Sans",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --bg:#f4f1ea;
+  --bg-card:#fffcf7;
+  --ink:#14261c;
+  --muted:#5e6b63;
+  --faint:#8a948c;
+  --line:rgba(20,38,28,.10);
+  --coral:#c45a38;
+  --stem:#2f6b56;
+  --stem-soft:rgba(47,107,86,.10);
+  --shadow:0 20px 50px rgba(20,38,28,.07);
+  --serif:"Instrument Serif",Georgia,"Songti SC","Noto Serif SC",serif;
+  --sans:"DM Sans","PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --max:720px;
+  --wide:1080px;
 }
-*{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;color:var(--ink);overflow-x:hidden;
-  background:
-    radial-gradient(circle at 82% 4%,rgba(216,103,73,.11),transparent 19%),
-    radial-gradient(circle at 8% 52%,rgba(66,111,149,.08),transparent 24%),
-    linear-gradient(180deg,#eef2e9 0%,#edf1e8 48%,#f4eee5 100%);
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
   font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-body:before{
-  content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.08;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 45% at 100% 0%,rgba(196,90,56,.07),transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 80%,rgba(47,107,86,.06),transparent 50%);
 }
-a{text-decoration:none;color:inherit}
-.wrap{width:min(1260px,calc(100% - 44px));margin:auto}
-nav{
-  position:fixed;inset:0 0 auto;z-index:80;background:rgba(237,241,232,.72);
-  backdrop-filter:blur(15px);border-bottom:1px solid rgba(23,56,40,.10)
-}
-.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
-.brand{font:700 20px/1 var(--serif)}
-.navlinks{display:flex;gap:12px 16px;align-items:center;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
-.navlinks a:last-child{background:var(--coral);color:#fff;padding:10px 16px;border-radius:999px}
+a{color:var(--stem);text-underline-offset:3px}
+a:hover{color:var(--coral)}
 
-.hero{
-  min-height:100vh;padding:118px 0 62px;
-  display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center
-}
-.kicker{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)}
-.hero h1{font:700 clamp(58px,7vw,114px)/.88 var(--serif);letter-spacing:-.055em;margin:20px 0 30px}
-.hero h1 em{font-weight:400;color:var(--coral)}
-.hero p{font-size:20px;line-height:1.64;color:#526057;max-width:700px}
-.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-.button{padding:14px 20px;border-radius:999px;font-weight:750;font-size:14px;background:var(--ink);color:#fff}
-.button.ghost{background:transparent;border:1px solid rgba(66,111,149,.35);color:var(--blue)}
-.handle-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.handle-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(23,56,40,.055);font-size:13px;color:#405047}
+/* language visibility: default English */
+html[lang="en"] .zh{display:none!important}
+html[lang="zh-Hans"] .en{display:none!important}
 
-.hero-art{height:650px;position:relative}
-.hero-art .sun{
-  position:absolute;width:250px;height:250px;border-radius:50%;right:36px;top:28px;
-  background:radial-gradient(circle at 35% 30%,#fff1ce,#f2c890 58%,#e5ad7f);opacity:.68
-}
-.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
-.hero-note{
-  position:absolute;right:4px;bottom:44px;width:300px;padding:22px 24px;
-  background:rgba(203,220,145,.94);border-radius:8px 8px 66px 8px;transform:rotate(2deg);
-  box-shadow:0 22px 50px var(--shadow)
-}
-.hero-note b{display:block;font:700 28px/1.05 var(--serif);margin-bottom:10px}
-.hero-note span{font-size:14px;color:#3e533f}
+.wrap{width:min(var(--max),calc(100% - 2.5rem));margin:0 auto;position:relative;z-index:1}
+.wrap-wide{width:min(var(--wide),calc(100% - 2.5rem));margin:0 auto;position:relative;z-index:1}
 
-.identity-strip{
-  border-top:1px solid rgba(23,56,40,.12);border-bottom:1px solid rgba(23,56,40,.12);
-  padding:20px 0;background:rgba(255,255,255,.18)
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(244,241,234,.82);
+  border-bottom:1px solid var(--line);
 }
-.identity-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:18px;align-items:center}
-.identity-grid strong{font-family:var(--serif);font-size:24px}
-.identity-grid span{font-size:13px;color:#566258}
+.nav-inner{
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.logo{
+  font-family:var(--serif);
+  font-size:1.35rem;
+  font-weight:400;
+  letter-spacing:-.02em;
+  text-decoration:none;
+  color:var(--ink);
+}
+.logo em{font-style:italic;color:var(--coral);font-weight:400}
+.nav-right{display:flex;align-items:center;gap:.15rem 1.1rem;flex-wrap:wrap;justify-content:flex-end}
+.nav-right a{
+  font-size:.82rem;font-weight:600;
+  text-decoration:none;color:var(--muted);
+  letter-spacing:.01em;
+}
+.nav-right a:hover{color:var(--ink)}
+.nav-right a.cta{
+  background:var(--ink);color:#f4f1ea!important;
+  padding:.45rem .9rem;border-radius:999px;
+}
+.nav-right a.cta:hover{background:var(--coral)}
+.lang{
+  display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+  margin-left:.25rem;
+}
+.lang button{
+  border:0;background:transparent;padding:.4rem .7rem;
+  font:600 .72rem/1 var(--sans);letter-spacing:.04em;
+  color:var(--faint);cursor:pointer;
+}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
 
-.intro{text-align:center;max-width:860px;margin:0 auto;padding:95px 0 58px}
-.intro h2{font:700 clamp(50px,6vw,92px)/.94 var(--serif);letter-spacing:-.05em;margin:0 0 24px;color:#315b46}
-.intro p{font-size:20px;line-height:1.64;color:var(--muted)}
+/* hero */
+.hero{padding:4.5rem 0 3rem}
+.eyebrow{
+  display:inline-block;
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 1.25rem;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.6rem,7.5vw,4.4rem);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin:0 0 1.5rem;
+  max-width:14ch;
+}
+.hero h1 i{font-style:italic;color:var(--coral)}
+.lede{
+  font-size:1.125rem;
+  color:var(--muted);
+  max-width:36rem;
+  margin:0 0 2rem;
+  line-height:1.7;
+}
+.lede strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:.7rem 1.2rem;
+  border-radius:999px;font-weight:600;font-size:.9rem;
+  text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease,background .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-solid{background:var(--ink);color:#f4f1ea}
+.btn-solid:hover{background:var(--coral);color:#fff}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--stem);color:var(--stem)}
 
-.story-stage{position:relative;min-height:7200px}
-#plantSvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* stats strip */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  margin:0 0 3.5rem;
+}
+.stats > div{
+  background:var(--bg-card);
+  padding:1.25rem 1.1rem;
+}
+.stats strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:1.55rem;
+  font-weight:400;
+  letter-spacing:-.02em;
+  margin-bottom:.2rem;
+}
+.stats span{font-size:.8rem;color:var(--muted);line-height:1.4}
 
-.flower-quote{
-  position:absolute;left:50%;top:136px;transform:translateX(-50%);
-  width:470px;max-width:40vw;text-align:center;z-index:26
+/* sections */
+section{padding:0 0 3.25rem}
+.section-label{
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 1rem;
 }
-.flower-quote .line{
-  font:700 clamp(30px,3.3vw,45px)/1.02 var(--serif);
-  letter-spacing:-.045em;color:#214233;text-shadow:0 2px 18px rgba(255,255,255,.78)
+.section-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.85rem,4vw,2.45rem);
+  letter-spacing:-.025em;
+  line-height:1.15;
+  margin:0 0 1rem;
 }
-.flower-quote .line em{font-weight:400;color:var(--coral)}
-.flower-quote .sub{
-  margin:12px auto 0;font-size:14px;color:#59675f;line-height:1.4;
-  max-width:370px;text-shadow:0 1px 10px rgba(255,255,255,.9)
+.section-title i{font-style:italic;color:var(--coral)}
+.prose{color:var(--muted);max-width:38rem;margin:0}
+.prose + .prose{margin-top:.85rem}
+
+/* approach list */
+.steps{margin:1.75rem 0 0;padding:0;list-style:none;counter-reset:step}
+.steps li{
+  position:relative;
+  padding:1.35rem 0 1.35rem 3.5rem;
+  border-top:1px solid var(--line);
+  counter-increment:step;
 }
-.soil-labels{
-  position:absolute;left:50%;bottom:72px;transform:translateX(-50%);z-index:28;
-  width:min(840px,calc(100% - 40px));text-align:center;color:#4c453c;
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  position:absolute;left:0;top:1.4rem;
+  font-family:var(--serif);
+  font-size:1.15rem;
+  color:var(--coral);
+  letter-spacing:-.02em;
 }
-.soil-labels h3{
-  margin:0 0 14px;font:700 30px/1.05 var(--serif);letter-spacing:-.03em;color:#4a3b2b;
+.steps h3{
+  margin:0 0 .4rem;
+  font-size:1.05rem;
+  font-weight:650;
+  letter-spacing:-.015em;
 }
-.soil-labels .soil-words{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.soil-labels span{
-  display:inline-block;padding:8px 12px;border-radius:999px;
-  background:rgba(255,248,230,.42);border:1px solid rgba(88,65,42,.18);
-  font-size:13px;color:#594c3d;
+.steps p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.6}
+.proof{
+  display:inline-block;
+  margin-top:.65rem;
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--stem);
+  background:var(--stem-soft);
+  padding:.3rem .65rem;
+  border-radius:6px;
+  line-height:1.4;
+}
+.proof a{color:var(--stem);font-weight:700}
+
+/* work cards */
+.cards{display:grid;gap:1rem;margin-top:1.25rem}
+@media(min-width:700px){.cards{grid-template-columns:1.15fr .85fr}}
+.card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:1.5rem 1.45rem;
+  box-shadow:var(--shadow);
+  transition:border-color .15s,transform .15s;
+}
+.card:hover{border-color:rgba(196,90,56,.35);transform:translateY(-2px);color:inherit}
+.card .tag{
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 .65rem;
+}
+.card h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:1.55rem;
+  letter-spacing:-.02em;
+  margin:0 0 .55rem;
+}
+.card p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+.card .more{
+  display:inline-block;margin-top:1rem;
+  font-size:.85rem;font-weight:650;color:var(--coral);
 }
 
-.story-copy{position:absolute;width:340px;z-index:20;--chapter-color:var(--coral)}
-.story-copy.left{left:0}.story-copy.right{right:0}
-.story-copy .n{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--chapter-color)}
-.story-copy h3{
-  font:700 43px/1.01 var(--serif);letter-spacing:-.04em;margin:12px 0 16px;
-  color:var(--chapter-color)
-}
-.story-copy p{font-size:16px;line-height:1.6;color:#5e6b62;margin:0}
-.story-copy.seed{--chapter-color:var(--coral)}
-.story-copy.structure{--chapter-color:var(--blue)}
-.story-copy.leverage{--chapter-color:var(--plum)}
-.story-copy.reasoning{--chapter-color:var(--bronze)}
-.story-copy.stories{--chapter-color:var(--teal)}
-.story-copy.compass{--chapter-color:var(--violet)}
-
-.leaf-content{
-  position:absolute;z-index:25;transform:translate(-50%,-50%);pointer-events:none;
-  display:flex;align-items:center;justify-content:center;text-align:center
-}
-.leaf-content .panel{
-  padding:14px 16px 12px;max-width:100%;
-  background:radial-gradient(circle at 50% 40%,rgba(16,49,27,.24),rgba(16,49,27,.17) 56%,rgba(16,49,27,.10) 76%,transparent 100%);
-  border-radius:28px
-}
-.leaf-content h3{margin:0 0 8px;font:700 24px/1.05 var(--serif);letter-spacing:-.028em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)}
-.leaf-content p{margin:0;font-size:13.5px;line-height:1.42;color:rgba(255,255,255,.93);text-shadow:0 1px 1px rgba(0,0,0,.14)}
-.leaf-content.small{width:220px}.leaf-content.small h3{font-size:21px}
-.leaf-content.mid{width:250px}
-.leaf-content.wide{width:285px}.leaf-content.wide h3{font-size:25px}
-.leaf-content.xwide{width:320px}.leaf-content.xwide h3{font-size:26px}
-
-.grasshopper{
-  position:fixed;z-index:60;width:94px;height:68px;left:0;top:0;pointer-events:none;
-  transform-origin:50% 72%;filter:drop-shadow(0 8px 7px rgba(23,56,35,.24))
-}
-.grasshopper svg{width:100%;height:100%;overflow:visible}
-.jump-note{
-  position:fixed;z-index:59;pointer-events:none;font-family:var(--sans);font-weight:600;letter-spacing:-.01em;
-  color:#406d44;font-size:14px;max-width:220px;opacity:0;transition:opacity .22s ease
-}
-
-.closing{padding:130px 0 50px;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:end}
-.closing h2{font:700 clamp(60px,7vw,108px)/.89 var(--serif);letter-spacing:-.055em;margin:0;color:#315b46}
-.closing h2 em{font-weight:400;color:var(--coral)}
-.closing p{font-size:20px;line-height:1.64;color:#59635a}
+/* contact band */
 .contact{
-  margin:60px 0 0;background:#173828;color:white;border-radius:42px;padding:62px;
-  display:grid;grid-template-columns:1.1fr .9fr;gap:50px
+  margin:1rem 0 3rem;
+  background:var(--ink);
+  color:#e8ede9;
+  border-radius:24px;
+  padding:2.25rem 1.85rem;
 }
-.contact h3{font:700 58px/.95 var(--serif);margin:0;color:#f2c6d2}
-.contact p{font-size:18px;line-height:1.65;color:#c9d3ca}
-.contact a.mail{display:inline-block;margin-top:12px;padding:14px 20px;border-radius:999px;background:var(--coral);font-weight:750}
-.github-line{margin-top:18px;color:#c9d3ca;font-size:15px}
-footer{padding:38px 0 50px;font-size:13px;color:#677067}
-.footer{border-top:1px solid rgba(24,54,37,.14);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.contact h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.9rem,4vw,2.6rem);
+  letter-spacing:-.02em;
+  margin:0 0 .75rem;
+  color:#fff;
+}
+.contact h2 i{font-style:italic;color:#f0a080}
+.contact .lead{margin:0 0 1.25rem;color:rgba(232,237,233,.72);max-width:36rem;font-size:1rem}
+.scope{list-style:none;margin:0 0 1.5rem;padding:0}
+.scope li{
+  position:relative;
+  padding:.35rem 0 .35rem 1rem;
+  font-size:.9rem;
+  color:rgba(232,237,233,.78);
+}
+.scope li::before{
+  content:"";position:absolute;left:0;top:.7em;
+  width:5px;height:5px;border-radius:50%;background:var(--coral);
+}
+.scope li.out{opacity:.5}
+.scope li.out::before{background:rgba(255,255,255,.3)}
+.mail{
+  display:inline-block;
+  font-size:1.2rem;font-weight:650;
+  color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.25);
+  padding-bottom:.15rem;
+  margin-bottom:.85rem;
+}
+.mail:hover{color:#f0a080;border-color:#f0a080}
+.contact-meta{font-size:.85rem;color:rgba(232,237,233,.5);margin:0}
+.contact-meta a{color:rgba(232,237,233,.75)}
 
-@media(max-width:950px){
-  .hero{grid-template-columns:1fr}.hero-art{height:560px}
-  .navlinks a:not(:last-child){display:none}
-  .identity-grid{grid-template-columns:1fr 1fr}
-  .story-copy{width:250px}.story-copy h3{font-size:32px}
-  .leaf-content{transform:translate(-50%,-50%) scale(.84)}
-  .flower-quote{top:150px;width:340px;max-width:52vw}
-  .closing,.contact{grid-template-columns:1fr}
+/* footer */
+footer{
+  border-top:1px solid var(--line);
+  padding:1.5rem 0 2.5rem;
+  font-size:.8rem;
+  color:var(--faint);
 }
-@media(max-width:680px){
-  .identity-grid{grid-template-columns:1fr}
-  .story-copy{width:44%}.story-copy h3{font-size:27px}.story-copy p{font-size:14px}
-  .leaf-content{transform:translate(-50%,-50%) scale(.70)}
-  .flower-quote{top:155px;width:280px;max-width:70vw}.flower-quote .line{font-size:24px}.flower-quote .sub{font-size:12px}
-  .contact{padding:34px}
+.foot-row{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.25rem;
+  justify-content:space-between;align-items:center;
 }
+footer a{color:var(--faint);text-decoration:none;font-weight:600}
+footer a:hover{color:var(--ink)}
 
-/* P0–P1: proof, work strip, hopper toggle, mobile linear */
-.proof{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
-.proof a{color:var(--coral);text-decoration:underline;text-underline-offset:2px}
-.work-strip{padding:48px 0 20px}
-.work-strip .kicker{margin-bottom:14px}
-.work-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
-@media(max-width:800px){.work-grid{grid-template-columns:1fr}}
-.work-card{
-  display:block;padding:26px 28px;border-radius:28px;
-  background:rgba(255,255,255,.45);border:1px solid rgba(23,56,40,.12);
-  transition:border-color .15s,transform .15s,box-shadow .15s
-}
-.work-card:hover{border-color:rgba(200,90,60,.4);transform:translateY(-2px);box-shadow:0 16px 40px var(--shadow)}
-.work-card .meta{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 10px}
-.work-card h3{font:700 28px/1.05 var(--serif);margin:0 0 10px;letter-spacing:-.03em}
-.work-card p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
-.work-card .go{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--coral)}
-.scope-list{margin:16px 0 0;padding:0;list-style:none}
-.scope-list li{margin:8px 0;padding-left:14px;position:relative;font-size:15px;color:#c9d3ca;line-height:1.45}
-.scope-list li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--coral)}
-.scope-list .out{opacity:.55}
-.hopper-toggle{
-  position:fixed;right:16px;bottom:16px;z-index:90;
-  padding:10px 14px;border-radius:999px;border:1px solid rgba(23,56,40,.18);
-  background:rgba(237,241,232,.92);backdrop-filter:blur(10px);
-  font:600 12px/1 var(--sans);color:var(--ink);cursor:pointer;
-  box-shadow:0 8px 24px var(--shadow)
-}
-.hopper-toggle:hover{border-color:var(--coral);color:var(--coral)}
-.hopper-toggle[aria-pressed="false"]{opacity:.85}
-body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
-
-.lang-toggle{
-  display:inline-flex;align-items:center;gap:0;border:1px solid rgba(23,56,40,.16);
-  border-radius:999px;overflow:hidden;font-size:12px;font-weight:700
-}
-.lang-toggle button{
-  border:0;background:transparent;padding:8px 11px;cursor:pointer;
-  font:700 12px/1 var(--sans);color:var(--muted)
-}
-.lang-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
-@media print{
-  nav,.grasshopper,.jump-note,.hopper-toggle,.lang-toggle{display:none!important}
+/* decorative rule */
+.rule{
+  width:2.5rem;height:2px;border:0;
+  background:linear-gradient(90deg,var(--coral),transparent);
+  margin:0 0 1.5rem;
 }
 
-.linear-path{display:none;padding:10px 0 40px}
-.linear-path article{
-  margin:0 0 18px;padding:22px 22px 20px;border-radius:22px;
-  background:rgba(255,255,255,.42);border:1px solid rgba(23,56,40,.1)
+@media(max-width:720px){
+  .stats{grid-template-columns:1fr 1fr}
+  .hero{padding:3rem 0 2.25rem}
+  .nav-right a:not(.cta):not(.keep){display:none}
+  .contact{padding:1.75rem 1.25rem;border-radius:18px}
+  body{font-size:16px}
 }
-.linear-path .n{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--coral)}
-.linear-path h3{font:700 26px/1.08 var(--serif);margin:8px 0 10px;letter-spacing:-.03em}
-.linear-path p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
-.linear-path .proof{margin-top:12px}
-@media(max-width:680px){
-  .story-stage{display:none!important}
-  .linear-path{display:block}
-  .intro{padding:56px 0 24px}
-  .intro h2{font-size:clamp(36px,10vw,52px)}
-  .hero{padding:100px 0 40px;min-height:auto}
-  .hero h1{font-size:clamp(40px,11vw,64px)}
-  .hero-art{height:380px;margin-top:12px}
-  .hero-note{width:min(280px,88%);right:8px;bottom:16px}
-  .contact{padding:34px;border-radius:28px}
-  .contact h3{font-size:36px}
-  .closing{padding:70px 0 30px}
-  .closing h2{font-size:clamp(40px,11vw,64px)}
-  .identity-grid strong{font-size:20px}
+@media(max-width:400px){
+  .stats{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .grasshopper,.jump-note,.hopper-toggle{display:none!important}
+  .btn:hover,.card:hover{transform:none}
 }
 </style>
 </head>
-<body class="hopper-off">
-<nav>
-  <div class="wrap navin">
-    <div class="brand">agreyfox</div>
-    <div class="navlinks">
-      <a href="#work" data-i18n="nav_work">Work</a>
-      <a href="#story" data-i18n="nav_approach">Approach</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
-      <a href="case.html" data-i18n="nav_case">Case</a>
-      <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="mailto:e_raeb@yahoo.com" data-i18n="nav_email">Email</a>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" id="langEn" aria-pressed="true">EN</button>
-        <button type="button" id="langZh" aria-pressed="false">中文</button>
+<body>
+  <header class="nav">
+    <div class="wrap-wide nav-inner">
+      <a class="logo" href="/">agre<em>y</em>fox</a>
+      <nav class="nav-right" aria-label="Primary">
+        <a class="keep" href="#work">
+          <span class="en">Work</span><span class="zh">作品</span>
+        </a>
+        <a class="keep" href="#approach">
+          <span class="en">Approach</span><span class="zh">方法</span>
+        </a>
+        <a class="keep" href="#contact">
+          <span class="en">Contact</span><span class="zh">联系</span>
+        </a>
+        <a class="keep" href="case.html">
+          <span class="en">Case</span><span class="zh">案例</span>
+        </a>
+        <a class="cta" href="mailto:e_raeb@yahoo.com">
+          <span class="en">Email</span><span class="zh">邮件</span>
+        </a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="langEn" aria-pressed="true">EN</button>
+          <button type="button" id="langZh" aria-pressed="false">中文</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero wrap">
+      <p class="eyebrow">
+        <span class="en">IT · Full-stack · AI systems</span>
+        <span class="zh">信息化 · 全栈 · 智能系统</span>
+      </p>
+      <h1 class="en">AI for work that still needs <i>judgment.</i></h1>
+      <h1 class="zh">为仍需<i>判断力</i>的工作，构建可靠的 AI。</h1>
+      <p class="lede en">
+        <strong>IT advisor and full-stack builder.</strong>
+        More than twenty years delivering information systems—now pairing engineering discipline with AI that remains under human review.
+      </p>
+      <p class="lede zh">
+        <strong>IT 顾问与全栈开发者。</strong>
+        二十余年信息化系统交付经验；将工程纪律与「必须经人审核」的 AI 能力结合，服务真实业务约束。
+      </p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#approach">
+          <span class="en">How I work</span><span class="zh">工作方式</span>
+        </a>
+        <a class="btn btn-ghost" href="#work">
+          <span class="en">Selected work</span><span class="zh">代表作品</span>
+        </a>
+        <a class="btn btn-ghost" href="mailto:e_raeb@yahoo.com">
+          <span class="en">Write to me</span><span class="zh">写邮件</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="wrap">
+      <div class="stats" aria-label="Profile highlights">
+        <div>
+          <strong>20+</strong>
+          <span class="en">years in information systems</span>
+          <span class="zh">年信息化服务经验</span>
+        </div>
+        <div>
+          <strong class="en">Full-stack</strong>
+          <strong class="zh">全栈</strong>
+          <span class="en">design through operations</span>
+          <span class="zh">从设计到交付运维</span>
+        </div>
+        <div>
+          <strong>AI</strong>
+          <span class="en">solutions under human judgment</span>
+          <span class="zh">人在环路中的智能方案</span>
+        </div>
+        <div>
+          <strong>fmr</strong>
+          <span class="en">local-first product shipping</span>
+          <span class="zh">本地优先产品推进中</span>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
 
-<div class="wrap">
-  <section class="hero">
-    <div>
-      <div class="kicker" data-i18n="hero_kicker">IT · Full-stack · AI systems</div>
-      <h1 data-i18n-html="hero_h1">AI for work that still requires <em>judgment.</em></h1>
-      <p data-i18n-html="hero_p"><strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.</p>
-      <div class="hero-actions">
-        <a class="button" data-hop data-joke="scroll. the vine does the talking." data-hop-y=".05" href="#story" data-i18n="hero_cta_work">How I work</a>
-        <a class="button ghost" data-hop data-joke="product, then policy." data-hop-y=".05" href="#work" data-i18n="hero_cta_selected">Selected work</a>
-        <a class="button ghost" data-hop data-joke="email is still a good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com" data-i18n="hero_cta_email">Email</a>
+    <!-- WORK -->
+    <section class="wrap" id="work">
+      <p class="section-label">
+        <span class="en">Selected work</span><span class="zh">代表作品</span>
+      </p>
+      <h2 class="section-title en">Things that have to <i>work.</i></h2>
+      <h2 class="section-title zh">必须真正<i>能用</i>的东西。</h2>
+      <div class="cards">
+        <a class="card" href="https://agreyfox.github.io/fmr/">
+          <p class="tag">
+            <span class="en">Product · In progress</span>
+            <span class="zh">产品 · 开发中</span>
+          </p>
+          <h3>fmr</h3>
+          <p class="en">
+            Family medical records—encrypted on device. Import lab photos and PDFs, review AI-extracted metrics in a table, then confirm before save. Free core; optional BYOK, local Ollama, or a limited cloud demo.
+          </p>
+          <p class="zh">
+            家庭医疗档案——默认本地加密存储。导入化验单照片与 PDF，在表格中审核 AI 提取的指标，确认后再入库。核心功能免费；可选自备密钥、本地 Ollama，或有限次数的云端演示。
+          </p>
+          <span class="more">
+            <span class="en">Product site, privacy &amp; terms →</span>
+            <span class="zh">产品站 · 隐私政策 · 条款 →</span>
+          </span>
+        </a>
+        <a class="card" href="https://github.com/agreyfox" target="_blank" rel="noreferrer">
+          <p class="tag">GitHub</p>
+          <h3>@agreyfox</h3>
+          <p class="en">
+            Public code and experiments. Client work stays disciplined: clear architecture, shippable delivery, and AI that a human can still audit.
+          </p>
+          <p class="zh">
+            公开代码与实验。对外交付保持纪律：清晰架构、可上线成果，以及仍可被人工审计的 AI 行为。
+          </p>
+          <span class="more">github.com/agreyfox →</span>
+        </a>
       </div>
-      <div class="handle-row">
-        <span class="handle-pill" data-hop data-joke="yes, the fox is grey." data-hop-y=".05">GitHub · <strong>@agreyfox</strong></span>
-        <span class="handle-pill" data-hop data-joke="direct line." data-hop-y=".05">Email · <strong>e_raeb@yahoo.com</strong></span>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="wrap" id="approach">
+      <p class="section-label">
+        <span class="en">Approach</span><span class="zh">方法</span>
+      </p>
+      <h2 class="section-title en">How the work <i>grows.</i></h2>
+      <h2 class="section-title zh">工作如何<i>展开</i>。</h2>
+      <hr class="rule">
+      <p class="prose en">
+        Curiosity opens the problem. Engineering makes it reliable. AI multiplies effort only where judgment still belongs to people. Evidence and honest scope keep the system worth running.
+      </p>
+      <p class="prose zh">
+        以问题本身为起点；用工程保证可靠；仅在「判断仍应属于人」之处引入 AI。证据与诚实的边界，让系统值得长期运行。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <h3 class="en">Start from the real constraint</h3>
+          <h3 class="zh">从真实约束出发</h3>
+          <p class="en">Who is blocked, what breaks, which decision cannot be made. Tools come second.</p>
+          <p class="zh">谁被卡住、哪里失效、哪个决策做不下去。工具永远排在问题之后。</p>
+          <span class="proof en">20+ years framing IT as problems to solve—not feature lists.</span>
+          <span class="proof zh">二十余年经验：把信息化当作待解问题，而非功能清单堆砌。</span>
+        </li>
+        <li>
+          <h3 class="en">Give it structure</h3>
+          <h3 class="zh">赋予结构</h3>
+          <p class="en">Boundaries, flows, failure modes, feedback. One test: does it work in production?</p>
+          <p class="zh">边界、流程、故障模式与反馈。唯一检验：上线之后是否仍能工作？</p>
+          <span class="proof en">Full-stack delivery: design → build → operate—not slideware handoffs.</span>
+          <span class="proof zh">全栈交付：设计 → 实现 → 运维，而非甩文档式交接。</span>
+        </li>
+        <li>
+          <h3 class="en">Use AI as leverage</h3>
+          <h3 class="zh">以 AI 作杠杆</h3>
+          <p class="en">Models search, draft, and challenge. People still own the decision. Review should feel natural—not a checkbox after damage is done.</p>
+          <p class="zh">模型负责检索、起草与质疑；决策仍在人。审核应是流程中的自然步骤，而非事后补救的勾选。</p>
+          <span class="proof en">fmr: metrics enter the archive only after human confirm. <a href="https://agreyfox.github.io/fmr/">Product →</a></span>
+          <span class="proof zh">fmr：指标须经人工确认后方可入库。<a href="https://agreyfox.github.io/fmr/">产品站 →</a></span>
+        </li>
+        <li>
+          <h3 class="en">Keep evidence close</h3>
+          <h3 class="zh">紧贴证据</h3>
+          <p class="en">Logs beat narratives. Missing evidence is a finding, not a footnote to skip.</p>
+          <p class="zh">日志胜过叙事。证据缺失本身就是发现，不是可以跳过的脚注。</p>
+          <span class="proof en">Requirements and acceptance criteria written so they can be tested.</span>
+          <span class="proof zh">需求与验收标准写到可被测试、可被复核。</span>
+        </li>
+        <li>
+          <h3 class="en">Respect incentives</h3>
+          <h3 class="zh">尊重真实激励</h3>
+          <p class="en">Systems fail when they ignore how people actually behave. Map stakeholders before architecture freezes.</p>
+          <p class="zh">忽视真实行为的系统终将失败。架构定型之前，先理清利益相关方与激励结构。</p>
+          <span class="proof en">Workshops that surface incentives early—before the wrong system is built.</span>
+          <span class="proof zh">在错误系统成形前，通过研讨尽早暴露激励与阻力。</span>
+        </li>
+        <li>
+          <h3 class="en">Leave judgment human</h3>
+          <h3 class="zh">判断留给人</h3>
+          <p class="en">What should technology serve? Where must a person stay in the loop? Those questions sit next to the backlog—not on a separate ethics slide.</p>
+          <p class="zh">技术服务谁？何处必须有人在环？这些问题与待办并列，而不是单独一页「伦理声明」。</p>
+          <span class="proof en">No silent auto-commit of sensitive AI output.</span>
+          <span class="proof zh">敏感 AI 结果禁止在无人确认时静默写入。</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="wrap" id="contact">
+      <div class="contact">
+        <h2 class="en">Let’s talk <i>clearly.</i></h2>
+        <h2 class="zh">欢迎<i>认真</i>地谈。</h2>
+        <p class="lead en">
+          Open to consulting, system delivery, and AI solution design—especially human-in-the-loop workflows, local-first products, and modernization that must keep running.
+        </p>
+        <p class="lead zh">
+          欢迎就咨询、系统交付与 AI 方案设计交流——尤其关注人在环路中的流程、本地优先产品，以及必须持续运行的系统现代化。
+        </p>
+        <ul class="scope">
+          <li class="en">In scope — IT advisory, full-stack delivery, AI integration under review</li>
+          <li class="zh">范围内 — IT 咨询、全栈交付、可审核的 AI 集成</li>
+          <li class="en">In scope — Architecture, implementation, pragmatic handoff</li>
+          <li class="zh">范围内 — 架构、实现、务实的交接与落地</li>
+          <li class="out en">Out of scope — Medical diagnosis products; pure volume outsourcing</li>
+          <li class="out zh">范围外 — 医疗诊断类产品；纯人力堆量外包</li>
+        </ul>
+        <a class="mail" href="mailto:e_raeb@yahoo.com?subject=agreyfox">e_raeb@yahoo.com</a>
+        <p class="contact-meta en">
+          中文 / English · Reply within a few business days · Not for medical emergencies<br>
+          <a href="https://github.com/agreyfox">GitHub</a>
+          · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+          · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
+          · <a href="case.html">One-pager</a>
+        </p>
+        <p class="contact-meta zh">
+          中文 / English · 通常数个工作日内回复 · 非医疗急救渠道<br>
+          <a href="https://github.com/agreyfox">GitHub</a>
+          · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+          · <a href="https://agreyfox.github.io/fmr/privacy.html">隐私政策</a>
+          · <a href="case.html">一页案例</a>
+        </p>
       </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap-wide foot-row">
+      <span>© <span id="y">2026</span> agreyfox</span>
+      <span>
+        <a href="https://github.com/agreyfox">GitHub</a>
+        · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+        · <a href="case.html"><span class="en">Case</span><span class="zh">案例</span></a>
+      </span>
+      <span class="en">Built for clarity, not noise.</span>
+      <span class="zh">为清晰而建，不为喧哗。</span>
     </div>
+  </footer>
 
-    <div class="hero-art">
-      <div class="sun"></div>
-      <svg viewBox="0 0 620 650" aria-hidden="true">
-        <defs>
-          <linearGradient id="heroStem" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0" stop-color="#315d36"/>
-            <stop offset=".58" stop-color="#567f45"/>
-            <stop offset="1" stop-color="#789d59"/>
-          </linearGradient>
-          <radialGradient id="avocadoSkin" cx="32%" cy="24%">
-            <stop offset="0" stop-color="#88aa62"/>
-            <stop offset=".42" stop-color="#587d43"/>
-            <stop offset="1" stop-color="#31583a"/>
-          </radialGradient>
-          <radialGradient id="avocadoFlesh" cx="38%" cy="28%">
-            <stop offset="0" stop-color="#edf3b6"/>
-            <stop offset=".7" stop-color="#c8dc7f"/>
-            <stop offset="1" stop-color="#a7c565"/>
-          </radialGradient>
-          <filter id="heroShadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#183625" flood-opacity=".18"/>
-          </filter>
-        </defs>
-
-        <path d="M352 618 C345 555 367 507 344 442 C322 379 349 322 338 255 C328 193 350 134 338 62"
-              fill="none" stroke="url(#heroStem)" stroke-width="18" stroke-linecap="round"/>
-
-        <path d="M345 475 C296 457 247 423 201 375" fill="none" stroke="#6d9550" stroke-width="10" stroke-linecap="round"/>
-        <path d="M338 352 C285 337 238 301 194 252" fill="none" stroke="#75a05a" stroke-width="8" stroke-linecap="round"/>
-        <path d="M341 226 C301 209 271 180 244 145" fill="none" stroke="#80a861" stroke-width="7" stroke-linecap="round"/>
-
-        <path d="M344 410 C394 385 439 350 477 306" fill="none" stroke="#6d9550" stroke-width="9" stroke-linecap="round"/>
-        <path d="M339 286 C391 264 431 226 462 182" fill="none" stroke="#78a15b" stroke-width="7" stroke-linecap="round"/>
-        <path d="M472 303 C500 273 537 274 552 304 C529 325 495 329 472 303Z" fill="#6e974f" filter="url(#heroShadow)"/>
-        <path d="M458 180 C485 148 522 148 539 177 C517 201 481 205 458 180Z" fill="#83aa61" filter="url(#heroShadow)"/>
-        <path d="M474 304 L536 303" stroke="rgba(240,248,219,.30)" stroke-width="2"/>
-        <path d="M460 180 L523 177" stroke="rgba(240,248,219,.30)" stroke-width="2"/>
-
-        <g transform="translate(184 397) rotate(-12)" filter="url(#heroShadow)">
-          <path d="M0 -68 C45 -45 59 3 43 47 C30 82 -31 82 -45 48 C-62 6 -45 -46 0 -68Z" fill="url(#avocadoSkin)"/>
-          <path d="M0 -50 C34 -31 44 5 32 39 C22 64 -22 64 -33 40 C-46 8 -34 -32 0 -50Z" fill="url(#avocadoFlesh)"/>
-          <circle cx="0" cy="22" r="20" fill="#9b7449"/>
-          <text x="0" y="-18" text-anchor="middle" font-family="var(--serif)" font-size="14" font-weight="700" fill="#274331">Ask better</text>
-          <text x="0" y="-2" text-anchor="middle" font-family="var(--serif)" font-size="14" font-weight="700" fill="#274331">questions</text>
-        </g>
-
-        <g transform="translate(177 273) rotate(10)" filter="url(#heroShadow)">
-          <path d="M0 -62 C42 -41 55 2 40 43 C27 76 -28 77 -42 44 C-58 5 -42 -42 0 -62Z" fill="url(#avocadoSkin)"/>
-          <path d="M0 -46 C31 -29 42 4 30 35 C20 59 -20 60 -31 37 C-43 6 -31 -30 0 -46Z" fill="url(#avocadoFlesh)"/>
-          <circle cx="0" cy="18" r="18" fill="#9b7449"/>
-          <text x="0" y="-14" text-anchor="middle" font-family="var(--serif)" font-size="13" font-weight="700" fill="#274331">See the</text>
-          <text x="0" y="1" text-anchor="middle" font-family="var(--serif)" font-size="13" font-weight="700" fill="#274331">pattern</text>
-        </g>
-
-        <g transform="translate(229 155) rotate(-9)" filter="url(#heroShadow)">
-          <path d="M0 -57 C38 -38 50 0 37 38 C25 68 -25 69 -38 40 C-52 4 -38 -39 0 -57Z" fill="url(#avocadoSkin)"/>
-          <path d="M0 -42 C29 -27 38 3 28 31 C18 52 -18 53 -29 33 C-40 5 -29 -27 0 -42Z" fill="url(#avocadoFlesh)"/>
-          <circle cx="0" cy="17" r="16" fill="#9b7449"/>
-          <text x="0" y="-11" text-anchor="middle" font-family="var(--serif)" font-size="12" font-weight="700" fill="#274331">Keep judgment</text>
-          <text x="0" y="3" text-anchor="middle" font-family="var(--serif)" font-size="12" font-weight="700" fill="#274331">human</text>
-        </g>
-
-        <path d="M338 63 C329 30 358 18 372 39 C383 57 360 72 348 56 C339 44 350 35 357 43"
-              fill="none" stroke="#789d59" stroke-width="6" stroke-linecap="round"/>
-      </svg>
-      <div class="hero-note" data-hop data-joke="ship, then refine." data-hop-y=".03">
-        <b data-i18n="hero_note_b">Still shipping.</b>
-        <span data-i18n="hero_note_s">Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.</span>
-      </div>
-    </div>
-  </section>
-</div>
-
-<section class="identity-strip" aria-label="Credentials">
-  <div class="wrap identity-grid">
-    <div><strong>agreyfox</strong><br><span data-i18n="id_role">IT consultant · full-stack · AI collaborator</span></div>
-    <div><strong>20+</strong><br><span data-i18n="id_years">years in information systems</span></div>
-    <div><strong>AI</strong><br><span data-i18n="id_ai">solutions under human judgment</span></div>
-    <div><strong>fmr</strong><br><span data-i18n-html="id_fmr">local-first product · <a href="https://agreyfox.github.io/fmr/">site</a></span></div>
-  </div>
-</section>
-
-<div class="wrap">
-
-<section class="work-strip wrap" id="work">
-  <div class="kicker" data-i18n="work_kicker">Selected work</div>
-  <div class="work-grid">
-    <a class="work-card" href="https://agreyfox.github.io/fmr/" data-hop data-joke="local-first, then cloud if you choose." data-hop-y=".04">
-      <p class="meta" data-i18n="work_fmr_meta">Product · Shipping</p>
-      <h3 data-i18n="work_fmr_h">fmr — family medical records</h3>
-      <p data-i18n="work_fmr_p">Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.</p>
-      <span class="go" data-i18n="work_fmr_go">Product site · Privacy · Terms →</span>
-    </a>
-    <a class="work-card" href="https://github.com/agreyfox" target="_blank" rel="noreferrer" data-hop data-joke="code when it helps the story." data-hop-y=".04">
-      <p class="meta" data-i18n="work_gh_meta">Open · GitHub</p>
-      <h3>@agreyfox</h3>
-      <p data-i18n="work_gh_p">Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.</p>
-      <span class="go">github.com/agreyfox →</span>
-    </a>
-  </div>
-</section>
-
-  <section class="intro" id="story" data-hop data-joke="roots before flowers." data-hop-y=".08">
-    <div class="kicker" data-i18n="intro_kicker">Approach</div>
-    <h2 data-i18n-html="intro_h2">The flower is visible.<br>The growth happened below.</h2>
-    <p data-i18n="intro_p">Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.</p>
-  </section>
-
-  <section class="story-stage" id="ideas">
-    <svg id="plantSvg" aria-hidden="true"></svg>
-
-    <div class="flower-quote" data-hop data-joke="wisdom, now available in flower format." data-hop-y=".02">
-      <div class="line">Grown from curiosity.<br><em>Shared as judgment.</em></div>
-      <div class="sub">IT · full-stack · AI under human review — useful before ornamental.</div>
-    </div>
-
-    <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. then ship." data-hop-y=".04">
-      <div class="n">01 / THE SEED</div><h3 data-i18n="ch1_h">Curiosity became the seed.</h3>
-      <p>Start from the real constraint: who fails, what breaks, what decision is blocked. Tools come second.</p>
-      <span class="proof" data-i18n="ch1_proof">Proof · 20+ years of IT programs framed as problems, not feature lists.</span>
-    </div>
-    <div class="story-copy right structure" style="top:1780px" data-hop data-joke="if it only works in the demo, it does not work." data-hop-y=".04">
-      <div class="n">02 / STRUCTURE</div><h3 data-i18n="ch2_h">Engineering gave it structure.</h3>
-      <p data-i18n="ch2_p">Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?</p>
-      <span class="proof" data-i18n="ch2_proof">Proof · Full-stack delivery: design → build → operate, not slideware handoffs.</span>
-    </div>
-    <div class="story-copy left leverage" style="top:2870px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
-      <div class="n">03 / LEVERAGE</div><h3 data-i18n="ch3_h">AI gave it leverage.</h3>
-      <p data-i18n="ch3_p">Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.</p>
-      <span class="proof" data-i18n-html="ch3_proof">Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a></span>
-    </div>
-    <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="show the evidence path." data-hop-y=".04">
-      <div class="n">04 / REASONING</div><h3 data-i18n="ch4_h">Evidence keeps it honest.</h3>
-      <p data-i18n="ch4_p">Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.</p>
-      <span class="proof" data-i18n="ch4_proof">Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.</span>
-    </div>
-    <div class="story-copy left stories" style="top:5070px" data-hop data-joke="incentives explain more than features." data-hop-y=".04">
-      <div class="n">05 / STORIES</div><h3 data-i18n="ch5_h">Incentives shape the system.</h3>
-      <p data-i18n="ch5_p">Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.</p>
-      <span class="proof" data-i18n="ch5_proof">Proof · Stakeholder workshops that map incentives before architecture freezes.</span>
-    </div>
-    <div class="story-copy right compass" style="top:6120px" data-hop data-joke="judgment stays human." data-hop-y=".04">
-      <div class="n">06 / THE COMPASS</div><h3 data-i18n="ch6_h">Judgment stays human.</h3>
-      <p data-i18n="ch6_p">What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.</p>
-      <span class="proof" data-i18n="ch6_proof">Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).</span>
-    </div>
-
-    <article class="leaf-content xwide" data-id="curious" data-hop data-joke="curiosity takes the scenic route" data-hop-y=".04"><div class="panel"><h3>Curious by Nature</h3><p>He starts with questions most people walk past.</p></div></article>
-    <article class="leaf-content xwide" data-id="systems" data-hop data-joke="systems are where consequences hide" data-hop-y=".04"><div class="panel"><h3>Thinks in Systems</h3><p>He sees relationships, structure, flow, and consequence.</p></div></article>
-    <article class="leaf-content xwide" data-id="judgmentTrait" data-hop data-joke="the final call still belongs to people" data-hop-y=".04"><div class="panel"><h3>Human Judgment Matters</h3><p>He builds with AI without surrendering the final call.</p></div></article>
-    <article class="leaf-content xwide" data-id="clarityTrait" data-hop data-joke="untangle first, automate second" data-hop-y=".04"><div class="panel"><h3>Turns Chaos into Clarity</h3><p>He enjoys giving shape to tangled problems.</p></div></article>
-    <article class="leaf-content xwide" data-id="bridges" data-hop data-joke="another bridge? yes, probably useful" data-hop-y=".04"><div class="panel"><h3>Bridges Worlds</h3><p>He moves between technology, reasoning, markets, and lived reality.</p></div></article>
-    <article class="leaf-content xwide" data-id="handsOn" data-hop data-joke="architecture is nicer when it can run" data-hop-y=".04"><div class="panel"><h3>Strategic, Yet Hands-On</h3><p>He can zoom out to architecture and zoom in to implementation.</p></div></article>
-    <article class="leaf-content xwide" data-id="trust" data-hop data-joke="thinking carefully is underrated" data-hop-y=".04"><div class="panel"><h3>Earns Trust Through Thinking</h3><p>He thinks carefully before he speaks boldly.</p></div></article>
-    <article class="leaf-content wide" data-id="insight" data-hop data-joke="surface explanations are usually late" data-hop-y=".04"><div class="panel"><h3>Guided by Insight</h3><p>He looks for what is really happening beneath the surface.</p></div></article>
-    <article class="leaf-content wide" data-id="patterns" data-hop data-joke="patterns keep leaving fingerprints" data-hop-y=".04"><div class="panel"><h3>A Mind for Patterns</h3><p>He notices connections other people often miss.</p></div></article>
-    <article class="leaf-content xwide" data-id="perspective" data-hop data-joke="zoom out, then tighten the bolts" data-hop-y=".04"><div class="panel"><h3>A Builder with Perspective</h3><p>He brings depth of thought and range of vision.</p></div></article>
-    <article class="leaf-content xwide" data-id="humanSystems" data-hop data-joke="the humans are not edge cases" data-hop-y=".04"><div class="panel"><h3>More Than Technical</h3><p>He understands that good systems are also human systems.</p></div></article>
-    <article class="leaf-content wide" data-id="wisdomTrait" data-hop data-joke="hype detected. tea recommended." data-hop-y=".04"><div class="panel"><h3>Wisdom Over Noise</h3><p>He values perspective more than performance.</p></div></article>
-    <article class="leaf-content wide" data-id="independent" data-hop data-joke="easy answers make him suspicious" data-hop-y=".04"><div class="panel"><h3>Independent in Thought</h3><p>He is willing to think differently when the easy answer is not right.</p></div></article>
-    <article class="leaf-content wide" data-id="meaning" data-hop data-joke="useful is a higher compliment than flashy" data-hop-y=".04"><div class="panel"><h3>Driven by Meaning</h3><p>He wants technology to leave people more capable.</p></div></article>
-    <article class="leaf-content wide" data-id="growing" data-hop data-joke="still growing. inconveniently alive." data-hop-y=".04"><div class="panel"><h3>Still Growing</h3><p>He treats each new direction as a chance to deepen.</p></div></article>
-    <div class="soil-labels" data-hop data-joke="roots first. fireworks later." data-hop-y=".08">
-      <h3>The ground beneath the work</h3>
-      <div class="soil-words">
-        <span>Integrity</span><span>Communication</span><span>Reliability</span>
-        <span>Patience</span><span>Respect</span><span>Follow-through</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="closing" data-hop data-joke="still iterating." data-hop-y=".03">
-    <h2 data-i18n-html="close_h2">Still building what has to <em>work.</em></h2>
-    <p data-i18n="close_p">Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.</p>
-  </section>
-
-  <section class="contact" id="contact" data-hop data-joke="humans may still email humans." data-hop-y=".04">
-    <h3 data-i18n="contact_h3">Let’s talk.</h3>
-    <div>
-      <p data-i18n="contact_p">Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.</p>
-      <ul class="scope-list">
-        <li data-i18n="scope1">In scope · IT advisory, full-stack delivery, AI integration under review</li>
-        <li data-i18n="scope2">In scope · Architecture, implementation, pragmatic handoff</li>
-        <li class="out" data-i18n="scope3">Out of scope · Medical diagnosis products, pure spam-volume outsourcing</li>
-      </ul>
-      <a class="mail" href="mailto:e_raeb@yahoo.com?subject=agreyfox%20inquiry">e_raeb@yahoo.com →</a>
-      <div class="github-line">GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a>
-        · Product: <a href="https://agreyfox.github.io/fmr/">fmr</a>
-        · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
-        · <a href="case.html" data-i18n="contact_case">One-pager</a></div>
-      <p class="github-line" style="margin-top:10px;opacity:.75;font-size:13px" data-i18n="contact_meta">Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies</p>
-    </div>
-  </section>
-</div>
-
-<button type="button" class="hopper-toggle" id="hopperToggle" aria-pressed="false" title="Toggle grasshopper">Hopper: off</button>
-<div class="grasshopper" id="grasshopper" aria-hidden="true">
-  <svg viewBox="0 0 132 90">
-    <g>
-      <path d="M56 48 C49 66,34 76,18 79" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
-      <path d="M64 52 C58 74,52 83,40 87" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
-      <path d="M77 50 C94 68,107 77,122 80" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
-      <path d="M82 43 C103 26,116 15,126 11" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="73" cy="38" rx="30" ry="17" fill="#6f9f4f" stroke="#1f4f2d" stroke-width="3"/>
-      <ellipse cx="47" cy="35" rx="15" ry="13" fill="#8ab45f" stroke="#1f4f2d" stroke-width="3"/>
-      <ellipse cx="88" cy="37" rx="14" ry="9" fill="#93bb67" opacity=".8"/>
-      <circle cx="43" cy="31" r="7.5" fill="#f5fff2" stroke="#1f4f2d" stroke-width="2"/>
-      <circle cx="44.5" cy="31" r="2.4" fill="#173822" id="eyeLid"/>
-      <circle cx="39" cy="39" r="2.5" fill="#f1a9ba" opacity=".8"/>
-      <path d="M38 25 C27 14,19 8,10 3" fill="none" stroke="#1f4f2d" stroke-width="4" stroke-linecap="round" id="antA"/>
-      <path d="M47 23 C48 13,51 6,57 1" fill="none" stroke="#1f4f2d" stroke-width="4" stroke-linecap="round" id="antB"/>
-      <path d="M50 42 C59 48,66 51,84 54" fill="none" stroke="#315f3e" stroke-width="4" stroke-linecap="round"/>
-      <path d="M37 37 C39 41,43 43,47 42" fill="none" stroke="#173822" stroke-width="2" stroke-linecap="round"/>
-    </g>
-  </svg>
-</div>
-<div class="jump-note" id="jumpNote"></div>
-
-<footer>
-  <div class="wrap footer">
-    <span>© 2026 agreyfox · personal</span>
-    <span><a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
-      · <a href="https://agreyfox.github.io/fmr/">fmr</a>
-      · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a></span>
-    <span><span data-i18n="footer_tag">Still building what has to work.</span></span>
-  </div>
-</footer>
-
-<script>
-(() => {
-  "use strict";
-  const NS="http://www.w3.org/2000/svg";
-  const stage=document.querySelector(".story-stage");
-  const svg=document.getElementById("plantSvg");
-  const hopper=document.getElementById("grasshopper");
-  const note=document.getElementById("jumpNote");
-  const antA=document.getElementById("antA");
-  const antB=document.getElementById("antB");
-  const eye=document.getElementById("eyeLid");
-  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hopperEnabled=()=>!document.body.classList.contains("hopper-off")&&!reduced;
-  const hopperToggle=document.getElementById("hopperToggle");
-  if(hopperToggle){
-    hopperToggle.addEventListener("click",()=>{
-      const on=document.body.classList.toggle("hopper-off");
-      // class hopper-off means OFF; aria-pressed true when ON
-      const enabled=!document.body.classList.contains("hopper-off");
-      hopperToggle.setAttribute("aria-pressed", enabled?"true":"false");
-      hopperToggle.textContent=enabled?"Hopper: on":"Hopper: off";
-      if(enabled){scheduleNext()}else{clearTimeout(state.timer);hideNote()}
-    });
-  }
-
-  const leaves=[
-    {id:"curious",t:.13,side:1,type:"castor",r:235,lobes:9,rot:-3},
-    {id:"systems",t:.21,side:-1,type:"chrysanthemum",r:230,lobes:13,rot:4},
-    {id:"judgmentTrait",t:.29,side:1,type:"castor",r:225,lobes:11,rot:2},
-    {id:"clarityTrait",t:.35,side:-1,type:"palmate",r:215,lobes:7,rot:-7},
-    {id:"bridges",t:.41,side:1,type:"castor",r:235,lobes:9,rot:6},
-    {id:"handsOn",t:.48,side:-1,type:"broad",r:245,lobes:7,rot:-2},
-    {id:"trust",t:.55,side:1,type:"serrated",r:225,lobes:9,rot:8},
-    {id:"insight",t:.62,side:-1,type:"broad",r:220,lobes:7,rot:-4},
-    {id:"patterns",t:.69,side:1,type:"castor",r:235,lobes:11,rot:1},
-    {id:"perspective",t:.76,side:-1,type:"serrated",r:225,lobes:9,rot:-6},
-    {id:"humanSystems",t:.82,side:1,type:"chrysanthemum",r:220,lobes:13,rot:5},
-    {id:"wisdomTrait",t:.87,side:-1,type:"soft",r:220,lobes:7,rot:-1},
-    {id:"independent",t:.91,side:1,type:"castor",r:230,lobes:9,rot:4},
-    {id:"meaning",t:.945,side:-1,type:"serrated",r:235,lobes:11,rot:-6},
-    {id:"growing",t:.972,side:1,type:"chrysanthemum",r:235,lobes:13,rot:2}
-  ];
-
-  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  const random=(a,b)=>a+Math.random()*(b-a);
-  const TOP=410;
-
-  function centerline(t,w,h){
-    const y=TOP+t*(h-TOP);
-    const x=w*.5+Math.sin(t*Math.PI*4.6+.2)*w*.084+Math.sin(t*Math.PI*8.7+1.15)*w*.016;
-    return {x,y};
-  }
-  function tangent(t,w,h){
-    const e=.0005;
-    const a=centerline(clamp(t-e,0,1),w,h),b=centerline(clamp(t+e,0,1),w,h);
-    const dx=b.x-a.x,dy=b.y-a.y,l=Math.hypot(dx,dy)||1;
-    return {x:dx/l,y:dy/l};
-  }
-  function normal(t,w,h){const q=tangent(t,w,h);return{x:-q.y,y:q.x}}
-  function vineHalfWidth(t){return 8+30*Math.pow(t,.77)}
-  function pathFromPoints(points,close=false){
-    if(!points.length)return"";
-    let d=`M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
-    for(let i=1;i<points.length;i++)d+=` L ${points[i].x.toFixed(1)} ${points[i].y.toFixed(1)}`;
-    return d+(close?" Z":"");
-  }
-  function catmullRomClosed(points){
-    if(points.length<3)return pathFromPoints(points,true);
-    let d="";
-    for(let i=0;i<points.length;i++){
-      const p0=points[(i-1+points.length)%points.length],p1=points[i],p2=points[(i+1)%points.length],p3=points[(i+2)%points.length];
-      if(i===0)d=`M ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
-      const c1={x:p1.x+(p2.x-p0.x)/6,y:p1.y+(p2.y-p0.y)/6};
-      const c2={x:p2.x-(p3.x-p1.x)/6,y:p2.y-(p3.y-p1.y)/6};
-      d+=` C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)}, ${c2.x.toFixed(1)} ${c2.y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
-    }
-    return d+" Z";
-  }
-  function seeded(seed){let s=seed>>>0;return()=>((s=Math.imul(1664525,s)+1013904223>>>0)/4294967296)}
-  function leafShape(cfg,center){
-    const rnd=seeded([...cfg.id].reduce((a,c)=>a+c.charCodeAt(0),0));
-    const pts=[],lobes=cfg.lobes,steps=lobes*10,base=cfg.r,phase=-Math.PI/2+cfg.rot*Math.PI/180;
-    for(let i=0;i<steps;i++){
-      const a=phase+i/steps*Math.PI*2,major=Math.cos(lobes*(a-phase)),minor=Math.cos(lobes*2*(a-phase)+.9);
-      let radius=base;
-      if(cfg.type==="castor")radius*=.58+.42*Math.max(0,major)+.05*Math.abs(minor);
-      if(cfg.type==="palmate")radius*=.72+.26*Math.max(0,major)+.04*minor;
-      if(cfg.type==="broad")radius*=.83+.16*Math.max(0,major)+.025*minor;
-      if(cfg.type==="serrated")radius*=.82+.13*Math.max(0,major)+.08*Math.abs(minor);
-      if(cfg.type==="chrysanthemum")radius*=.68+.22*Math.max(0,major)+.10*Math.abs(minor);
-      if(cfg.type==="soft")radius*=.84+.12*Math.max(0,major)+.018*minor;
-      radius*=.96+rnd()*.07;
-      const squash=cfg.type==="soft"?1.05:.93;
-      pts.push({x:center.x+Math.cos(a)*radius,y:center.y+Math.sin(a)*radius*squash});
-    }
-    return pts;
-  }
-  function addPath(d,attrs={}){
-    const p=document.createElementNS(NS,"path");p.setAttribute("d",d);
-    Object.entries(attrs).forEach(([k,v])=>p.setAttribute(k,v));svg.appendChild(p);return p
-  }
-  function addCircle(cx,cy,r,attrs={}){
-    const c=document.createElementNS(NS,"circle");c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",r);
-    Object.entries(attrs).forEach(([k,v])=>c.setAttribute(k,v));svg.appendChild(c);return c
-  }
-  function addEllipse(cx,cy,rx,ry,attrs={}){
-    const e=document.createElementNS(NS,"ellipse");e.setAttribute("cx",cx);e.setAttribute("cy",cy);e.setAttribute("rx",rx);e.setAttribute("ry",ry);
-    Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));svg.appendChild(e);return e
-  }
-
-  function drawEpiphyllum(W,H){
-    const c=centerline(0,W,H);
-    const cx=c.x,cy=215;
-    const flowerRadius=Math.min(W*.255,330);
-    const scale=flowerRadius/300;
-    const layers=[
-      {count:18,rx:28*scale,ry:132*scale,radius:70*scale,fill:"#f9dce4",alpha:.92},
-      {count:14,rx:34*scale,ry:112*scale,radius:47*scale,fill:"#f4b8ca",alpha:.94},
-      {count:10,rx:40*scale,ry:92*scale,radius:25*scale,fill:"#ed91ad",alpha:.96}
-    ];
-    layers.forEach((layer,li)=>{
-      for(let i=0;i<layer.count;i++){
-        const a=(i/layer.count)*Math.PI*2+(li*.10);
-        const px=cx+Math.cos(a)*layer.radius,py=cy+Math.sin(a)*layer.radius*.52;
-        const rot=a*180/Math.PI+90;
-        const petal=addEllipse(px,py,layer.rx,layer.ry,{
-          fill:layer.fill,opacity:String(layer.alpha),transform:`rotate(${rot} ${px} ${py})`,filter:"url(#petalShadow)"
-        });
-        petal.setAttribute("stroke","rgba(255,255,255,.32)");
-        petal.setAttribute("stroke-width","1");
+  <script>
+  (function () {
+    var KEY = "agreyfox-lang";
+    // Default: English always (user request). User toggle persists.
+    function apply(lang) {
+      var isZh = lang === "zh";
+      document.documentElement.lang = isZh ? "zh-Hans" : "en";
+      var en = document.getElementById("langEn");
+      var zh = document.getElementById("langZh");
+      if (en && zh) {
+        en.setAttribute("aria-pressed", isZh ? "false" : "true");
+        zh.setAttribute("aria-pressed", isZh ? "true" : "false");
       }
-    });
-    addCircle(cx,cy,44*scale,{fill:"#f8e9ad",stroke:"#d6b65b","stroke-width":"3"});
-    for(let i=0;i<18;i++){
-      const a=i/18*Math.PI*2;
-      addCircle(cx+Math.cos(a)*29*scale,cy+Math.sin(a)*29*scale,3.8*scale,{fill:"#d0a84c"});
+      try { localStorage.setItem(KEY, isZh ? "zh" : "en"); } catch (e) {}
     }
+    // Default English; only use saved preference if user has chosen before
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    apply(saved === "zh" ? "zh" : "en");
 
-    // The flower remains pure: mature expression at the tip of the vine.
-    // The flower receptacle continues into the main vine.
-    addPath(`M ${cx} ${cy+78*scale} C ${cx-4} ${cy+122*scale}, ${c.x+5} ${TOP-42}, ${c.x} ${TOP+18}`,{
-      fill:"none",stroke:"#678d4c","stroke-width":String(13*scale),"stroke-linecap":"round"
-    });
-  }
-
-  function drawSoil(W,H){
-    const y=H-330;
-    addPath(`M 0 ${y+55} C ${W*.18} ${y-18}, ${W*.33} ${y+44}, ${W*.50} ${y+2} C ${W*.66} ${y-38}, ${W*.80} ${y+42}, ${W} ${y-6} L ${W} ${H} L 0 ${H} Z`,
-      {fill:"#8b6a4a",opacity:".28"});
-    addPath(`M 0 ${y+98} C ${W*.22} ${y+42}, ${W*.42} ${y+105}, ${W*.58} ${y+62} C ${W*.75} ${y+16}, ${W*.88} ${y+96}, ${W} ${y+55} L ${W} ${H} L 0 ${H} Z`,
-      {fill:"#6f5139",opacity:".36"});
-    addPath(`M 0 ${y+170} C ${W*.25} ${y+112}, ${W*.38} ${y+190}, ${W*.60} ${y+136} C ${W*.78} ${y+92}, ${W*.9} ${y+165}, ${W} ${y+132} L ${W} ${H} L 0 ${H} Z`,
-      {fill:"#4e3828",opacity:".34"});
-    // simple roots entering ground
-    const rootX=W*.5;
-    addPath(`M ${rootX} ${y+12} C ${rootX-30} ${y+72}, ${rootX-80} ${y+118}, ${rootX-150} ${y+166}`,{fill:"none",stroke:"#6b4a32","stroke-width":"5","stroke-linecap":"round",opacity:".55"});
-    addPath(`M ${rootX} ${y+12} C ${rootX+28} ${y+72}, ${rootX+92} ${y+112}, ${rootX+170} ${y+150}`,{fill:"none",stroke:"#6b4a32","stroke-width":"5","stroke-linecap":"round",opacity:".55"});
-    addPath(`M ${rootX} ${y+18} C ${rootX-6} ${y+95}, ${rootX+10} ${y+150}, ${rootX-20} ${y+210}`,{fill:"none",stroke:"#5a3c29","stroke-width":"4","stroke-linecap":"round",opacity:".5"});
-  }
-
-  function buildPlant(){
-    const W=stage.clientWidth,H=stage.clientHeight;
-    svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
-    svg.innerHTML=`
-      <defs>
-        <linearGradient id="vineGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#789b58"/><stop offset=".5" stop-color="#4f7d41"/><stop offset="1" stop-color="#315d36"/>
-        </linearGradient>
-        <radialGradient id="leafGrad" cx=".30" cy=".24">
-          <stop offset="0" stop-color="#90ae69"/><stop offset=".35" stop-color="#69914f"/><stop offset="1" stop-color="#305f3c"/>
-        </radialGradient>
-        <filter id="leafShadow" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#183625" flood-opacity=".16"/>
-        </filter>
-        <filter id="petalShadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#7a5663" flood-opacity=".22"/>
-        </filter>
-      </defs>`;
-
-    const left=[],right=[],samples=280;
-    for(let i=0;i<=samples;i++){
-      const t=i/samples,c=centerline(t,W,H),n=normal(t,W,H);
-      let hw=vineHalfWidth(t);
-      for(const leaf of leaves){const d=Math.abs(t-leaf.t);if(d<.015)hw+=5.5*(1-d/.015)}
-      left.push({x:c.x+n.x*hw,y:c.y+n.y*hw});
-      right.push({x:c.x-n.x*hw,y:c.y-n.y*hw});
-    }
-    addPath(pathFromPoints([...left,...right.reverse()],true),{fill:"url(#vineGrad)"});
-
-    const shine=[];
-    for(let i=0;i<=samples;i++){
-      const t=i/samples,c=centerline(t,W,H),n=normal(t,W,H),hw=vineHalfWidth(t);
-      shine.push({x:c.x+n.x*hw*.34,y:c.y+n.y*hw*.34});
-    }
-    addPath(pathFromPoints(shine),{fill:"none",stroke:"rgba(255,255,255,.18)","stroke-width":"4","stroke-linecap":"round"});
-
-    drawEpiphyllum(W,H);
-
-    leaves.forEach((leaf,index)=>{
-      const c=centerline(leaf.t,W,H),tan=tangent(leaf.t,W,H),n=normal(leaf.t,W,H);
-      const sideN={x:n.x*leaf.side,y:n.y*leaf.side};
-      const dist=leaf.r*1.34+48+(index%3)*10;
-      const center={x:c.x+sideN.x*dist,y:c.y+sideN.y*dist};
-      leaf.center=center;
-
-      const p0={x:c.x+sideN.x*vineHalfWidth(leaf.t)*.58,y:c.y+sideN.y*vineHalfWidth(leaf.t)*.58};
-      const p1={x:p0.x+tan.x*54+sideN.x*18,y:p0.y+tan.y*54+sideN.y*18};
-      const p2={x:center.x-sideN.x*(leaf.r*.58),y:center.y-sideN.y*(leaf.r*.58)};
-      const petiole=`M ${p0.x} ${p0.y} C ${p1.x} ${p1.y}, ${p2.x} ${p2.y}, ${center.x} ${center.y}`;
-      addPath(petiole,{fill:"none",stroke:"#6b944e","stroke-width":String(Math.max(5,10*(.35+leaf.t))),"stroke-linecap":"round"});
-      addPath(petiole,{fill:"none",stroke:"rgba(255,255,255,.16)","stroke-width":"2","stroke-linecap":"round"});
-
-      addPath(catmullRomClosed(leafShape(leaf,center)),{fill:"url(#leafGrad)",filter:"url(#leafShadow)"});
-      const phase=-Math.PI/2+leaf.rot*Math.PI/180;
-      for(let k=0;k<leaf.lobes;k++){
-        const a=phase+k/leaf.lobes*Math.PI*2,len=leaf.r*(leaf.type==="castor"?.78:.70);
-        const end={x:center.x+Math.cos(a)*len,y:center.y+Math.sin(a)*len*.93};
-        addPath(`M ${center.x} ${center.y} Q ${(center.x+end.x)/2+Math.sin(a)*8} ${(center.y+end.y)/2-Math.cos(a)*8} ${end.x} ${end.y}`,
-          {fill:"none",stroke:"rgba(236,245,214,.28)","stroke-width":k%2===0?"3":"2","stroke-linecap":"round"});
-      }
-      addCircle(center.x,center.y,5.5,{fill:"rgba(225,240,194,.30)"});
-      const dom=document.querySelector(`[data-id="${leaf.id}"]`);
-      dom.style.left=center.x+"px";dom.style.top=center.y+"px";
-    });
-
-    [.15,.29,.42,.58,.72,.85,.94].forEach((t,i)=>{
-      const c=centerline(t,W,H),n=normal(t,W,H),s=i%2?1:-1;
-      const x=c.x+n.x*s*18,y=c.y+n.y*s*18;
-      const d=`M ${x} ${y}
-               C ${x+n.x*s*56} ${y+n.y*s*56}, ${x+68*s} ${y-56}, ${x+28*s} ${y-84}
-               C ${x-7*s} ${y-108}, ${x-30*s} ${y-76}, ${x+1*s} ${y-58}
-               C ${x+22*s} ${y-46}, ${x+31*s} ${y-62}, ${x+15*s} ${y-72}`;
-      addPath(d,{fill:"none",stroke:"#739654","stroke-width":"4","stroke-linecap":"round"});
-    });
-
-    drawSoil(W,H);
-  }
-
-  const hopTargets=[...document.querySelectorAll("[data-hop]")];
-  const state={mode:"RESTING",target:null,lastJump:0,lastScroll:0,timer:null,dir:1};
-
-  function visibilityRatio(el){
-    const r=el.getBoundingClientRect(),vw=innerWidth,vh=innerHeight;
-    const iw=Math.max(0,Math.min(r.right,vw)-Math.max(r.left,0));
-    const ih=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));
-    return(iw*ih)/Math.max(1,r.width*r.height)
-  }
-  function anchorPoint(el){
-    const r=el.getBoundingClientRect();
-    const x=Number(el.dataset.hopX||.5),y=Number(el.dataset.hopY||.06);
-    return{x:r.left+r.width*x,y:r.top+r.height*y}
-  }
-  function setHopper(p,dir=1,rot=0,sx=1,sy=1){
-    hopper.style.left=p.x+"px";hopper.style.top=p.y+"px";
-    hopper.style.transform=`translate(-50%,-62%) scaleX(${dir*sx}) scaleY(${sy}) rotate(${rot}deg)`
-  }
-  function showNote(text,p,dir){
-    note.textContent=text||"hmm.";
-    note.style.left=(p.x+(dir>0?54:-205))+"px";note.style.top=(p.y-62)+"px";note.style.opacity=.92
-  }
-  function hideNote(){note.style.opacity=0}
-  function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
-  function animate(ms,fn){
-    return new Promise(resolve=>{
-      const s=performance.now();
-      function tick(now){const t=clamp((now-s)/ms,0,1);fn(t);if(t<1)requestAnimationFrame(tick);else resolve()}
-      requestAnimationFrame(tick)
-    })
-  }
-  async function antennaTwitch(){
-    antA.animate([{transform:"rotate(0deg)"},{transform:"rotate(-16deg)"},{transform:"rotate(8deg)"},{transform:"rotate(0deg)"}],{duration:260,transformOrigin:"38px 25px"});
-    antB.animate([{transform:"rotate(0deg)"},{transform:"rotate(13deg)"},{transform:"rotate(-7deg)"},{transform:"rotate(0deg)"}],{duration:260,transformOrigin:"47px 23px"});
-    await sleep(280)
-  }
-  async function blink(){
-    eye.animate([{transform:"scaleY(1)"},{transform:"scaleY(.08)"},{transform:"scaleY(1)"}],{duration:170,transformOrigin:"44px 31px"});
-    await sleep(190)
-  }
-  async function idlePersonality(){
-    if(state.mode!=="RESTING"||!state.target)return;
-    const p=anchorPoint(state.target),roll=Math.random();
-    if(roll<.35)await blink();
-    else if(roll<.70)await antennaTwitch();
-    else await animate(320,t=>setHopper({x:p.x,y:p.y-Math.sin(Math.PI*t)*5},state.dir,Math.sin(t*Math.PI*2)*3,1,1))
-  }
-  function visibleCandidates(){
-    return hopTargets.filter(el=>{
-      if(el===state.target)return false;
-      const r=el.getBoundingClientRect(),ratio=visibilityRatio(el);
-      return ratio>.48&&r.bottom>70&&r.top<innerHeight-40
-    })
-  }
-  function chooseTarget(){
-    const current=state.target?anchorPoint(state.target):{x:innerWidth/2,y:innerHeight/2};
-    const candidates=visibleCandidates();
-    if(!candidates.length)return null;
-    const scored=candidates.map(el=>{
-      const p=anchorPoint(el);
-      const otherSide=(p.x-innerWidth/2)*(current.x-innerWidth/2)<0?2.05:1;
-      const distance=Math.hypot(p.x-current.x,p.y-current.y);
-      const sweet=distance>180&&distance<950?1.7:1;
-      return{el,score:otherSide*sweet*(.7+Math.random()*1.3)}
-    });
-    const total=scored.reduce((s,x)=>s+x.score,0);
-    let pick=Math.random()*total;
-    for(const item of scored){pick-=item.score;if(pick<=0)return item.el}
-    return scored[scored.length-1].el
-  }
-  async function jump(target){
-    if(!hopperEnabled()||state.mode!=="RESTING"||!target)return;
-    state.mode="ANTICIPATING";
-    const from=state.target?anchorPoint(state.target):{x:innerWidth*.5,y:innerHeight*.7};
-    let to=anchorPoint(target);
-    const dir=to.x>=from.x?1:-1;
-    state.dir=dir;hideNote();
-
-    const behavior=["normal","boing","hesitate","overshoot","sideways","loop"][Math.floor(Math.random()*6)];
-    if(behavior==="hesitate"){
-      showNote("...that one?",from,dir);await antennaTwitch();await sleep(380);
-      await animate(170,t=>setHopper({x:from.x-dir*14*t,y:from.y},dir,-8*t,1,1));await sleep(160)
-    }else{
-      if(Math.random()<.45)await blink();
-      await antennaTwitch();await sleep(random(160,420))
-    }
-
-    await animate(150,t=>{
-      const s=Math.sin(Math.PI*t);
-      setHopper(from,dir,0,1+.12*s,1-.22*s)
-    });
-
-    state.mode="JUMPING";
-    const duration=behavior==="boing"?980:behavior==="loop"?1050:behavior==="sideways"?880:820;
-    const apex=behavior==="boing"?225:behavior==="loop"?175:135;
-
-    await animate(duration,t=>{
-      to=anchorPoint(target);
-      let u=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
-      let extraX=0,extraY=0,rot=0;
-      if(behavior==="overshoot")u=t<.82?1.10*(t/.82):1.10-.10*((t-.82)/.18);
-      if(behavior==="sideways"){extraX=Math.sin(Math.PI*t*2)*80*dir;extraY=Math.sin(Math.PI*t*2.2)*22}
-      if(behavior==="loop"){extraX=Math.sin(Math.PI*t*2)*95*dir;extraY=-Math.sin(Math.PI*t)*45;rot=Math.sin(Math.PI*t*2)*34}
-      const x=lerp(from.x,to.x,u)+extraX;
-      const y=lerp(from.y,to.y,u)-Math.sin(Math.PI*t)*apex+extraY;
-      if(behavior!=="loop")rot=(Math.sin(Math.PI*t)*10+(u-.5)*10)*dir;
-      setHopper({x,y},dir,rot,1-.07*Math.sin(Math.PI*t),1+.10*Math.sin(Math.PI*t))
-    });
-
-    state.mode="LANDING";to=anchorPoint(target);setHopper(to,dir,0,1,1);
-    await animate(200,t=>{
-      const s=Math.sin(Math.PI*t);
-      setHopper(anchorPoint(target),dir,0,1+.08*s,1-.15*s)
-    });
-
-    showNote(behavior==="overshoot"?"overshot the requirement. classic.":(target.dataset.joke||"landed. mostly."),anchorPoint(target),dir);
-    await sleep(random(650,1100));hideNote();
-
-    state.target=target;state.lastJump=performance.now();state.mode="RESTING";scheduleNext()
-  }
-  function scheduleNext(){
-    clearTimeout(state.timer);
-    if(!hopperEnabled()||document.hidden)return;
-    state.timer=setTimeout(async()=>{
-      if(state.mode!=="RESTING"){scheduleNext();return}
-      if(performance.now()-state.lastScroll<550){scheduleNext();return}
-      if(Math.random()<.42){await idlePersonality();await sleep(random(450,1100))}
-      const target=chooseTarget();
-      if(target)jump(target);else scheduleNext()
-    },random(1800,5400))
-  }
-  function stickToTarget(){
-    if(state.mode==="RESTING"&&state.target){
-      const p=anchorPoint(state.target);
-      if(p.y>-120&&p.y<innerHeight+120)setHopper(p,state.dir,0,1,1)
-    }
-  }
-
-  buildPlant();
-  state.target=document.querySelector(".hero-note");
-  state.dir=-1;
-  setHopper(anchorPoint(state.target),state.dir,0,1,1);
-  scheduleNext();
-
-  let ticking=false;
-  addEventListener("scroll",()=>{
-    state.lastScroll=performance.now();
-    if(!ticking){
-      requestAnimationFrame(()=>{stickToTarget();ticking=false});
-      ticking=true
-    }
-  },{passive:true});
-  addEventListener("resize",()=>{buildPlant();stickToTarget()});
-  document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(state.timer);else scheduleNext()});
-})();
-</script>
-
-<script>
-(() => {
-  const I18N = {
-    en: {
-      nav_work:"Work", nav_approach:"Approach", nav_contact:"Contact", nav_case:"Case", nav_email:"Email",
-      hero_kicker:"IT · Full-stack · AI systems",
-      hero_h1:"AI for work that still requires <em>judgment.</em>",
-      hero_p:"<strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.",
-      hero_cta_work:"How I work", hero_cta_selected:"Selected work", hero_cta_email:"Email",
-      hero_note_b:"Still shipping.",
-      hero_note_s:"Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.",
-      id_role:"IT consultant · full-stack · AI collaborator",
-      id_years:"years in information systems",
-      id_ai:"solutions under human judgment",
-      id_fmr:'local-first product · <a href="https://agreyfox.github.io/fmr/">site</a>',
-      work_kicker:"Selected work",
-      work_fmr_meta:"Product · Shipping",
-      work_fmr_h:"fmr — family medical records",
-      work_fmr_p:"Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.",
-      work_fmr_go:"Product site · Privacy · Terms →",
-      work_gh_meta:"Open · GitHub",
-      work_gh_p:"Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.",
-      intro_kicker:"Approach",
-      intro_h2:"The flower is visible.<br>The growth happened below.",
-      intro_p:"Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.",
-      ch1_h:"Curiosity became the seed.", ch1_p:"Start from the real constraint: who fails, what breaks, what decision is blocked.",
-      ch1_proof:"Proof · 20+ years of IT programs framed as problems, not feature lists.",
-      ch2_h:"Engineering gave it structure.", ch2_p:"Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?",
-      ch2_proof:"Proof · Full-stack delivery: design → build → operate, not slideware handoffs.",
-      ch3_h:"AI gave it leverage.", ch3_p:"Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.",
-      ch3_proof:'Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a>',
-      ch4_h:"Evidence keeps it honest.", ch4_p:"Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.",
-      ch4_proof:"Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.",
-      ch5_h:"Incentives shape the system.", ch5_p:"Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.",
-      ch5_proof:"Proof · Stakeholder workshops that map incentives before architecture freezes.",
-      ch6_h:"Judgment stays human.", ch6_p:"What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.",
-      ch6_proof:"Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).",
-      close_h2:"Still building what has to <em>work.</em>",
-      close_p:"Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.",
-      contact_h3:"Let’s talk.",
-      contact_p:"Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.",
-      scope1:"In scope · IT advisory, full-stack delivery, AI integration under review",
-      scope2:"In scope · Architecture, implementation, pragmatic handoff",
-      scope3:"Out of scope · Medical diagnosis products, pure spam-volume outsourcing",
-      contact_case:"One-pager",
-      contact_meta:"Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies",
-      footer_tag:"Still building what has to work."
-    },
-    zh: {
-      nav_work:"作品", nav_approach:"方法", nav_contact:"联系", nav_case:"案例", nav_email:"邮件",
-      hero_kicker:"信息化 · 全栈 · AI 系统",
-      hero_h1:"为仍需<em>判断力</em>的工作构建 AI。",
-      hero_p:"<strong>IT 顾问与全栈构建者。</strong>二十年以上信息化系统交付经验——把工程纪律与「须经人审」的 AI 能力结合。",
-      hero_cta_work:"工作方式", hero_cta_selected:"代表作品", hero_cta_email:"发邮件",
-      hero_note_b:"仍在交付。",
-      hero_note_s:"咨询 · 系统 · 能进真实流程的 AI——不是只能讲 PPT 的方案。",
-      id_role:"IT 顾问 · 全栈 · AI 合作者",
-      id_years:"年信息化服务经验",
-      id_ai:"在人审之下的 AI 方案",
-      id_fmr:'本地优先产品 · <a href="https://agreyfox.github.io/fmr/">站点</a>',
-      work_kicker:"代表作品",
-      work_fmr_meta:"产品 · 推进中",
-      work_fmr_h:"fmr — 家庭医疗档案",
-      work_fmr_p:"本地优先加密归档。导入化验照片/PDF，审核 AI 提取指标，确认后再入库。免费核心 · BYOK / Ollama / 有限云演示。",
-      work_fmr_go:"产品站 · 隐私 · 条款 →",
-      work_gh_meta:"开源 · GitHub",
-      work_gh_p:"公开仓库与实验。严肃工作保持纪律：架构、交付、可被人工审计的 AI。",
-      intro_kicker:"方法",
-      intro_h2:"花在明处。<br>长在暗处。",
-      intro_p:"好奇启动工作。工程保证可靠。AI 放大能力——但判断仍在人。交付、证据与诚实，让系统值得继续运行。",
-      ch1_h:"好奇成为种子。", ch1_p:"从真实约束开始：谁受挫、哪里坏、什么决策被卡住。工具其次。",
-      ch1_proof:"证明 · 20+ 年以问题而非功能清单框定 IT 项目。",
-      ch2_h:"工程赋予结构。", ch2_p:"边界、流程、故障模式与反馈——一个实际问题：上线后是否真的工作？",
-      ch2_proof:"证明 · 全栈交付：设计 → 实现 → 运维，而非甩锅式交接。",
-      ch3_h:"AI 提供杠杆。", ch3_p:"模型检索、起草、质疑。人仍拥有决策。我设计 AI 让审核成为自然步骤——而非出事后的勾选。",
-      ch3_proof:'证明 · fmr：指标须经人确认才入库 · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a>',
-      ch4_h:"证据保持诚实。", ch4_p:"事实不是观点。日志胜过叙事。缺失证据本身就是发现——不是可跳过的细节。",
-      ch4_proof:"证明 · 咨询习惯：需求与验收标准写到可测试。",
-      ch5_h:"激励塑造系统。", ch5_p:"数据、激励与叙事会碰撞。好系统按人的真实行为设计——而非按幻灯片。",
-      ch5_proof:"证明 · 架构冻结前先做利益相关者激励映射。",
-      ch6_h:"判断留给人。", ch6_p:"技术服务谁？何处必须有人在环？我把这些问题放在 backlog 旁边——而不是单独的伦理页。",
-      ch6_proof:"证明 · 产品立场：敏感 AI 结果禁止静默自动入库（见 fmr 审核流）。",
-      close_h2:"仍在构建必须<em>能用</em>的东西。",
-      close_p:"messy 领域、真实约束、只在赚到位置时使用 AI。关心人能运维的系统——不是第一个异常就塌的演示。",
-      contact_h3:"可以聊聊。",
-      contact_p:"欢迎咨询、系统交付与 AI 方案设计——尤其是人在环流程、本地优先产品，以及必须持续运行的现代化改造。",
-      scope1:"范围内 · IT 顾问、全栈交付、可审核的 AI 集成",
-      scope2:"范围内 · 架构、实现、务实交接",
-      scope3:"范围外 · 医疗诊断类产品、纯刷量外包",
-      contact_case:"一页案例",
-      contact_meta:"语言：中文 / English · 通常数个工作日内回复 · 非医疗急救渠道",
-      footer_tag:"仍在构建必须能用的东西。"
-    }
-  };
-
-  function applyLang(lang){
-    const pack = I18N[lang] || I18N.en;
-    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const k = el.getAttribute("data-i18n");
-      if (pack[k] != null) el.textContent = pack[k];
-    });
-    document.querySelectorAll("[data-i18n-html]").forEach(el => {
-      const k = el.getAttribute("data-i18n-html");
-      if (pack[k] != null) el.innerHTML = pack[k];
-    });
-    const enBtn = document.getElementById("langEn");
-    const zhBtn = document.getElementById("langZh");
-    if (enBtn && zhBtn) {
-      enBtn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
-      zhBtn.setAttribute("aria-pressed", lang === "zh" ? "true" : "false");
-    }
-    try { localStorage.setItem("agreyfox-lang", lang); } catch (_) {}
-  }
-
-  const saved = (() => { try { return localStorage.getItem("agreyfox-lang"); } catch (_) { return null; } })();
-  const start = saved === "zh" || saved === "en" ? saved
-    : (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
-  applyLang(start);
-  document.getElementById("langEn")?.addEventListener("click", () => applyLang("en"));
-  document.getElementById("langZh")?.addEventListener("click", () => applyLang("zh"));
-})();
-</script>
-
+    document.getElementById("langEn").addEventListener("click", function () { apply("en"); });
+    document.getElementById("langZh").addEventListener("click", function () { apply("zh"); });
+    document.getElementById("y").textContent = new Date().getFullYear();
+  })();
+  </script>
 </body>
 </html>
