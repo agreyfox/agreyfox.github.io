@@ -1,213 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>agreyfox — personal site</title>
+    <title>agreyfox — personal</title>
     <meta
       name="description"
-      content="agreyfox — independent developer. Local-first software, family health tools (fmr), and careful product craft."
+      content="agreyfox — independent developer. Local-first products, fmr family medical records, careful craft."
     />
-    <meta name="theme-color" content="#0b1211" />
+    <meta name="theme-color" content="#f4f1ea" />
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <header class="top">
-      <div class="wrap nav">
-        <a class="logo" href="./">
-          <span class="mark" aria-hidden="true">af</span>
-          agreyfox
-        </a>
-        <nav aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li>
-              <a href="https://agreyfox.github.io/fmr/" rel="noopener"
-                >fmr app →</a
-              >
-            </li>
-          </ul>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brand" href="./">agre<em>y</em>fox</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#now">Now</a>
+          <a href="#contact">Contact</a>
+          <a class="pill" href="https://agreyfox.github.io/fmr/">fmr app →</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="wrap hero-grid">
+      <!-- HERO -->
+      <section class="hero wrap">
+        <div class="hero-kicker">
+          <span class="chip"><span class="dot" aria-hidden="true"></span> Open to interesting work</span>
+          <span class="chip">Play developer · agreyfox</span>
+          <span class="chip">Local-first · Privacy</span>
+        </div>
+
+        <h1 class="hero-title">
+          Build software
+          <span class="line2">people can trust</span>
+          <span class="line3"
+            >with the data they actually care about.</span
+          >
+        </h1>
+
+        <div class="hero-row">
           <div>
-            <span class="eyebrow">Developer · Builder · Haltu forvitni</span>
-            <h1>
-              Hi, I’m <span class="grad">agreyfox</span>.
-            </h1>
-            <p class="lead">
-              I build practical software with a privacy-first mindset — tools
-              people can trust with real life data. Currently shipping
-              <strong>fmr</strong>, a local-first family medical record app.
+            <p class="hero-lead">
+              我是 <strong>agreyfox</strong> — 独立开发者。做
+              <strong>本地优先</strong>、可解释、对家庭数据负责的产品。当前主线是
+              <strong>fmr</strong>：家庭医疗档案，加密在你自己的设备上。
             </p>
-            <div class="actions">
-              <a class="btn btn-primary" href="https://agreyfox.github.io/fmr/"
-                >Visit fmr site</a
-              >
-              <a class="btn btn-ghost" href="https://github.com/agreyfox"
+            <div class="hero-actions">
+              <a class="btn btn-solid" href="#work">看作品</a>
+              <a class="btn btn-outline" href="#contact">联系我</a>
+              <a class="btn btn-outline" href="https://github.com/agreyfox"
                 >GitHub</a
               >
-              <a class="btn btn-ghost" href="#contact">Contact</a>
             </div>
           </div>
-          <aside class="panel" aria-label="Snapshot">
-            <h2>Snapshot</h2>
-            <ul class="stat-list">
-              <li>
-                <strong>Public name</strong>
-                <span>agreyfox · Google Play developer display name</span>
-              </li>
-              <li>
-                <strong>Focus</strong>
-                <span>Mobile · Flutter · local encrypted storage · AI assist</span>
-              </li>
-              <li>
-                <strong>Motto</strong>
-                <span>Haltu forvitni — keep curiosity</span>
-              </li>
-              <li>
-                <strong>Product site</strong>
+
+          <div class="hero-side">
+            <div class="portrait-card" aria-label="Portrait placeholder">
+              <span class="placeholder-hint">待你放照片</span>
+              <div class="mono">af</div>
+              <div class="float-label">
+                <strong>agreyfox</strong>
                 <span
-                  ><a href="https://agreyfox.github.io/fmr/"
-                    >agreyfox.github.io/fmr</a
-                  ></span
+                  >/* 一句话身份 — 例如：Flutter · Product · Privacy */</span
                 >
-              </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee-wrap" aria-hidden="true">
+        <div class="marquee">
+          <span>Local-first</span>
+          <span>Encrypted by default</span>
+          <span>Family health tools</span>
+          <span>Flutter</span>
+          <span>AI you can review</span>
+          <span>No ad trackers</span>
+          <span>Haltu forvitni</span>
+          <span>Local-first</span>
+          <span>Encrypted by default</span>
+          <span>Family health tools</span>
+          <span>Flutter</span>
+          <span>AI you can review</span>
+          <span>No ad trackers</span>
+          <span>Haltu forvitni</span>
+        </div>
+      </div>
+
+      <!-- ABOUT BENTO -->
+      <section class="block wrap" id="about">
+        <div class="block-head">
+          <h2>About · 关于</h2>
+          <p>编辑式信息架构 — 你补全橙色「待提供」标记的内容后，会更完整。</p>
+        </div>
+
+        <div class="bento">
+          <article class="tile span-7 row-2">
+            <span class="label">Story</span>
+            <h3>Why I build</h3>
+            <p class="muted">
+              医疗与家庭数据不该默认成为云端广告原料。我相信：核心能力先在本地成立，AI
+              只是加速器，而且必须经过用户确认。
+            </p>
+            <p class="muted" style="margin-top: 0.75rem">
+              <!-- 待替换：更长的个人故事 2–4 句 -->
+              <span class="todo">待提供 · 你的背景故事（从哪来 / 做过什么 / 为何现在做 fmr）</span>
+            </p>
+          </article>
+
+          <article class="tile dark span-5">
+            <span class="label">Focus</span>
+            <h3>What I’m good at</h3>
+            <ul class="stack-list">
+              <li>Flutter / Dart</li>
+              <li>Product UI</li>
+              <li>Local encryption</li>
+              <li>AI product design</li>
+              <li>Play Console / ASO</li>
             </ul>
-          </aside>
+            <span class="todo">待提供 · 增减技能标签</span>
+          </article>
+
+          <article class="tile orange span-5">
+            <span class="label">Motto</span>
+            <p class="big-num" style="font-size: 1.6rem; letter-spacing: -0.03em">
+              Haltu forvitni
+            </p>
+            <p style="margin: 0; font-weight: 700">Keep curiosity.</p>
+            <span class="todo">待提供 · 是否保留 / 换一句你的座右铭</span>
+          </article>
+
+          <article class="tile span-4">
+            <span class="label">Based in</span>
+            <p class="big-num">—</p>
+            <p class="muted">城市 / 时区</p>
+            <span class="todo">待提供 · 地点（可模糊，如 Asia）</span>
+          </article>
+
+          <article class="tile span-4">
+            <span class="label">Languages</span>
+            <p class="big-num" style="font-size: 1.5rem">中 / EN</p>
+            <p class="muted">工作语言</p>
+            <span class="todo">待提供 · 语言能力</span>
+          </article>
+
+          <article class="tile teal span-4">
+            <span class="label">Open to</span>
+            <h3 style="font-size: 1.05rem">Collab &amp; shipping</h3>
+            <p class="muted" style="color: rgba(255, 255, 255, 0.8)">
+              独立产品、本地优先工具、认真的移动端。
+            </p>
+            <span class="todo">待提供 · 是否接 freelance / 全职 / 仅产品</span>
+          </article>
         </div>
       </section>
 
-      <section id="about">
-        <div class="wrap about-grid">
+      <!-- WORK -->
+      <section class="block wrap" id="work">
+        <div class="block-head">
+          <h2>Selected work</h2>
+          <p>主打项目大卡片 + 可扩展更多作品位。</p>
+        </div>
+
+        <article class="project">
+          <div class="project-visual">
+            <span class="badge">Flagship · Android / Flutter</span>
+            <div>
+              <h3>fmr</h3>
+              <p>
+                Family medical records — local encrypted archive, AI-assisted
+                lab import you review before save.
+              </p>
+            </div>
+          </div>
+          <div class="project-body">
+            <div>
+              <h4>Highlights</h4>
+              <div class="feature-grid">
+                <div>本地加密存储 · 原始文件不上云（默认）</div>
+                <div>导入 JPG / PNG / PDF → 表格审核入库</div>
+                <div>AI 路径：BYOK → Ollama → 免费演示</div>
+                <div>Freemium · Play Billing Coming soon</div>
+              </div>
+            </div>
+            <div>
+              <h4>Role</h4>
+              <p class="muted" style="margin: 0">
+                Solo · product · design · engineering
+                <span class="todo">待提供 · 角色细节</span>
+              </p>
+            </div>
+            <div class="project-links">
+              <a href="https://agreyfox.github.io/fmr/">Product site</a>
+              <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
+              <a href="https://agreyfox.github.io/fmr/terms.html">Terms</a>
+              <a href="https://github.com/agreyfox/fmr">GitHub</a>
+              <a href="https://agreyfox.github.io/fmr/support.html">Support</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="bento" style="margin-top: 0.85rem">
+          <article class="tile span-6">
+            <span class="label">Project 02</span>
+            <h3>下一个作品位</h3>
+            <p class="muted">
+              开源工具 / 实验 / 旧项目 — 名称、一句话、链接。
+            </p>
+            <span class="todo">待提供 · 第二项目</span>
+          </article>
+          <article class="tile span-6">
+            <span class="label">Project 03</span>
+            <h3>再留一个</h3>
+            <p class="muted">或改成 Writing / Talks / OSS contributions。</p>
+            <span class="todo">待提供 · 第三项目或改模块</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- NOW -->
+      <section class="block wrap" id="now">
+        <div class="block-head">
+          <h2>Now</h2>
+          <p>最近在忙什么 — 比简历更有人味。</p>
+        </div>
+        <div class="now-grid">
+          <article class="now-item">
+            <time>2026</time>
+            <h3>Shipping fmr to Play</h3>
+            <p class="muted" style="margin: 0">
+              Membership UI、合规站、ASO 文案与上架清单。
+            </p>
+          </article>
+          <article class="now-item">
+            <time>Building</time>
+            <h3>Local-first AI paths</h3>
+            <p class="muted" style="margin: 0">
+              BYOK / Ollama / demo 配额产品化。
+            </p>
+          </article>
+          <article class="now-item">
+            <time>Next</time>
+            <h3>/* your next */</h3>
+            <p class="muted" style="margin: 0">
+              <span class="todo">待提供 · 下一步目标</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="wrap" id="contact">
+        <div class="contact-band">
           <div>
-            <h2 class="section-title">About</h2>
-            <p class="section-sub">
-              Independent developer. I care about clear UX, honest privacy
-              copy, and products that stay useful offline.
-            </p>
-            <p class="quote">
-              Software should hold your data carefully — especially when it
-              touches family health.
-            </p>
-            <p class="section-sub" style="margin-top: 1rem; margin-bottom: 0">
-              This page is my public home on the web. Product policies for
-              <strong>fmr</strong> live on the app site (Privacy · Terms ·
-              Support), which is what Google Play links to.
+            <h2>Let’s talk.</h2>
+            <p>
+              产品合作、隐私与商店相关、或只是想聊聊 local-first — 发邮件即可。
+              医疗紧急情况请打当地急救，不要走这个邮箱。
             </p>
           </div>
-          <div class="cards">
-            <article class="card">
-              <span class="tag teal">Values</span>
-              <h3>Local-first when it matters</h3>
-              <p>
-                Prefer on-device encryption and user-reviewed AI — not silent
-                cloud sync of sensitive files.
-              </p>
-            </article>
-            <article class="card">
-              <span class="tag">Craft</span>
-              <h3>Warm, legible product UI</h3>
-              <p>
-                Medical trust palette, large readable type, no fintech glass
-                maze. Built for real family use.
-              </p>
-            </article>
-          </div>
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:support@agreyfox.com"
+                >Email <span>support@agreyfox.com · 可改</span></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/agreyfox"
+                >GitHub <span>@agreyfox</span></a
+              >
+            </li>
+            <li>
+              <a href="https://agreyfox.github.io/fmr/"
+                >fmr site <span>product &amp; legal</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >X / LinkedIn / 其他 <span class="todo" style="margin:0">待提供</span></a
+              >
+            </li>
+          </ul>
         </div>
-      </section>
 
-      <section id="work">
-        <div class="wrap">
-          <h2 class="section-title">Work</h2>
-          <p class="section-sub">Selected public project</p>
-          <div class="cards two">
-            <article class="card">
-              <span class="tag teal">Flagship · Android</span>
-              <h3>fmr — Family Medical Records</h3>
-              <p>
-                Local-first archive for family lab reports and metrics. Import
-                photos/PDFs, review AI-extracted rows, confirm, then encrypt on
-                device. Free core · optional BYOK / Ollama / cloud demo.
-              </p>
-              <div class="card-links">
-                <a href="https://agreyfox.github.io/fmr/">Product site</a>
-                <a href="https://agreyfox.github.io/fmr/privacy.html"
-                  >Privacy</a
-                >
-                <a href="https://agreyfox.github.io/fmr/terms.html">Terms</a>
-                <a href="https://agreyfox.github.io/fmr/support.html"
-                  >Support</a
-                >
-                <a href="https://github.com/agreyfox/fmr">GitHub</a>
-              </div>
-            </article>
-            <article class="card">
-              <span class="tag">Play Console</span>
-              <h3>Developer identity</h3>
-              <p>
-                Store listing developer name: <strong>agreyfox</strong>. Package
-                <code>com.agreyfox.fmr</code>. Legal name/address stay on your
-                Google Payments profile (not shown here).
-              </p>
-              <div class="card-links">
-                <a href="https://agreyfox.github.io/fmr/support.html#contact"
-                  >App support contact</a
-                >
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="wrap">
-          <h2 class="section-title">Contact</h2>
-          <p class="section-sub">
-            Product &amp; privacy requests for fmr — use the app support channel.
+        <!-- 给你准备内容的清单（上线稳定后可删掉整块） -->
+        <aside class="prep" id="prep">
+          <h2>请你准备这些信息（发我即可替换）</h2>
+          <p>
+            下面是专业个人站通常需要的素材。橙色「待提供」已标在页面里对应位置。
           </p>
-          <div class="cards three">
-            <article class="card">
-              <h3>Email</h3>
-              <p>
-                <a href="mailto:support@agreyfox.com">support@agreyfox.com</a>
-              </p>
-            </article>
-            <article class="card">
-              <h3>GitHub</h3>
-              <p>
-                <a href="https://github.com/agreyfox">github.com/agreyfox</a>
-              </p>
-            </article>
-            <article class="card">
-              <h3>fmr policies</h3>
-              <p>
-                <a href="https://agreyfox.github.io/fmr/privacy.html"
-                  >Privacy Policy</a
-                >
-                ·
-                <a href="https://agreyfox.github.io/fmr/terms.html">Terms</a>
-              </p>
-            </article>
-          </div>
-        </div>
+          <ol>
+            <li>
+              <strong>头像 / 肖像</strong>：竖图 3:4，尽量真人照或高质量形象图（不要太糊）
+            </li>
+            <li>
+              <strong>一句话身份</strong>：例如
+              <code>Flutter engineer · shipping local-first health tools</code>
+            </li>
+            <li>
+              <strong>短介绍 2–4 句</strong>：背景、专长、现在在做什么、给谁创造价值
+            </li>
+            <li>
+              <strong>地点</strong>：城市或区域 + 时区（可模糊）
+            </li>
+            <li>
+              <strong>技能标签</strong>：8 个以内（语言 / 框架 / 领域）
+            </li>
+            <li>
+              <strong>作品 2–3 个</strong>：名称、一句话、角色、链接、状态（上线中 / 开源…）
+            </li>
+            <li>
+              <strong>Now</strong>：最近 3 件在做的事
+            </li>
+            <li>
+              <strong>社交链接</strong>：GitHub（已有）、邮箱（真实）、X / 博客 / LinkedIn 等
+            </li>
+            <li>
+              <strong>Open to</strong>：接私活？只做自己产品？可合作类型
+            </li>
+            <li>
+              <strong>可选</strong>：简历 PDF、过往雇主/项目名（能公开的）、媒体/演讲
+            </li>
+          </ol>
+        </aside>
       </section>
     </main>
 
     <footer>
-      <div class="wrap row">
-        <span>© <span id="y"></span> agreyfox · personal site</span>
+      <div class="wrap footer-row">
+        <span>© <span id="y"></span> agreyfox · personal</span>
         <span>
           <a href="https://agreyfox.github.io/fmr/">fmr</a>
           ·
           <a href="https://github.com/agreyfox">GitHub</a>
+          ·
+          <a href="#prep">内容清单</a>
         </span>
       </div>
     </footer>
