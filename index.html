@@ -887,7 +887,7 @@ html[lang="zh-Hans"] .jump-note{
 
 
   function placeStoryCopies(W,H){
-    // Put chapter blocks in vertical clearings on their side — above / between leaves, never covering them.
+    // Put chapter blocks in vertical clearings on their side - above / between leaves, never covering them.
     const TOP_Y=410;
     const yAt=t=>TOP_Y+t*(H-TOP_Y);
     const leafHalf=Math.min(210, H*0.032); // vertical keep-out around each leaf center
@@ -915,16 +915,17 @@ html[lang="zh-Hans"] .jump-note{
         maxY = yAt(p.beforeT)-leafHalf-blockH-8;
         minY = Math.max(TOP_Y+20, maxY-40);
       }
-      // Prefer near the TOP of the gap (literally "above the leaf")
-      let top = Math.min(minY, maxY);
-      // If still collides any same-side leaf, walk upward from just above next leaf
+      // Prefer just above the next leaf (upper side of that leaf's keep-out)
       const collides=y=>forbidden.some(([a,b])=>y<b && y+blockH>a);
-      if(collides(top) || top>maxY){
-        top = Math.max(TOP_Y+20, yAt(p.beforeT)-leafHalf-blockH-16);
+      let top = Math.max(minY, Math.min(maxY, yAt(p.beforeT)-leafHalf-blockH-20));
+      // If window invalid, park immediately above beforeT leaf
+      if(!(top>=minY && top<=maxY) || collides(top)){
+        top = yAt(p.beforeT)-leafHalf-blockH-20;
       }
-      // Final safety: if still collides, keep nudging up
       let guard=0;
-      while(collides(top) && top>TOP_Y+10 && guard++<40){ top -= 24; }
+      while(collides(top) && top>TOP_Y+10 && guard++<50){ top -= 20; }
+      // Never sit lower than the previous leaf's keep-out end
+      if(p.afterT!=null) top = Math.max(top, yAt(p.afterT)+leafHalf+8);
       el.style.top = Math.round(Math.max(TOP_Y+10, top))+"px";
     });
   }
