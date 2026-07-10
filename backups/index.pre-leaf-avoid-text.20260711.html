@@ -887,54 +887,47 @@ html[lang="zh-Hans"] .jump-note{
 
 
   function placeStoryCopies(W,H){
-    // Fixed bands along the vine (fraction of stem). Leaves will dodge these boxes.
+    // Put chapter blocks in vertical clearings on their side - above / between leaves, never covering them.
     const TOP_Y=410;
-    const span=H-TOP_Y;
-    const slots=[
-      {sel:".story-copy.seed", t:0.085},
-      {sel:".story-copy.structure", t:0.175},
-      {sel:".story-copy.leverage", t:0.375},
-      {sel:".story-copy.reasoning", t:0.465},
-      {sel:".story-copy.stories", t:0.655},
-      {sel:".story-copy.compass", t:0.835}
+    const yAt=t=>TOP_Y+t*(H-TOP_Y);
+    const leafHalf=Math.min(210, H*0.032); // vertical keep-out around each leaf center
+    const plan=[
+      {sel:".story-copy.seed", side:-1, afterT:null, beforeT:0.21},
+      {sel:".story-copy.structure", side:1, afterT:0.13, beforeT:0.29},
+      {sel:".story-copy.leverage", side:-1, afterT:0.35, beforeT:0.48},
+      {sel:".story-copy.reasoning", side:1, afterT:0.41, beforeT:0.55},
+      {sel:".story-copy.stories", side:-1, afterT:0.62, beforeT:0.76},
+      {sel:".story-copy.compass", side:1, afterT:0.82, beforeT:0.91}
     ];
-    slots.forEach(({sel,t})=>{
-      const el=document.querySelector(sel);
+    const sameSide=side=>leaves.filter(l=>l.side===side).map(l=>yAt(l.t)).sort((a,b)=>a-b);
+
+    plan.forEach(p=>{
+      const el=document.querySelector(p.sel);
       if(!el)return;
-      el.style.display="";
-      const blockH=Math.max(el.offsetHeight||0, 180);
-      // Park the block so it sits mostly ABOVE this stem fraction (above nearby leaves)
-      const anchor=TOP_Y+t*span;
-      let top=anchor-blockH*0.75;
-      top=Math.max(TOP_Y+24, Math.min(top, H-blockH-360));
-      el.style.top=Math.round(top)+"px";
+      const blockH=Math.max(el.offsetHeight||0, 200);
+      const ys=sameSide(p.side);
+      const forbidden=ys.map(y=>[y-leafHalf, y+leafHalf]);
+      // Preferred window: just above the next leaf (beforeT), after previous leaf
+      let minY = p.afterT==null ? (TOP_Y+40) : (yAt(p.afterT)+leafHalf+12);
+      let maxY = p.beforeT==null ? (H-400) : (yAt(p.beforeT)-leafHalf-blockH-12);
+      if(maxY < minY){
+        // window too tight: place immediately above beforeT leaf
+        maxY = yAt(p.beforeT)-leafHalf-blockH-8;
+        minY = Math.max(TOP_Y+20, maxY-40);
+      }
+      // Prefer just above the next leaf (upper side of that leaf's keep-out)
+      const collides=y=>forbidden.some(([a,b])=>y<b && y+blockH>a);
+      let top = Math.max(minY, Math.min(maxY, yAt(p.beforeT)-leafHalf-blockH-20));
+      // If window invalid, park immediately above beforeT leaf
+      if(!(top>=minY && top<=maxY) || collides(top)){
+        top = yAt(p.beforeT)-leafHalf-blockH-20;
+      }
+      let guard=0;
+      while(collides(top) && top>TOP_Y+10 && guard++<50){ top -= 20; }
+      // Never sit lower than the previous leaf's keep-out end
+      if(p.afterT!=null) top = Math.max(top, yAt(p.afterT)+leafHalf+8);
+      el.style.top = Math.round(Math.max(TOP_Y+10, top))+"px";
     });
-  }
-
-  function getStoryCopyZones(){
-    // Axis-aligned boxes in stage coordinates — leaves must not intersect these.
-    const sr=stage.getBoundingClientRect();
-    return [...document.querySelectorAll(".story-copy")].map(el=>{
-      const r=el.getBoundingClientRect();
-      const pad=18;
-      return{
-        left:r.left-sr.left-pad,
-        right:r.right-sr.left+pad,
-        top:r.top-sr.top-pad,
-        bottom:r.bottom-sr.top+pad
-      };
-    }).filter(z=>z.right>z.left && z.bottom>z.top);
-  }
-
-  function circleHitsZones(cx,cy,rad,zones){
-    const r2=rad*rad;
-    for(const z of zones){
-      const nx=Math.max(z.left, Math.min(cx, z.right));
-      const ny=Math.max(z.top, Math.min(cy, z.bottom));
-      const dx=cx-nx, dy=cy-ny;
-      if(dx*dx+dy*dy < r2) return true;
-    }
-    return false;
   }
 
   function buildPlant(){
@@ -975,52 +968,31 @@ html[lang="zh-Hans"] .jump-note{
 
     drawEpiphyllum(W,H);
 
-    placeStoryCopies(W,H);
-    const textZones=getStoryCopyZones();
-
     leaves.forEach((leaf,index)=>{
       const c=centerline(leaf.t,W,H),tan=tangent(leaf.t,W,H),n=normal(leaf.t,W,H);
       const sideN={x:n.x*leaf.side,y:n.y*leaf.side};
-      let r=leaf.r;
-      let dist=r*1.34+48+(index%3)*10;
-      const minDist=vineHalfWidth(leaf.t)+36;
-      let center={x:c.x+sideN.x*dist,y:c.y+sideN.y*dist};
-
-      // Pull leaf toward the stem / shrink until it no longer covers chapter text
-      let guard=0;
-      while(circleHitsZones(center.x,center.y,r*0.92,textZones) && guard++<45){
-        dist=Math.max(minDist, dist-16);
-        r=Math.max(88, r-5);
-        center={x:c.x+sideN.x*dist,y:c.y+sideN.y*dist};
-      }
-      const dom=document.querySelector(`[data-id="${leaf.id}"]`);
-      if(circleHitsZones(center.x,center.y,r*0.88,textZones)){
-        // Cannot place without covering text: skip this leaf entirely
-        if(dom){ dom.style.display="none"; }
-        return;
-      }
-      if(dom){ dom.style.display=""; }
-
-      const leafDraw=Object.assign({}, leaf, {r});
+      const dist=leaf.r*1.34+48+(index%3)*10;
+      const center={x:c.x+sideN.x*dist,y:c.y+sideN.y*dist};
       leaf.center=center;
 
       const p0={x:c.x+sideN.x*vineHalfWidth(leaf.t)*.58,y:c.y+sideN.y*vineHalfWidth(leaf.t)*.58};
       const p1={x:p0.x+tan.x*54+sideN.x*18,y:p0.y+tan.y*54+sideN.y*18};
-      const p2={x:center.x-sideN.x*(r*.58),y:center.y-sideN.y*(r*.58)};
+      const p2={x:center.x-sideN.x*(leaf.r*.58),y:center.y-sideN.y*(leaf.r*.58)};
       const petiole=`M ${p0.x} ${p0.y} C ${p1.x} ${p1.y}, ${p2.x} ${p2.y}, ${center.x} ${center.y}`;
       addPath(petiole,{fill:"none",stroke:"#6b944e","stroke-width":String(Math.max(5,10*(.35+leaf.t))),"stroke-linecap":"round"});
       addPath(petiole,{fill:"none",stroke:"rgba(255,255,255,.16)","stroke-width":"2","stroke-linecap":"round"});
 
-      addPath(catmullRomClosed(leafShape(leafDraw,center)),{fill:"url(#leafGrad)",filter:"url(#leafShadow)"});
+      addPath(catmullRomClosed(leafShape(leaf,center)),{fill:"url(#leafGrad)",filter:"url(#leafShadow)"});
       const phase=-Math.PI/2+leaf.rot*Math.PI/180;
       for(let k=0;k<leaf.lobes;k++){
-        const a=phase+k/leaf.lobes*Math.PI*2,len=r*(leaf.type==="castor"?.78:.70);
+        const a=phase+k/leaf.lobes*Math.PI*2,len=leaf.r*(leaf.type==="castor"?.78:.70);
         const end={x:center.x+Math.cos(a)*len,y:center.y+Math.sin(a)*len*.93};
         addPath(`M ${center.x} ${center.y} Q ${(center.x+end.x)/2+Math.sin(a)*8} ${(center.y+end.y)/2-Math.cos(a)*8} ${end.x} ${end.y}`,
           {fill:"none",stroke:"rgba(236,245,214,.28)","stroke-width":k%2===0?"3":"2","stroke-linecap":"round"});
       }
       addCircle(center.x,center.y,5.5,{fill:"rgba(225,240,194,.30)"});
-      if(dom){ dom.style.left=center.x+"px"; dom.style.top=center.y+"px"; }
+      const dom=document.querySelector(`[data-id="${leaf.id}"]`);
+      dom.style.left=center.x+"px";dom.style.top=center.y+"px";
     });
 
     [.15,.29,.42,.58,.72,.85,.94].forEach((t,i)=>{
@@ -1035,6 +1007,7 @@ html[lang="zh-Hans"] .jump-note{
 
     drawSoil(W,H);
   
+    placeStoryCopies(W,H);
   }
 
   const hopTargets=[...document.querySelectorAll("[data-hop]")];
