@@ -81,7 +81,7 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
 <body>
 <div class="bar">
   <div>
-    <a href="./"><span class="en">Profile</span><span class="zh">主页</span></a>
+    <a href="./"><span class="en">Profile</span><span class="zh">个人主页</span></a>
     <a href="https://agreyfox.github.io/fmr/">fmr</a>
   </div>
   <div>
@@ -101,10 +101,10 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
       <div class="brand">agre<span>y</span>fox</div>
       <h1>fmr - Family Medical Records</h1>
       <p class="sub en">Local-first encrypted archive for family lab reports. AI assists extraction; people confirm before save.</p>
-      <p class="sub zh">面向家庭化验资料的本地优先加密档案。AI 辅助提取；入库前必须人工确认。</p>
+      <p class="sub zh">把家里的化验单放进本机加密档案。AI 帮忙读数，入库前必须你自己确认。</p>
     </div>
     <div class="meta">
-      <span class="en">Case one-pager</span><span class="zh">一页案例</span><br>
+      <span class="en">Case one-pager</span><span class="zh">一页说明</span><br>
       agreyfox<br>com.agreyfox.fmr
     </div>
   </div>
@@ -118,9 +118,9 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
         <li>OCR dumps numbers without a clear review step</li>
       </ul>
       <ul class="zh">
-        <li>化验 PDF 与照片散落在手机中</li>
-        <li>云端健康应用带来隐私顾虑</li>
-        <li>OCR 直接抛出数值，缺少审核步骤</li>
+        <li>化验单 PDF 和照片散落在手机里</li>
+        <li>把健康资料丢上云，总让人不放心</li>
+        <li>识别结果直接出数，中间没有审核</li>
       </ul>
     </div>
     <div class="box">
@@ -131,9 +131,9 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
         <li>BYOK, local Ollama, or limited free demo</li>
       </ul>
       <ul class="zh">
-        <li>默认本地加密存储</li>
-        <li>导入、AI 解析、可编辑表格、确认入库</li>
-        <li>自备密钥、本地 Ollama，或有限免费演示</li>
+        <li>默认在本机加密保存</li>
+        <li>导入 → AI 解析 → 表格可改 → 确认后入库</li>
+        <li>可用自己的 API Key、本地 Ollama，或有限次免费演示</li>
       </ul>
     </div>
     <div class="box">
@@ -144,9 +144,9 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
         <li>20+ years in information systems</li>
       </ul>
       <ul class="zh">
-        <li>独立完成产品、设计、工程</li>
-        <li>IT 顾问 / 全栈 / AI 合作者</li>
-        <li>二十余年信息化系统经验</li>
+        <li>产品、设计、开发均由本人完成</li>
+        <li>IT 顾问、全栈开发、AI 方案协作</li>
+        <li>二十余年系统建设与交付经验</li>
       </ul>
     </div>
     <div class="box">
@@ -157,20 +157,20 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
         <li>Product site and privacy policy live</li>
       </ul>
       <ul class="zh">
-        <li>Android 应用持续开发中</li>
+        <li>Android 应用开发中</li>
         <li>Google Play 上架材料准备中</li>
-        <li>产品站与隐私政策已上线</li>
+        <li>产品站和隐私政策已上线</li>
       </ul>
     </div>
   </div>
 
   <div class="row">
     <div class="box">
-      <h2><span class="en">Proof points</span><span class="zh">可核验要点</span></h2>
+      <h2><span class="en">Proof points</span><span class="zh">关键依据</span></h2>
       <p class="proof en"><strong>Human-in-the-loop:</strong> no silent auto-commit of AI metrics.</p>
-      <p class="proof zh"><strong>人在环路：</strong>AI 指标禁止无人确认时静默入库。</p>
+      <p class="proof zh"><strong>人在环路：</strong>没有你的确认，AI 读出的指标不会入库。</p>
       <p class="proof en" style="margin-top:8px"><strong>Privacy-first:</strong> raw files stay on device unless the user opts into cloud.</p>
-      <p class="proof zh" style="margin-top:8px"><strong>隐私优先：</strong>原始文件默认留在本机；仅用户主动选择时走云端。</p>
+      <p class="proof zh" style="margin-top:8px"><strong>隐私优先：</strong>原始文件默认留在本机；只有你主动选择时才走云端。</p>
       <p class="proof en" style="margin-top:8px"><strong>Stack:</strong> Flutter, Riverpod, Drift/SQLCipher, go_router.</p>
       <p class="proof zh" style="margin-top:8px"><strong>技术栈：</strong>Flutter、Riverpod、Drift/SQLCipher、go_router。</p>
     </div>
@@ -186,10 +186,10 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.15rem)
 
   <div class="cta">
     <a class="btn" href="mailto:e_raeb@yahoo.com?subject=fmr">
-      <span class="en">Email agreyfox</span><span class="zh">邮件联系</span>
+      <span class="en">Email agreyfox</span><span class="zh">发邮件</span>
     </a>
     <a href="https://agreyfox.github.io/fmr/"><span class="en">Product →</span><span class="zh">产品站 →</span></a>
-    <a href="./"><span class="en">Profile →</span><span class="zh">主页 →</span></a>
+    <a href="./"><span class="en">Profile →</span><span class="zh">个人主页 →</span></a>
   </div>
 </div>
 <script>
