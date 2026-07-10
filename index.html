@@ -1,374 +1,807 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>agreyfox — IT 顾问 · 全栈 · AI</title>
-    <meta
-      name="description"
-      content="agreyfox — 专业 IT 顾问、全栈软件开发者与 AI 合作者。20 年以上信息化服务经验。AI 解决方案提供者。"
-    />
-    <meta name="theme-color" content="#050505" />
-    <!-- 绝对路径 + 内联双保险，避免相对路径/缓存导致“无样式” -->
-    <link rel="stylesheet" href="/assets/styles.css?v=3" />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <style>
-      /* critical + full theme inlined — page always formatted */
-      :root {
-        --bg: #050505;
-        --bg-elev: #111111;
-        --ink: #f2f2f2;
-        --muted: #9a9a9a;
-        --dim: #666666;
-        --line: rgba(255, 255, 255, 0.1);
-        --accent: #5eead4;
-        --warm: #f59e0b;
-        --font: system-ui, -apple-system, "Segoe UI", "PingFang SC",
-          "Noto Sans SC", "Microsoft YaHei", sans-serif;
-        --max: 720px;
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: var(--font);
-        color: var(--ink);
-        background: #050505;
-        line-height: 1.65;
-        -webkit-font-smoothing: antialiased;
-      }
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        background: radial-gradient(
-            ellipse 80% 50% at 50% -20%,
-            rgba(94, 234, 212, 0.08),
-            transparent 55%
-          ),
-          radial-gradient(
-            ellipse 60% 40% at 100% 100%,
-            rgba(245, 158, 11, 0.05),
-            transparent 50%
-          );
-      }
-      a {
-        color: var(--accent);
-      }
-      a:hover {
-        color: #99f6e4;
-      }
-      .stream {
-        position: relative;
-        z-index: 1;
-        width: min(100% - 2.5rem, var(--max));
-        margin: 0 auto;
-        padding: 4rem 0 5rem;
-      }
-      .brand-float {
-        position: fixed;
-        top: 1.1rem;
-        left: 1.25rem;
-        z-index: 10;
-        font-weight: 800;
-        font-size: 0.9rem;
-        letter-spacing: -0.03em;
-        color: #f2f2f2;
-        text-decoration: none;
-        opacity: 0.75;
-      }
-      .brand-float span {
-        color: var(--accent);
-      }
-      .brand-float:hover {
-        opacity: 1;
-      }
-      /* 默认可见 — 不再用 opacity:0 当动画失败会整页空白 */
-      .drop {
-        margin: 0 0 2.75rem;
-      }
-      .hello {
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin: 0 0 1rem;
-      }
-      h1.name {
-        margin: 0 0 0.35rem;
-        font-size: clamp(2.8rem, 10vw, 4.4rem);
-        font-weight: 900;
-        letter-spacing: -0.05em;
-        line-height: 0.95;
-        color: #fff;
-      }
-      .roles {
-        margin: 0.85rem 0 0;
-        font-size: clamp(1.05rem, 2.8vw, 1.25rem);
-        font-weight: 600;
-        color: var(--muted);
-        line-height: 1.45;
-      }
-      .roles em {
-        font-style: normal;
-        color: #fff;
-        font-weight: 700;
-      }
-      .one-liner {
-        margin: 0;
-        font-size: clamp(1.2rem, 3.2vw, 1.45rem);
-        font-weight: 500;
-        letter-spacing: -0.02em;
-        line-height: 1.45;
-        color: #fff;
-        max-width: 28ch;
-        border-left: 3px solid var(--accent);
-        padding-left: 1rem;
-      }
-      .breath {
-        height: 1px;
-        width: 3rem;
-        background: linear-gradient(90deg, var(--accent), transparent);
-        margin: 0;
-        border: 0;
-      }
-      .years {
-        margin: 0;
-        font-size: clamp(3.2rem, 12vw, 5rem);
-        font-weight: 900;
-        letter-spacing: -0.06em;
-        line-height: 1;
-        color: var(--accent);
-      }
-      .years-caption {
-        margin: 0.5rem 0 0;
-        color: var(--muted);
-        font-size: 1.05rem;
-        font-weight: 500;
-      }
-      .flow-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-      .flow-tags li {
-        padding: 0.5rem 0.95rem;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: var(--bg-elev);
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: var(--muted);
-      }
-      .narrative {
-        margin: 0;
-        font-size: 1.08rem;
-        color: var(--muted);
-        max-width: 36rem;
-      }
-      .narrative + .narrative {
-        margin-top: 1rem;
-      }
-      .narrative strong {
-        color: #fff;
-        font-weight: 700;
-      }
-      .work-card {
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        padding: 1.4rem 1.45rem;
-        border-radius: 16px;
-        border: 1px solid var(--line);
-        background: #111;
-      }
-      .work-card:hover {
-        border-color: rgba(94, 234, 212, 0.4);
-        color: inherit;
-      }
-      .work-card .meta {
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin: 0 0 0.55rem;
-      }
-      .work-card h2 {
-        margin: 0 0 0.45rem;
-        font-size: 1.5rem;
-        font-weight: 900;
-        letter-spacing: -0.03em;
-        color: #fff;
-      }
-      .work-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.98rem;
-      }
-      .work-card .go {
-        display: inline-block;
-        margin-top: 0.95rem;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--accent);
-      }
-      .mail {
-        display: inline-block;
-        font-size: clamp(1.15rem, 3vw, 1.45rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        text-decoration: none;
-        color: #fff;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        padding-bottom: 0.2rem;
-      }
-      .mail:hover {
-        color: var(--accent);
-        border-color: var(--accent);
-      }
-      .mail-hint {
-        margin: 0.7rem 0 0;
-        font-size: 0.9rem;
-        color: var(--dim);
-      }
-      .links-inline {
-        margin: 1.35rem 0 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem 1.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
-      .links-inline a {
-        text-decoration: none;
-        color: var(--muted);
-      }
-      .links-inline a:hover {
-        color: var(--accent);
-      }
-      .foot {
-        margin-top: 3rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--line);
-        font-size: 0.82rem;
-        color: var(--dim);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1.25rem;
-        justify-content: space-between;
-      }
-      .foot a {
-        color: var(--dim);
-        text-decoration: none;
-      }
-      .ghost-af {
-        position: fixed;
-        right: -0.05em;
-        bottom: -0.15em;
-        font-size: min(40vw, 18rem);
-        font-weight: 900;
-        letter-spacing: -0.08em;
-        line-height: 1;
-        color: rgba(255, 255, 255, 0.03);
-        pointer-events: none;
-        z-index: 0;
-        user-select: none;
-      }
-    </style>
-  </head>
-  <body>
-    <a class="brand-float" href="/">agre<span>y</span>fox</a>
-    <div class="ghost-af" aria-hidden="true">af</div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agreyfox — The Restless Vine</title>
+<meta name="description" content="agreyfox — IT consultant, full-stack developer & AI collaborator. AI systems for work that still requires human judgment.">
+<meta property="og:title" content="agreyfox — The Restless Vine">
+<meta property="og:description" content="AI systems for work that still requires human judgment.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#edf1e8">
+<style>
+:root{
+  --paper:#edf1e8;
+  --paper-warm:#f5f0e7;
+  --ink:#173828;
+  --muted:#68746b;
+  --coral:#d86749;
+  --blue:#426f95;
+  --plum:#8c5578;
+  --bronze:#9b713f;
+  --teal:#3f7d73;
+  --violet:#6f678f;
+  --stem:#38683f;
+  --stem-light:#719653;
+  --shadow:rgba(26,58,40,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);overflow-x:hidden;
+  background:
+    radial-gradient(circle at 82% 4%,rgba(216,103,73,.11),transparent 19%),
+    radial-gradient(circle at 8% 52%,rgba(66,111,149,.08),transparent 24%),
+    linear-gradient(180deg,#eef2e9 0%,#edf1e8 48%,#f4eee5 100%);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.08;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1260px,calc(100% - 44px));margin:auto}
+nav{
+  position:fixed;inset:0 0 auto;z-index:80;background:rgba(237,241,232,.72);
+  backdrop-filter:blur(15px);border-bottom:1px solid rgba(23,56,40,.10)
+}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:700 20px/1 Georgia,serif}
+.navlinks{display:flex;gap:24px;align-items:center;font-size:13px}
+.navlinks a:last-child{background:var(--coral);color:#fff;padding:10px 16px;border-radius:999px}
 
-    <main class="stream">
-      <div class="drop">
-        <p class="hello">Hello</p>
-        <h1 class="name">agreyfox</h1>
-        <p class="roles">
-          <em>专业 IT 顾问</em> · <em>软件开发者</em> ·
-          <em>AI 合作者</em>
-        </p>
+.hero{
+  min-height:100vh;padding:118px 0 62px;
+  display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center
+}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)}
+.hero h1{font:700 clamp(58px,7vw,114px)/.88 Georgia,serif;letter-spacing:-.055em;margin:20px 0 30px}
+.hero h1 em{font-weight:400;color:var(--coral)}
+.hero p{font-size:20px;line-height:1.64;color:#526057;max-width:700px}
+.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.button{padding:14px 20px;border-radius:999px;font-weight:750;font-size:14px;background:var(--ink);color:#fff}
+.button.ghost{background:transparent;border:1px solid rgba(66,111,149,.35);color:var(--blue)}
+.handle-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+.handle-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(23,56,40,.055);font-size:13px;color:#405047}
+
+.hero-art{height:650px;position:relative}
+.hero-art .sun{
+  position:absolute;width:250px;height:250px;border-radius:50%;right:36px;top:28px;
+  background:radial-gradient(circle at 35% 30%,#fff1ce,#f2c890 58%,#e5ad7f);opacity:.68
+}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-note{
+  position:absolute;right:4px;bottom:44px;width:300px;padding:22px 24px;
+  background:rgba(203,220,145,.94);border-radius:8px 8px 66px 8px;transform:rotate(2deg);
+  box-shadow:0 22px 50px var(--shadow)
+}
+.hero-note b{display:block;font:700 28px/1.05 Georgia,serif;margin-bottom:10px}
+.hero-note span{font-size:14px;color:#3e533f}
+
+.identity-strip{
+  border-top:1px solid rgba(23,56,40,.12);border-bottom:1px solid rgba(23,56,40,.12);
+  padding:20px 0;background:rgba(255,255,255,.18)
+}
+.identity-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:18px;align-items:center}
+.identity-grid strong{font-family:Georgia,serif;font-size:24px}
+.identity-grid span{font-size:13px;color:#566258}
+
+.intro{text-align:center;max-width:860px;margin:0 auto;padding:95px 0 58px}
+.intro h2{font:700 clamp(50px,6vw,92px)/.94 Georgia,serif;letter-spacing:-.05em;margin:0 0 24px;color:#315b46}
+.intro p{font-size:20px;line-height:1.64;color:var(--muted)}
+
+.story-stage{position:relative;min-height:7200px}
+#plantSvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+
+.flower-quote{
+  position:absolute;left:50%;top:136px;transform:translateX(-50%);
+  width:470px;max-width:40vw;text-align:center;z-index:26
+}
+.flower-quote .line{
+  font:700 clamp(30px,3.3vw,45px)/1.02 Georgia,serif;
+  letter-spacing:-.045em;color:#214233;text-shadow:0 2px 18px rgba(255,255,255,.78)
+}
+.flower-quote .line em{font-weight:400;color:#b94c71}
+.flower-quote .sub{
+  margin:12px auto 0;font-size:14px;color:#59675f;line-height:1.4;
+  max-width:370px;text-shadow:0 1px 10px rgba(255,255,255,.9)
+}
+.soil-labels{
+  position:absolute;left:50%;bottom:72px;transform:translateX(-50%);z-index:28;
+  width:min(840px,calc(100% - 40px));text-align:center;color:#4c453c;
+}
+.soil-labels h3{
+  margin:0 0 14px;font:700 30px/1.05 Georgia,serif;letter-spacing:-.03em;color:#4a3b2b;
+}
+.soil-labels .soil-words{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.soil-labels span{
+  display:inline-block;padding:8px 12px;border-radius:999px;
+  background:rgba(255,248,230,.42);border:1px solid rgba(88,65,42,.18);
+  font-size:13px;color:#594c3d;
+}
+
+.story-copy{position:absolute;width:340px;z-index:20;--chapter-color:var(--coral)}
+.story-copy.left{left:0}.story-copy.right{right:0}
+.story-copy .n{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--chapter-color)}
+.story-copy h3{
+  font:700 43px/1.01 Georgia,serif;letter-spacing:-.04em;margin:12px 0 16px;
+  color:var(--chapter-color)
+}
+.story-copy p{font-size:16px;line-height:1.6;color:#5e6b62;margin:0}
+.story-copy.seed{--chapter-color:var(--coral)}
+.story-copy.structure{--chapter-color:var(--blue)}
+.story-copy.leverage{--chapter-color:var(--plum)}
+.story-copy.reasoning{--chapter-color:var(--bronze)}
+.story-copy.stories{--chapter-color:var(--teal)}
+.story-copy.compass{--chapter-color:var(--violet)}
+
+.leaf-content{
+  position:absolute;z-index:25;transform:translate(-50%,-50%);pointer-events:none;
+  display:flex;align-items:center;justify-content:center;text-align:center
+}
+.leaf-content .panel{
+  padding:14px 16px 12px;max-width:100%;
+  background:radial-gradient(circle at 50% 40%,rgba(16,49,27,.24),rgba(16,49,27,.17) 56%,rgba(16,49,27,.10) 76%,transparent 100%);
+  border-radius:28px
+}
+.leaf-content h3{margin:0 0 8px;font:700 24px/1.05 Georgia,serif;letter-spacing:-.028em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.leaf-content p{margin:0;font-size:13.5px;line-height:1.42;color:rgba(255,255,255,.93);text-shadow:0 1px 1px rgba(0,0,0,.14)}
+.leaf-content.small{width:220px}.leaf-content.small h3{font-size:21px}
+.leaf-content.mid{width:250px}
+.leaf-content.wide{width:285px}.leaf-content.wide h3{font-size:25px}
+.leaf-content.xwide{width:320px}.leaf-content.xwide h3{font-size:26px}
+
+.grasshopper{
+  position:fixed;z-index:60;width:94px;height:68px;left:0;top:0;pointer-events:none;
+  transform-origin:50% 72%;filter:drop-shadow(0 8px 7px rgba(23,56,35,.24))
+}
+.grasshopper svg{width:100%;height:100%;overflow:visible}
+.jump-note{
+  position:fixed;z-index:59;pointer-events:none;font-family:"Comic Sans MS","Bradley Hand",cursive;
+  color:#406d44;font-size:14px;max-width:220px;opacity:0;transition:opacity .22s ease
+}
+
+.closing{padding:130px 0 50px;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:end}
+.closing h2{font:700 clamp(60px,7vw,108px)/.89 Georgia,serif;letter-spacing:-.055em;margin:0;color:#315b46}
+.closing h2 em{font-weight:400;color:var(--coral)}
+.closing p{font-size:20px;line-height:1.64;color:#59635a}
+.contact{
+  margin:60px 0 0;background:#173828;color:white;border-radius:42px;padding:62px;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:50px
+}
+.contact h3{font:700 58px/.95 Georgia,serif;margin:0;color:#f2c6d2}
+.contact p{font-size:18px;line-height:1.65;color:#c9d3ca}
+.contact a.mail{display:inline-block;margin-top:12px;padding:14px 20px;border-radius:999px;background:var(--coral);font-weight:750}
+.github-line{margin-top:18px;color:#c9d3ca;font-size:15px}
+footer{padding:38px 0 50px;font-size:13px;color:#677067}
+.footer{border-top:1px solid rgba(24,54,37,.14);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr}.hero-art{height:560px}
+  .navlinks a:not(:last-child){display:none}
+  .identity-grid{grid-template-columns:1fr 1fr}
+  .story-copy{width:250px}.story-copy h3{font-size:32px}
+  .leaf-content{transform:translate(-50%,-50%) scale(.84)}
+  .flower-quote{top:150px;width:340px;max-width:52vw}
+  .closing,.contact{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .identity-grid{grid-template-columns:1fr}
+  .story-copy{width:44%}.story-copy h3{font-size:27px}.story-copy p{font-size:14px}
+  .leaf-content{transform:translate(-50%,-50%) scale(.70)}
+  .flower-quote{top:155px;width:280px;max-width:70vw}.flower-quote .line{font-size:24px}.flower-quote .sub{font-size:12px}
+  .contact{padding:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .grasshopper,.jump-note{display:none!important}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap navin">
+    <div class="brand">agreyfox</div>
+    <div class="navlinks">
+      <a href="#story">Story</a>
+      <a href="#ideas">Ideas</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a>
+      <a href="mailto:e_raeb@yahoo.com">Write me an email</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="kicker">A profile grown from curiosity</div>
+      <h1>AI for work that still requires <em>judgment.</em></h1>
+      <p>I'm agreyfox — IT consultant, full-stack developer and AI collaborator, with 20+ years building systems for real work. I like intelligent systems. I like them even more when they actually start, solve something real, and leave people more capable than before.</p>
+      <div class="hero-actions">
+        <a class="button" data-hop data-joke="first leaf, then another question." data-hop-y=".05" href="#story">Follow the vine</a>
+        <a class="button ghost" data-hop data-joke="email is still a surprisingly good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com">Write me an email</a>
       </div>
-
-      <div class="drop">
-        <p class="one-liner">把复杂系统做成可落地的软件与 AI 方案。</p>
+      <div class="handle-row">
+        <span class="handle-pill" data-hop data-joke="yes, the fox is grey." data-hop-y=".05">GitHub: <strong>@agreyfox</strong></span>
+        <span class="handle-pill" data-hop data-joke="RFC 5322 approved. probably." data-hop-y=".05">Email: <strong>e_raeb@yahoo.com</strong></span>
       </div>
+    </div>
 
-      <div class="drop">
-        <hr class="breath" />
+    <div class="hero-art">
+      <div class="sun"></div>
+      <svg viewBox="0 0 620 650" aria-hidden="true">
+        <defs>
+          <linearGradient id="heroStem" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#315d36"/>
+            <stop offset=".58" stop-color="#567f45"/>
+            <stop offset="1" stop-color="#789d59"/>
+          </linearGradient>
+          <radialGradient id="avocadoSkin" cx="32%" cy="24%">
+            <stop offset="0" stop-color="#88aa62"/>
+            <stop offset=".42" stop-color="#587d43"/>
+            <stop offset="1" stop-color="#31583a"/>
+          </radialGradient>
+          <radialGradient id="avocadoFlesh" cx="38%" cy="28%">
+            <stop offset="0" stop-color="#edf3b6"/>
+            <stop offset=".7" stop-color="#c8dc7f"/>
+            <stop offset="1" stop-color="#a7c565"/>
+          </radialGradient>
+          <filter id="heroShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#183625" flood-opacity=".18"/>
+          </filter>
+        </defs>
+
+        <path d="M352 618 C345 555 367 507 344 442 C322 379 349 322 338 255 C328 193 350 134 338 62"
+              fill="none" stroke="url(#heroStem)" stroke-width="18" stroke-linecap="round"/>
+
+        <path d="M345 475 C296 457 247 423 201 375" fill="none" stroke="#6d9550" stroke-width="10" stroke-linecap="round"/>
+        <path d="M338 352 C285 337 238 301 194 252" fill="none" stroke="#75a05a" stroke-width="8" stroke-linecap="round"/>
+        <path d="M341 226 C301 209 271 180 244 145" fill="none" stroke="#80a861" stroke-width="7" stroke-linecap="round"/>
+
+        <path d="M344 410 C394 385 439 350 477 306" fill="none" stroke="#6d9550" stroke-width="9" stroke-linecap="round"/>
+        <path d="M339 286 C391 264 431 226 462 182" fill="none" stroke="#78a15b" stroke-width="7" stroke-linecap="round"/>
+        <path d="M472 303 C500 273 537 274 552 304 C529 325 495 329 472 303Z" fill="#6e974f" filter="url(#heroShadow)"/>
+        <path d="M458 180 C485 148 522 148 539 177 C517 201 481 205 458 180Z" fill="#83aa61" filter="url(#heroShadow)"/>
+        <path d="M474 304 L536 303" stroke="rgba(240,248,219,.30)" stroke-width="2"/>
+        <path d="M460 180 L523 177" stroke="rgba(240,248,219,.30)" stroke-width="2"/>
+
+        <g transform="translate(184 397) rotate(-12)" filter="url(#heroShadow)">
+          <path d="M0 -68 C45 -45 59 3 43 47 C30 82 -31 82 -45 48 C-62 6 -45 -46 0 -68Z" fill="url(#avocadoSkin)"/>
+          <path d="M0 -50 C34 -31 44 5 32 39 C22 64 -22 64 -33 40 C-46 8 -34 -32 0 -50Z" fill="url(#avocadoFlesh)"/>
+          <circle cx="0" cy="22" r="20" fill="#9b7449"/>
+          <text x="0" y="-18" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#274331">Ask better</text>
+          <text x="0" y="-2" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#274331">questions</text>
+        </g>
+
+        <g transform="translate(177 273) rotate(10)" filter="url(#heroShadow)">
+          <path d="M0 -62 C42 -41 55 2 40 43 C27 76 -28 77 -42 44 C-58 5 -42 -42 0 -62Z" fill="url(#avocadoSkin)"/>
+          <path d="M0 -46 C31 -29 42 4 30 35 C20 59 -20 60 -31 37 C-43 6 -31 -30 0 -46Z" fill="url(#avocadoFlesh)"/>
+          <circle cx="0" cy="18" r="18" fill="#9b7449"/>
+          <text x="0" y="-14" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#274331">See the</text>
+          <text x="0" y="1" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#274331">pattern</text>
+        </g>
+
+        <g transform="translate(229 155) rotate(-9)" filter="url(#heroShadow)">
+          <path d="M0 -57 C38 -38 50 0 37 38 C25 68 -25 69 -38 40 C-52 4 -38 -39 0 -57Z" fill="url(#avocadoSkin)"/>
+          <path d="M0 -42 C29 -27 38 3 28 31 C18 52 -18 53 -29 33 C-40 5 -29 -27 0 -42Z" fill="url(#avocadoFlesh)"/>
+          <circle cx="0" cy="17" r="16" fill="#9b7449"/>
+          <text x="0" y="-11" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#274331">Keep judgment</text>
+          <text x="0" y="3" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#274331">human</text>
+        </g>
+
+        <path d="M338 63 C329 30 358 18 372 39 C383 57 360 72 348 56 C339 44 350 35 357 43"
+              fill="none" stroke="#789d59" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <div class="hero-note" data-hop data-joke="no résumé bullet survived unexamined." data-hop-y=".03">
+        <b>A living profile.<br>Not a résumé.</b>
+        <span>The point is not to list skills. The point is to show how a mind grows.</span>
       </div>
+    </div>
+  </section>
+</div>
 
-      <div class="drop">
-        <p class="years">20+</p>
-        <p class="years-caption">年信息化服务 · 全栈工程师</p>
+<section class="identity-strip">
+  <div class="wrap identity-grid">
+    <strong data-hop data-joke="still easier to spell than a product roadmap." data-hop-y=".05">agreyfox</strong>
+    <span data-hop data-joke="AI, but with adult supervision." data-hop-y=".05">AI systems · human judgment</span>
+    <span data-hop data-joke="relations keep escaping tables." data-hop-y=".05">Graph thinking · agent workflows</span>
+    <span data-hop data-joke="github.com/agreyfox" data-hop-y=".05">@agreyfox · open to new directions</span>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="intro" id="story" data-hop data-joke="the story is longer than the README." data-hop-y=".08">
+    <div class="kicker">The story grows downward</div>
+    <h2>The flower is visible.<br>The growth happened below.</h2>
+    <p>Curiosity became the seed. Engineering gave it structure. AI gave it leverage. Law taught it to reason. Markets taught it to read stories. Philosophy keeps asking whether any of this is worth doing.</p>
+  </section>
+
+  <section class="story-stage" id="ideas">
+    <svg id="plantSvg" aria-hidden="true"></svg>
+
+    <div class="flower-quote" data-hop data-joke="wisdom, now available in flower format." data-hop-y=".02">
+      <div class="line">Grown from curiosity.<br><em>Shared as judgment.</em></div>
+      <div class="sub">Useful wisdom becomes beautiful after it becomes useful to people.</div>
+    </div>
+
+    <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. confidence later." data-hop-y=".04">
+      <div class="n">01 / THE SEED</div><h3>Curiosity became the seed.</h3>
+      <p>I keep asking why systems behave the way they do, why people decide the way they do, and why complicated things still fail at simple human needs.</p>
+    </div>
+    <div class="story-copy right structure" style="top:1780px" data-hop data-joke="structure: the polite name for controlled obsession." data-hop-y=".04">
+      <div class="n">02 / STRUCTURE</div><h3>Engineering gave it structure.</h3>
+      <p>Boundaries, flows, failure modes, feedback — and one practical question: does it actually work?</p>
+    </div>
+    <div class="story-copy left leverage" style="top:2870px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
+      <div class="n">03 / LEVERAGE</div><h3>AI gave it leverage.</h3>
+      <p>AI can search, compare, calculate, remember and challenge. My interest is not replacing the person. It is giving the person better ammunition.</p>
+    </div>
+    <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="objection noted. evidence requested." data-hop-y=".04">
+      <div class="n">04 / REASONING</div><h3>Law taught it to reason.</h3>
+      <p>Facts are not opinions. Rules are not facts. Evidence matters. Missing evidence matters too.</p>
+    </div>
+    <div class="story-copy left stories" style="top:5070px" data-hop data-joke="the chart moved. everyone wrote a story." data-hop-y=".04">
+      <div class="n">05 / STORIES</div><h3>Markets taught it stories.</h3>
+      <p>Markets are data, incentives, fear, belief and narrative colliding at speed. I became interested in what the market is doing — and what people think it is doing.</p>
+    </div>
+    <div class="story-copy right compass" style="top:6120px" data-hop data-joke="existential detour. back in five minutes." data-hop-y=".04">
+      <div class="n">06 / THE COMPASS</div><h3>Philosophy keeps it honest.</h3>
+      <p>What should technology serve? What remains human when systems become powerful? I do not always have answers. I keep the questions around.</p>
+    </div>
+
+    <article class="leaf-content xwide" data-id="curious" data-hop data-joke="curiosity takes the scenic route" data-hop-y=".04"><div class="panel"><h3>Curious by Nature</h3><p>He starts with questions most people walk past.</p></div></article>
+    <article class="leaf-content xwide" data-id="systems" data-hop data-joke="systems are where consequences hide" data-hop-y=".04"><div class="panel"><h3>Thinks in Systems</h3><p>He sees relationships, structure, flow, and consequence.</p></div></article>
+    <article class="leaf-content xwide" data-id="judgmentTrait" data-hop data-joke="the final call still belongs to people" data-hop-y=".04"><div class="panel"><h3>Human Judgment Matters</h3><p>He builds with AI without surrendering the final call.</p></div></article>
+    <article class="leaf-content xwide" data-id="clarityTrait" data-hop data-joke="untangle first, automate second" data-hop-y=".04"><div class="panel"><h3>Turns Chaos into Clarity</h3><p>He enjoys giving shape to tangled problems.</p></div></article>
+    <article class="leaf-content xwide" data-id="bridges" data-hop data-joke="another bridge? yes, probably useful" data-hop-y=".04"><div class="panel"><h3>Bridges Worlds</h3><p>He moves between technology, reasoning, markets, and lived reality.</p></div></article>
+    <article class="leaf-content xwide" data-id="handsOn" data-hop data-joke="architecture is nicer when it can run" data-hop-y=".04"><div class="panel"><h3>Strategic, Yet Hands-On</h3><p>He can zoom out to architecture and zoom in to implementation.</p></div></article>
+    <article class="leaf-content xwide" data-id="trust" data-hop data-joke="thinking carefully is underrated" data-hop-y=".04"><div class="panel"><h3>Earns Trust Through Thinking</h3><p>He thinks carefully before he speaks boldly.</p></div></article>
+    <article class="leaf-content wide" data-id="insight" data-hop data-joke="surface explanations are usually late" data-hop-y=".04"><div class="panel"><h3>Guided by Insight</h3><p>He looks for what is really happening beneath the surface.</p></div></article>
+    <article class="leaf-content wide" data-id="patterns" data-hop data-joke="patterns keep leaving fingerprints" data-hop-y=".04"><div class="panel"><h3>A Mind for Patterns</h3><p>He notices connections other people often miss.</p></div></article>
+    <article class="leaf-content xwide" data-id="perspective" data-hop data-joke="zoom out, then tighten the bolts" data-hop-y=".04"><div class="panel"><h3>A Builder with Perspective</h3><p>He brings depth of thought and range of vision.</p></div></article>
+    <article class="leaf-content xwide" data-id="humanSystems" data-hop data-joke="the humans are not edge cases" data-hop-y=".04"><div class="panel"><h3>More Than Technical</h3><p>He understands that good systems are also human systems.</p></div></article>
+    <article class="leaf-content wide" data-id="wisdomTrait" data-hop data-joke="hype detected. tea recommended." data-hop-y=".04"><div class="panel"><h3>Wisdom Over Noise</h3><p>He values perspective more than performance.</p></div></article>
+    <article class="leaf-content wide" data-id="independent" data-hop data-joke="easy answers make him suspicious" data-hop-y=".04"><div class="panel"><h3>Independent in Thought</h3><p>He is willing to think differently when the easy answer is not right.</p></div></article>
+    <article class="leaf-content wide" data-id="meaning" data-hop data-joke="useful is a higher compliment than flashy" data-hop-y=".04"><div class="panel"><h3>Driven by Meaning</h3><p>He wants technology to leave people more capable.</p></div></article>
+    <article class="leaf-content wide" data-id="growing" data-hop data-joke="still growing. inconveniently alive." data-hop-y=".04"><div class="panel"><h3>Still Growing</h3><p>He treats each new direction as a chance to deepen.</p></div></article>
+    <div class="soil-labels" data-hop data-joke="roots first. fireworks later." data-hop-y=".08">
+      <h3>The ground beneath the work</h3>
+      <div class="soil-words">
+        <span>Integrity</span><span>Communication</span><span>Reliability</span>
+        <span>Patience</span><span>Respect</span><span>Follow-through</span>
       </div>
+    </div>
+  </section>
 
-      <div class="drop">
-        <ul class="flow-tags">
-          <li>IT Consulting</li>
-          <li>Full-Stack</li>
-          <li>Software Engineering</li>
-          <li>AI Collaboration</li>
-          <li>AI Solutions</li>
-          <li>System Integration</li>
-          <li>Product Delivery</li>
-        </ul>
-      </div>
+  <section class="closing" data-hop data-joke="the vine refuses to call this a final release." data-hop-y=".03">
+    <h2>The vine is still <em>growing.</em></h2>
+    <p>New business. New work. New directions. I am interested in problems that are messy, consequential, difficult to automate, and worth solving properly.</p>
+  </section>
 
-      <div class="drop">
-        <p class="narrative">
-          我是 <strong>agreyfox</strong>。长期为组织与个人提供信息化服务：从架构与交付，到可维护的全栈实现。
-        </p>
-        <p class="narrative">
-          也作为 <strong>AI 解决方案提供者</strong> 与合作方一起，把模型能力嵌进真实业务流程——务实、可验证、可运维。
-        </p>
-      </div>
+  <section class="contact" id="contact" data-hop data-joke="yes, humans may still contact humans directly." data-hop-y=".04">
+    <h3>Write me an email.</h3>
+    <div>
+      <p>If you're building an AI product, rethinking professional work, exploring human-in-the-loop systems, or simply have a problem that refuses to fit in a neat box, we probably have something to talk about.</p>
+      <a class="mail" href="mailto:e_raeb@yahoo.com">e_raeb@yahoo.com →</a>
+      <div class="github-line">GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a></div>
+    </div>
+  </section>
+</div>
 
-      <div class="drop">
-        <a class="work-card" href="https://agreyfox.github.io/fmr/">
-          <p class="meta">Selected · Shipping</p>
-          <h2>fmr</h2>
-          <p>
-            家庭医疗档案 — 本地优先、加密存储；AI 辅助识别检验指标，由你审核后再入库。
-          </p>
-          <span class="go">产品站与隐私政策 →</span>
-        </a>
-      </div>
+<div class="grasshopper" id="grasshopper" aria-hidden="true">
+  <svg viewBox="0 0 132 90">
+    <g>
+      <path d="M56 48 C49 66,34 76,18 79" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
+      <path d="M64 52 C58 74,52 83,40 87" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
+      <path d="M77 50 C94 68,107 77,122 80" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
+      <path d="M82 43 C103 26,116 15,126 11" fill="none" stroke="#1f4f2d" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="73" cy="38" rx="30" ry="17" fill="#6f9f4f" stroke="#1f4f2d" stroke-width="3"/>
+      <ellipse cx="47" cy="35" rx="15" ry="13" fill="#8ab45f" stroke="#1f4f2d" stroke-width="3"/>
+      <ellipse cx="88" cy="37" rx="14" ry="9" fill="#93bb67" opacity=".8"/>
+      <circle cx="43" cy="31" r="7.5" fill="#f5fff2" stroke="#1f4f2d" stroke-width="2"/>
+      <circle cx="44.5" cy="31" r="2.4" fill="#173822" id="eyeLid"/>
+      <circle cx="39" cy="39" r="2.5" fill="#f1a9ba" opacity=".8"/>
+      <path d="M38 25 C27 14,19 8,10 3" fill="none" stroke="#1f4f2d" stroke-width="4" stroke-linecap="round" id="antA"/>
+      <path d="M47 23 C48 13,51 6,57 1" fill="none" stroke="#1f4f2d" stroke-width="4" stroke-linecap="round" id="antB"/>
+      <path d="M50 42 C59 48,66 51,84 54" fill="none" stroke="#315f3e" stroke-width="4" stroke-linecap="round"/>
+      <path d="M37 37 C39 41,43 43,47 42" fill="none" stroke="#173822" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
+<div class="jump-note" id="jumpNote"></div>
 
-      <div class="drop">
-        <a class="mail" href="mailto:e_raeb@yahoo.com">e_raeb@yahoo.com</a>
-        <p class="mail-hint">咨询 · 合作 · AI 方案交流</p>
-        <div class="links-inline">
-          <a href="https://github.com/agreyfox">GitHub</a>
-          <a href="https://agreyfox.github.io/fmr/">fmr</a>
-          <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
-        </div>
-      </div>
+<footer>
+  <div class="wrap footer">
+    <span>© 2026 agreyfox</span>
+    <span>GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a></span>
+    <span>Still asking better questions.</span>
+  </div>
+</footer>
 
-      <div class="drop foot">
-        <span>© <span id="y">2026</span> agreyfox</span>
-        <span
-          ><a href="https://agreyfox.github.io/fmr/">fmr product</a></span
-        >
-      </div>
-    </main>
+<script>
+(() => {
+  "use strict";
+  const NS="http://www.w3.org/2000/svg";
+  const stage=document.querySelector(".story-stage");
+  const svg=document.getElementById("plantSvg");
+  const hopper=document.getElementById("grasshopper");
+  const note=document.getElementById("jumpNote");
+  const antA=document.getElementById("antA");
+  const antB=document.getElementById("antB");
+  const eye=document.getElementById("eyeLid");
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
-  </body>
+  const leaves=[
+    {id:"curious",t:.13,side:1,type:"castor",r:235,lobes:9,rot:-3},
+    {id:"systems",t:.21,side:-1,type:"chrysanthemum",r:230,lobes:13,rot:4},
+    {id:"judgmentTrait",t:.29,side:1,type:"castor",r:225,lobes:11,rot:2},
+    {id:"clarityTrait",t:.35,side:-1,type:"palmate",r:215,lobes:7,rot:-7},
+    {id:"bridges",t:.41,side:1,type:"castor",r:235,lobes:9,rot:6},
+    {id:"handsOn",t:.48,side:-1,type:"broad",r:245,lobes:7,rot:-2},
+    {id:"trust",t:.55,side:1,type:"serrated",r:225,lobes:9,rot:8},
+    {id:"insight",t:.62,side:-1,type:"broad",r:220,lobes:7,rot:-4},
+    {id:"patterns",t:.69,side:1,type:"castor",r:235,lobes:11,rot:1},
+    {id:"perspective",t:.76,side:-1,type:"serrated",r:225,lobes:9,rot:-6},
+    {id:"humanSystems",t:.82,side:1,type:"chrysanthemum",r:220,lobes:13,rot:5},
+    {id:"wisdomTrait",t:.87,side:-1,type:"soft",r:220,lobes:7,rot:-1},
+    {id:"independent",t:.91,side:1,type:"castor",r:230,lobes:9,rot:4},
+    {id:"meaning",t:.945,side:-1,type:"serrated",r:235,lobes:11,rot:-6},
+    {id:"growing",t:.972,side:1,type:"chrysanthemum",r:235,lobes:13,rot:2}
+  ];
+
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const random=(a,b)=>a+Math.random()*(b-a);
+  const TOP=410;
+
+  function centerline(t,w,h){
+    const y=TOP+t*(h-TOP);
+    const x=w*.5+Math.sin(t*Math.PI*4.6+.2)*w*.084+Math.sin(t*Math.PI*8.7+1.15)*w*.016;
+    return {x,y};
+  }
+  function tangent(t,w,h){
+    const e=.0005;
+    const a=centerline(clamp(t-e,0,1),w,h),b=centerline(clamp(t+e,0,1),w,h);
+    const dx=b.x-a.x,dy=b.y-a.y,l=Math.hypot(dx,dy)||1;
+    return {x:dx/l,y:dy/l};
+  }
+  function normal(t,w,h){const q=tangent(t,w,h);return{x:-q.y,y:q.x}}
+  function vineHalfWidth(t){return 8+30*Math.pow(t,.77)}
+  function pathFromPoints(points,close=false){
+    if(!points.length)return"";
+    let d=`M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+    for(let i=1;i<points.length;i++)d+=` L ${points[i].x.toFixed(1)} ${points[i].y.toFixed(1)}`;
+    return d+(close?" Z":"");
+  }
+  function catmullRomClosed(points){
+    if(points.length<3)return pathFromPoints(points,true);
+    let d="";
+    for(let i=0;i<points.length;i++){
+      const p0=points[(i-1+points.length)%points.length],p1=points[i],p2=points[(i+1)%points.length],p3=points[(i+2)%points.length];
+      if(i===0)d=`M ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+      const c1={x:p1.x+(p2.x-p0.x)/6,y:p1.y+(p2.y-p0.y)/6};
+      const c2={x:p2.x-(p3.x-p1.x)/6,y:p2.y-(p3.y-p1.y)/6};
+      d+=` C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)}, ${c2.x.toFixed(1)} ${c2.y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+    }
+    return d+" Z";
+  }
+  function seeded(seed){let s=seed>>>0;return()=>((s=Math.imul(1664525,s)+1013904223>>>0)/4294967296)}
+  function leafShape(cfg,center){
+    const rnd=seeded([...cfg.id].reduce((a,c)=>a+c.charCodeAt(0),0));
+    const pts=[],lobes=cfg.lobes,steps=lobes*10,base=cfg.r,phase=-Math.PI/2+cfg.rot*Math.PI/180;
+    for(let i=0;i<steps;i++){
+      const a=phase+i/steps*Math.PI*2,major=Math.cos(lobes*(a-phase)),minor=Math.cos(lobes*2*(a-phase)+.9);
+      let radius=base;
+      if(cfg.type==="castor")radius*=.58+.42*Math.max(0,major)+.05*Math.abs(minor);
+      if(cfg.type==="palmate")radius*=.72+.26*Math.max(0,major)+.04*minor;
+      if(cfg.type==="broad")radius*=.83+.16*Math.max(0,major)+.025*minor;
+      if(cfg.type==="serrated")radius*=.82+.13*Math.max(0,major)+.08*Math.abs(minor);
+      if(cfg.type==="chrysanthemum")radius*=.68+.22*Math.max(0,major)+.10*Math.abs(minor);
+      if(cfg.type==="soft")radius*=.84+.12*Math.max(0,major)+.018*minor;
+      radius*=.96+rnd()*.07;
+      const squash=cfg.type==="soft"?1.05:.93;
+      pts.push({x:center.x+Math.cos(a)*radius,y:center.y+Math.sin(a)*radius*squash});
+    }
+    return pts;
+  }
+  function addPath(d,attrs={}){
+    const p=document.createElementNS(NS,"path");p.setAttribute("d",d);
+    Object.entries(attrs).forEach(([k,v])=>p.setAttribute(k,v));svg.appendChild(p);return p
+  }
+  function addCircle(cx,cy,r,attrs={}){
+    const c=document.createElementNS(NS,"circle");c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",r);
+    Object.entries(attrs).forEach(([k,v])=>c.setAttribute(k,v));svg.appendChild(c);return c
+  }
+  function addEllipse(cx,cy,rx,ry,attrs={}){
+    const e=document.createElementNS(NS,"ellipse");e.setAttribute("cx",cx);e.setAttribute("cy",cy);e.setAttribute("rx",rx);e.setAttribute("ry",ry);
+    Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));svg.appendChild(e);return e
+  }
+
+  function drawEpiphyllum(W,H){
+    const c=centerline(0,W,H);
+    const cx=c.x,cy=215;
+    const flowerRadius=Math.min(W*.255,330);
+    const scale=flowerRadius/300;
+    const layers=[
+      {count:18,rx:28*scale,ry:132*scale,radius:70*scale,fill:"#f9dce4",alpha:.92},
+      {count:14,rx:34*scale,ry:112*scale,radius:47*scale,fill:"#f4b8ca",alpha:.94},
+      {count:10,rx:40*scale,ry:92*scale,radius:25*scale,fill:"#ed91ad",alpha:.96}
+    ];
+    layers.forEach((layer,li)=>{
+      for(let i=0;i<layer.count;i++){
+        const a=(i/layer.count)*Math.PI*2+(li*.10);
+        const px=cx+Math.cos(a)*layer.radius,py=cy+Math.sin(a)*layer.radius*.52;
+        const rot=a*180/Math.PI+90;
+        const petal=addEllipse(px,py,layer.rx,layer.ry,{
+          fill:layer.fill,opacity:String(layer.alpha),transform:`rotate(${rot} ${px} ${py})`,filter:"url(#petalShadow)"
+        });
+        petal.setAttribute("stroke","rgba(255,255,255,.32)");
+        petal.setAttribute("stroke-width","1");
+      }
+    });
+    addCircle(cx,cy,44*scale,{fill:"#f8e9ad",stroke:"#d6b65b","stroke-width":"3"});
+    for(let i=0;i<18;i++){
+      const a=i/18*Math.PI*2;
+      addCircle(cx+Math.cos(a)*29*scale,cy+Math.sin(a)*29*scale,3.8*scale,{fill:"#d0a84c"});
+    }
+
+    // The flower remains pure: mature expression at the tip of the vine.
+    // The flower receptacle continues into the main vine.
+    addPath(`M ${cx} ${cy+78*scale} C ${cx-4} ${cy+122*scale}, ${c.x+5} ${TOP-42}, ${c.x} ${TOP+18}`,{
+      fill:"none",stroke:"#678d4c","stroke-width":String(13*scale),"stroke-linecap":"round"
+    });
+  }
+
+  function drawSoil(W,H){
+    const y=H-330;
+    addPath(`M 0 ${y+55} C ${W*.18} ${y-18}, ${W*.33} ${y+44}, ${W*.50} ${y+2} C ${W*.66} ${y-38}, ${W*.80} ${y+42}, ${W} ${y-6} L ${W} ${H} L 0 ${H} Z`,
+      {fill:"#8b6a4a",opacity:".28"});
+    addPath(`M 0 ${y+98} C ${W*.22} ${y+42}, ${W*.42} ${y+105}, ${W*.58} ${y+62} C ${W*.75} ${y+16}, ${W*.88} ${y+96}, ${W} ${y+55} L ${W} ${H} L 0 ${H} Z`,
+      {fill:"#6f5139",opacity:".36"});
+    addPath(`M 0 ${y+170} C ${W*.25} ${y+112}, ${W*.38} ${y+190}, ${W*.60} ${y+136} C ${W*.78} ${y+92}, ${W*.9} ${y+165}, ${W} ${y+132} L ${W} ${H} L 0 ${H} Z`,
+      {fill:"#4e3828",opacity:".34"});
+    // simple roots entering ground
+    const rootX=W*.5;
+    addPath(`M ${rootX} ${y+12} C ${rootX-30} ${y+72}, ${rootX-80} ${y+118}, ${rootX-150} ${y+166}`,{fill:"none",stroke:"#6b4a32","stroke-width":"5","stroke-linecap":"round",opacity:".55"});
+    addPath(`M ${rootX} ${y+12} C ${rootX+28} ${y+72}, ${rootX+92} ${y+112}, ${rootX+170} ${y+150}`,{fill:"none",stroke:"#6b4a32","stroke-width":"5","stroke-linecap":"round",opacity:".55"});
+    addPath(`M ${rootX} ${y+18} C ${rootX-6} ${y+95}, ${rootX+10} ${y+150}, ${rootX-20} ${y+210}`,{fill:"none",stroke:"#5a3c29","stroke-width":"4","stroke-linecap":"round",opacity:".5"});
+  }
+
+  function buildPlant(){
+    const W=stage.clientWidth,H=stage.clientHeight;
+    svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    svg.innerHTML=`
+      <defs>
+        <linearGradient id="vineGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#789b58"/><stop offset=".5" stop-color="#4f7d41"/><stop offset="1" stop-color="#315d36"/>
+        </linearGradient>
+        <radialGradient id="leafGrad" cx=".30" cy=".24">
+          <stop offset="0" stop-color="#90ae69"/><stop offset=".35" stop-color="#69914f"/><stop offset="1" stop-color="#305f3c"/>
+        </radialGradient>
+        <filter id="leafShadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#183625" flood-opacity=".16"/>
+        </filter>
+        <filter id="petalShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#7a5663" flood-opacity=".22"/>
+        </filter>
+      </defs>`;
+
+    const left=[],right=[],samples=280;
+    for(let i=0;i<=samples;i++){
+      const t=i/samples,c=centerline(t,W,H),n=normal(t,W,H);
+      let hw=vineHalfWidth(t);
+      for(const leaf of leaves){const d=Math.abs(t-leaf.t);if(d<.015)hw+=5.5*(1-d/.015)}
+      left.push({x:c.x+n.x*hw,y:c.y+n.y*hw});
+      right.push({x:c.x-n.x*hw,y:c.y-n.y*hw});
+    }
+    addPath(pathFromPoints([...left,...right.reverse()],true),{fill:"url(#vineGrad)"});
+
+    const shine=[];
+    for(let i=0;i<=samples;i++){
+      const t=i/samples,c=centerline(t,W,H),n=normal(t,W,H),hw=vineHalfWidth(t);
+      shine.push({x:c.x+n.x*hw*.34,y:c.y+n.y*hw*.34});
+    }
+    addPath(pathFromPoints(shine),{fill:"none",stroke:"rgba(255,255,255,.18)","stroke-width":"4","stroke-linecap":"round"});
+
+    drawEpiphyllum(W,H);
+
+    leaves.forEach((leaf,index)=>{
+      const c=centerline(leaf.t,W,H),tan=tangent(leaf.t,W,H),n=normal(leaf.t,W,H);
+      const sideN={x:n.x*leaf.side,y:n.y*leaf.side};
+      const dist=leaf.r*1.34+48+(index%3)*10;
+      const center={x:c.x+sideN.x*dist,y:c.y+sideN.y*dist};
+      leaf.center=center;
+
+      const p0={x:c.x+sideN.x*vineHalfWidth(leaf.t)*.58,y:c.y+sideN.y*vineHalfWidth(leaf.t)*.58};
+      const p1={x:p0.x+tan.x*54+sideN.x*18,y:p0.y+tan.y*54+sideN.y*18};
+      const p2={x:center.x-sideN.x*(leaf.r*.58),y:center.y-sideN.y*(leaf.r*.58)};
+      const petiole=`M ${p0.x} ${p0.y} C ${p1.x} ${p1.y}, ${p2.x} ${p2.y}, ${center.x} ${center.y}`;
+      addPath(petiole,{fill:"none",stroke:"#6b944e","stroke-width":String(Math.max(5,10*(.35+leaf.t))),"stroke-linecap":"round"});
+      addPath(petiole,{fill:"none",stroke:"rgba(255,255,255,.16)","stroke-width":"2","stroke-linecap":"round"});
+
+      addPath(catmullRomClosed(leafShape(leaf,center)),{fill:"url(#leafGrad)",filter:"url(#leafShadow)"});
+      const phase=-Math.PI/2+leaf.rot*Math.PI/180;
+      for(let k=0;k<leaf.lobes;k++){
+        const a=phase+k/leaf.lobes*Math.PI*2,len=leaf.r*(leaf.type==="castor"?.78:.70);
+        const end={x:center.x+Math.cos(a)*len,y:center.y+Math.sin(a)*len*.93};
+        addPath(`M ${center.x} ${center.y} Q ${(center.x+end.x)/2+Math.sin(a)*8} ${(center.y+end.y)/2-Math.cos(a)*8} ${end.x} ${end.y}`,
+          {fill:"none",stroke:"rgba(236,245,214,.28)","stroke-width":k%2===0?"3":"2","stroke-linecap":"round"});
+      }
+      addCircle(center.x,center.y,5.5,{fill:"rgba(225,240,194,.30)"});
+      const dom=document.querySelector(`[data-id="${leaf.id}"]`);
+      dom.style.left=center.x+"px";dom.style.top=center.y+"px";
+    });
+
+    [.15,.29,.42,.58,.72,.85,.94].forEach((t,i)=>{
+      const c=centerline(t,W,H),n=normal(t,W,H),s=i%2?1:-1;
+      const x=c.x+n.x*s*18,y=c.y+n.y*s*18;
+      const d=`M ${x} ${y}
+               C ${x+n.x*s*56} ${y+n.y*s*56}, ${x+68*s} ${y-56}, ${x+28*s} ${y-84}
+               C ${x-7*s} ${y-108}, ${x-30*s} ${y-76}, ${x+1*s} ${y-58}
+               C ${x+22*s} ${y-46}, ${x+31*s} ${y-62}, ${x+15*s} ${y-72}`;
+      addPath(d,{fill:"none",stroke:"#739654","stroke-width":"4","stroke-linecap":"round"});
+    });
+
+    drawSoil(W,H);
+  }
+
+  const hopTargets=[...document.querySelectorAll("[data-hop]")];
+  const state={mode:"RESTING",target:null,lastJump:0,lastScroll:0,timer:null,dir:1};
+
+  function visibilityRatio(el){
+    const r=el.getBoundingClientRect(),vw=innerWidth,vh=innerHeight;
+    const iw=Math.max(0,Math.min(r.right,vw)-Math.max(r.left,0));
+    const ih=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));
+    return(iw*ih)/Math.max(1,r.width*r.height)
+  }
+  function anchorPoint(el){
+    const r=el.getBoundingClientRect();
+    const x=Number(el.dataset.hopX||.5),y=Number(el.dataset.hopY||.06);
+    return{x:r.left+r.width*x,y:r.top+r.height*y}
+  }
+  function setHopper(p,dir=1,rot=0,sx=1,sy=1){
+    hopper.style.left=p.x+"px";hopper.style.top=p.y+"px";
+    hopper.style.transform=`translate(-50%,-62%) scaleX(${dir*sx}) scaleY(${sy}) rotate(${rot}deg)`
+  }
+  function showNote(text,p,dir){
+    note.textContent=text||"hmm.";
+    note.style.left=(p.x+(dir>0?54:-205))+"px";note.style.top=(p.y-62)+"px";note.style.opacity=.92
+  }
+  function hideNote(){note.style.opacity=0}
+  function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+  function animate(ms,fn){
+    return new Promise(resolve=>{
+      const s=performance.now();
+      function tick(now){const t=clamp((now-s)/ms,0,1);fn(t);if(t<1)requestAnimationFrame(tick);else resolve()}
+      requestAnimationFrame(tick)
+    })
+  }
+  async function antennaTwitch(){
+    antA.animate([{transform:"rotate(0deg)"},{transform:"rotate(-16deg)"},{transform:"rotate(8deg)"},{transform:"rotate(0deg)"}],{duration:260,transformOrigin:"38px 25px"});
+    antB.animate([{transform:"rotate(0deg)"},{transform:"rotate(13deg)"},{transform:"rotate(-7deg)"},{transform:"rotate(0deg)"}],{duration:260,transformOrigin:"47px 23px"});
+    await sleep(280)
+  }
+  async function blink(){
+    eye.animate([{transform:"scaleY(1)"},{transform:"scaleY(.08)"},{transform:"scaleY(1)"}],{duration:170,transformOrigin:"44px 31px"});
+    await sleep(190)
+  }
+  async function idlePersonality(){
+    if(state.mode!=="RESTING"||!state.target)return;
+    const p=anchorPoint(state.target),roll=Math.random();
+    if(roll<.35)await blink();
+    else if(roll<.70)await antennaTwitch();
+    else await animate(320,t=>setHopper({x:p.x,y:p.y-Math.sin(Math.PI*t)*5},state.dir,Math.sin(t*Math.PI*2)*3,1,1))
+  }
+  function visibleCandidates(){
+    return hopTargets.filter(el=>{
+      if(el===state.target)return false;
+      const r=el.getBoundingClientRect(),ratio=visibilityRatio(el);
+      return ratio>.48&&r.bottom>70&&r.top<innerHeight-40
+    })
+  }
+  function chooseTarget(){
+    const current=state.target?anchorPoint(state.target):{x:innerWidth/2,y:innerHeight/2};
+    const candidates=visibleCandidates();
+    if(!candidates.length)return null;
+    const scored=candidates.map(el=>{
+      const p=anchorPoint(el);
+      const otherSide=(p.x-innerWidth/2)*(current.x-innerWidth/2)<0?2.05:1;
+      const distance=Math.hypot(p.x-current.x,p.y-current.y);
+      const sweet=distance>180&&distance<950?1.7:1;
+      return{el,score:otherSide*sweet*(.7+Math.random()*1.3)}
+    });
+    const total=scored.reduce((s,x)=>s+x.score,0);
+    let pick=Math.random()*total;
+    for(const item of scored){pick-=item.score;if(pick<=0)return item.el}
+    return scored[scored.length-1].el
+  }
+  async function jump(target){
+    if(state.mode!=="RESTING"||!target)return;
+    state.mode="ANTICIPATING";
+    const from=state.target?anchorPoint(state.target):{x:innerWidth*.5,y:innerHeight*.7};
+    let to=anchorPoint(target);
+    const dir=to.x>=from.x?1:-1;
+    state.dir=dir;hideNote();
+
+    const behavior=["normal","boing","hesitate","overshoot","sideways","loop"][Math.floor(Math.random()*6)];
+    if(behavior==="hesitate"){
+      showNote("...that one?",from,dir);await antennaTwitch();await sleep(380);
+      await animate(170,t=>setHopper({x:from.x-dir*14*t,y:from.y},dir,-8*t,1,1));await sleep(160)
+    }else{
+      if(Math.random()<.45)await blink();
+      await antennaTwitch();await sleep(random(160,420))
+    }
+
+    await animate(150,t=>{
+      const s=Math.sin(Math.PI*t);
+      setHopper(from,dir,0,1+.12*s,1-.22*s)
+    });
+
+    state.mode="JUMPING";
+    const duration=behavior==="boing"?980:behavior==="loop"?1050:behavior==="sideways"?880:820;
+    const apex=behavior==="boing"?225:behavior==="loop"?175:135;
+
+    await animate(duration,t=>{
+      to=anchorPoint(target);
+      let u=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+      let extraX=0,extraY=0,rot=0;
+      if(behavior==="overshoot")u=t<.82?1.10*(t/.82):1.10-.10*((t-.82)/.18);
+      if(behavior==="sideways"){extraX=Math.sin(Math.PI*t*2)*80*dir;extraY=Math.sin(Math.PI*t*2.2)*22}
+      if(behavior==="loop"){extraX=Math.sin(Math.PI*t*2)*95*dir;extraY=-Math.sin(Math.PI*t)*45;rot=Math.sin(Math.PI*t*2)*34}
+      const x=lerp(from.x,to.x,u)+extraX;
+      const y=lerp(from.y,to.y,u)-Math.sin(Math.PI*t)*apex+extraY;
+      if(behavior!=="loop")rot=(Math.sin(Math.PI*t)*10+(u-.5)*10)*dir;
+      setHopper({x,y},dir,rot,1-.07*Math.sin(Math.PI*t),1+.10*Math.sin(Math.PI*t))
+    });
+
+    state.mode="LANDING";to=anchorPoint(target);setHopper(to,dir,0,1,1);
+    await animate(200,t=>{
+      const s=Math.sin(Math.PI*t);
+      setHopper(anchorPoint(target),dir,0,1+.08*s,1-.15*s)
+    });
+
+    showNote(behavior==="overshoot"?"overshot the requirement. classic.":(target.dataset.joke||"landed. mostly."),anchorPoint(target),dir);
+    await sleep(random(650,1100));hideNote();
+
+    state.target=target;state.lastJump=performance.now();state.mode="RESTING";scheduleNext()
+  }
+  function scheduleNext(){
+    clearTimeout(state.timer);
+    if(reduced||document.hidden)return;
+    state.timer=setTimeout(async()=>{
+      if(state.mode!=="RESTING"){scheduleNext();return}
+      if(performance.now()-state.lastScroll<550){scheduleNext();return}
+      if(Math.random()<.42){await idlePersonality();await sleep(random(450,1100))}
+      const target=chooseTarget();
+      if(target)jump(target);else scheduleNext()
+    },random(1800,5400))
+  }
+  function stickToTarget(){
+    if(state.mode==="RESTING"&&state.target){
+      const p=anchorPoint(state.target);
+      if(p.y>-120&&p.y<innerHeight+120)setHopper(p,state.dir,0,1,1)
+    }
+  }
+
+  buildPlant();
+  state.target=document.querySelector(".hero-note");
+  state.dir=-1;
+  setHopper(anchorPoint(state.target),state.dir,0,1,1);
+  scheduleNext();
+
+  let ticking=false;
+  addEventListener("scroll",()=>{
+    state.lastScroll=performance.now();
+    if(!ticking){
+      requestAnimationFrame(()=>{stickToTarget();ticking=false});
+      ticking=true
+    }
+  },{passive:true});
+  addEventListener("resize",()=>{buildPlant();stickToTarget()});
+  document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(state.timer);else scheduleNext()});
+})();
+</script>
+</body>
 </html>
