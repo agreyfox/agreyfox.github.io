@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agreyfox — IT advisor · full-stack · AI</title>
+<meta name="description" content="agreyfox — IT consultant, full-stack developer, and AI collaborator with 20+ years in information systems. Building software and AI that stay under human judgment.">
+<meta property="og:title" content="agreyfox">
+<meta property="og:description" content="IT advisor · full-stack builder · AI collaborator. Systems that ship under real constraints.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f1ea">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+/* —— agreyfox profile · restrained editorial —— */
+:root{
+  --bg:#f4f1ea;
+  --bg-card:#fffcf7;
+  --ink:#14261c;
+  --muted:#5e6b63;
+  --faint:#8a948c;
+  --line:rgba(20,38,28,.10);
+  --coral:#c45a38;
+  --stem:#2f6b56;
+  --stem-soft:rgba(47,107,86,.10);
+  --shadow:0 20px 50px rgba(20,38,28,.07);
+  --serif:"Instrument Serif",Georgia,"Songti SC","Noto Serif SC",serif;
+  --sans:"DM Sans","PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --max:720px;
+  --wide:1080px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 45% at 100% 0%,rgba(196,90,56,.07),transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 80%,rgba(47,107,86,.06),transparent 50%);
+}
+a{color:var(--stem);text-underline-offset:3px}
+a:hover{color:var(--coral)}
+
+/* language visibility: default English */
+html[lang="en"] .zh{display:none!important}
+html[lang="zh-Hans"] .en{display:none!important}
+
+.wrap{width:min(var(--max),calc(100% - 2.5rem));margin:0 auto;position:relative;z-index:1}
+.wrap-wide{width:min(var(--wide),calc(100% - 2.5rem));margin:0 auto;position:relative;z-index:1}
+
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(244,241,234,.82);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.logo{
+  font-family:var(--serif);
+  font-size:1.35rem;
+  font-weight:400;
+  letter-spacing:-.02em;
+  text-decoration:none;
+  color:var(--ink);
+}
+.logo em{font-style:italic;color:var(--coral);font-weight:400}
+.nav-right{display:flex;align-items:center;gap:.15rem 1.1rem;flex-wrap:wrap;justify-content:flex-end}
+.nav-right a{
+  font-size:.82rem;font-weight:600;
+  text-decoration:none;color:var(--muted);
+  letter-spacing:.01em;
+}
+.nav-right a:hover{color:var(--ink)}
+.nav-right a.cta{
+  background:var(--ink);color:#f4f1ea!important;
+  padding:.45rem .9rem;border-radius:999px;
+}
+.nav-right a.cta:hover{background:var(--coral)}
+.lang{
+  display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+  margin-left:.25rem;
+}
+.lang button{
+  border:0;background:transparent;padding:.4rem .7rem;
+  font:600 .72rem/1 var(--sans);letter-spacing:.04em;
+  color:var(--faint);cursor:pointer;
+}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding:4.5rem 0 3rem}
+.eyebrow{
+  display:inline-block;
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 1.25rem;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.6rem,7.5vw,4.4rem);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin:0 0 1.5rem;
+  max-width:14ch;
+}
+.hero h1 i{font-style:italic;color:var(--coral)}
+.lede{
+  font-size:1.125rem;
+  color:var(--muted);
+  max-width:36rem;
+  margin:0 0 2rem;
+  line-height:1.7;
+}
+.lede strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:.7rem 1.2rem;
+  border-radius:999px;font-weight:600;font-size:.9rem;
+  text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease,background .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-solid{background:var(--ink);color:#f4f1ea}
+.btn-solid:hover{background:var(--coral);color:#fff}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--stem);color:var(--stem)}
+
+/* stats strip */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  margin:0 0 3.5rem;
+}
+.stats > div{
+  background:var(--bg-card);
+  padding:1.25rem 1.1rem;
+}
+.stats strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:1.55rem;
+  font-weight:400;
+  letter-spacing:-.02em;
+  margin-bottom:.2rem;
+}
+.stats span{font-size:.8rem;color:var(--muted);line-height:1.4}
+
+/* sections */
+section{padding:0 0 3.25rem}
+.section-label{
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 1rem;
+}
+.section-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.85rem,4vw,2.45rem);
+  letter-spacing:-.025em;
+  line-height:1.15;
+  margin:0 0 1rem;
+}
+.section-title i{font-style:italic;color:var(--coral)}
+.prose{color:var(--muted);max-width:38rem;margin:0}
+.prose + .prose{margin-top:.85rem}
+
+/* approach list */
+.steps{margin:1.75rem 0 0;padding:0;list-style:none;counter-reset:step}
+.steps li{
+  position:relative;
+  padding:1.35rem 0 1.35rem 3.5rem;
+  border-top:1px solid var(--line);
+  counter-increment:step;
+}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  position:absolute;left:0;top:1.4rem;
+  font-family:var(--serif);
+  font-size:1.15rem;
+  color:var(--coral);
+  letter-spacing:-.02em;
+}
+.steps h3{
+  margin:0 0 .4rem;
+  font-size:1.05rem;
+  font-weight:650;
+  letter-spacing:-.015em;
+}
+.steps p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.6}
+.proof{
+  display:inline-block;
+  margin-top:.65rem;
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--stem);
+  background:var(--stem-soft);
+  padding:.3rem .65rem;
+  border-radius:6px;
+  line-height:1.4;
+}
+.proof a{color:var(--stem);font-weight:700}
+
+/* work cards */
+.cards{display:grid;gap:1rem;margin-top:1.25rem}
+@media(min-width:700px){.cards{grid-template-columns:1.15fr .85fr}}
+.card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:1.5rem 1.45rem;
+  box-shadow:var(--shadow);
+  transition:border-color .15s,transform .15s;
+}
+.card:hover{border-color:rgba(196,90,56,.35);transform:translateY(-2px);color:inherit}
+.card .tag{
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral);margin:0 0 .65rem;
+}
+.card h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:1.55rem;
+  letter-spacing:-.02em;
+  margin:0 0 .55rem;
+}
+.card p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+.card .more{
+  display:inline-block;margin-top:1rem;
+  font-size:.85rem;font-weight:650;color:var(--coral);
+}
+
+/* contact band */
+.contact{
+  margin:1rem 0 3rem;
+  background:var(--ink);
+  color:#e8ede9;
+  border-radius:24px;
+  padding:2.25rem 1.85rem;
+}
+.contact h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.9rem,4vw,2.6rem);
+  letter-spacing:-.02em;
+  margin:0 0 .75rem;
+  color:#fff;
+}
+.contact h2 i{font-style:italic;color:#f0a080}
+.contact .lead{margin:0 0 1.25rem;color:rgba(232,237,233,.72);max-width:36rem;font-size:1rem}
+.scope{list-style:none;margin:0 0 1.5rem;padding:0}
+.scope li{
+  position:relative;
+  padding:.35rem 0 .35rem 1rem;
+  font-size:.9rem;
+  color:rgba(232,237,233,.78);
+}
+.scope li::before{
+  content:"";position:absolute;left:0;top:.7em;
+  width:5px;height:5px;border-radius:50%;background:var(--coral);
+}
+.scope li.out{opacity:.5}
+.scope li.out::before{background:rgba(255,255,255,.3)}
+.mail{
+  display:inline-block;
+  font-size:1.2rem;font-weight:650;
+  color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.25);
+  padding-bottom:.15rem;
+  margin-bottom:.85rem;
+}
+.mail:hover{color:#f0a080;border-color:#f0a080}
+.contact-meta{font-size:.85rem;color:rgba(232,237,233,.5);margin:0}
+.contact-meta a{color:rgba(232,237,233,.75)}
+
+/* footer */
+footer{
+  border-top:1px solid var(--line);
+  padding:1.5rem 0 2.5rem;
+  font-size:.8rem;
+  color:var(--faint);
+}
+.foot-row{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.25rem;
+  justify-content:space-between;align-items:center;
+}
+footer a{color:var(--faint);text-decoration:none;font-weight:600}
+footer a:hover{color:var(--ink)}
+
+/* decorative rule */
+.rule{
+  width:2.5rem;height:2px;border:0;
+  background:linear-gradient(90deg,var(--coral),transparent);
+  margin:0 0 1.5rem;
+}
+
+@media(max-width:720px){
+  .stats{grid-template-columns:1fr 1fr}
+  .hero{padding:3rem 0 2.25rem}
+  .nav-right a:not(.cta):not(.keep){display:none}
+  .contact{padding:1.75rem 1.25rem;border-radius:18px}
+  body{font-size:16px}
+}
+@media(max-width:400px){
+  .stats{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .btn:hover,.card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap-wide nav-inner">
+      <a class="logo" href="/">agre<em>y</em>fox</a>
+      <nav class="nav-right" aria-label="Primary">
+        <a class="keep" href="#work">
+          <span class="en">Work</span><span class="zh">作品</span>
+        </a>
+        <a class="keep" href="#approach">
+          <span class="en">Approach</span><span class="zh">方法</span>
+        </a>
+        <a class="keep" href="#contact">
+          <span class="en">Contact</span><span class="zh">联系</span>
+        </a>
+        <a class="keep" href="case.html">
+          <span class="en">Case</span><span class="zh">案例</span>
+        </a>
+        <a class="cta" href="mailto:e_raeb@yahoo.com">
+          <span class="en">Email</span><span class="zh">邮件</span>
+        </a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="langEn" aria-pressed="true">EN</button>
+          <button type="button" id="langZh" aria-pressed="false">中文</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero wrap">
+      <p class="eyebrow">
+        <span class="en">IT · Full-stack · AI systems</span>
+        <span class="zh">信息化 · 全栈 · 智能系统</span>
+      </p>
+      <h1 class="en">AI for work that still needs <i>judgment.</i></h1>
+      <h1 class="zh">为仍需<i>判断力</i>的工作，构建可靠的 AI。</h1>
+      <p class="lede en">
+        <strong>IT advisor and full-stack builder.</strong>
+        More than twenty years delivering information systems—now pairing engineering discipline with AI that remains under human review.
+      </p>
+      <p class="lede zh">
+        <strong>IT 顾问与全栈开发者。</strong>
+        二十余年信息化系统交付经验；将工程纪律与「必须经人审核」的 AI 能力结合，服务真实业务约束。
+      </p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#approach">
+          <span class="en">How I work</span><span class="zh">工作方式</span>
+        </a>
+        <a class="btn btn-ghost" href="#work">
+          <span class="en">Selected work</span><span class="zh">代表作品</span>
+        </a>
+        <a class="btn btn-ghost" href="mailto:e_raeb@yahoo.com">
+          <span class="en">Write to me</span><span class="zh">写邮件</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="wrap">
+      <div class="stats" aria-label="Profile highlights">
+        <div>
+          <strong>20+</strong>
+          <span class="en">years in information systems</span>
+          <span class="zh">年信息化服务经验</span>
+        </div>
+        <div>
+          <strong class="en">Full-stack</strong>
+          <strong class="zh">全栈</strong>
+          <span class="en">design through operations</span>
+          <span class="zh">从设计到交付运维</span>
+        </div>
+        <div>
+          <strong>AI</strong>
+          <span class="en">solutions under human judgment</span>
+          <span class="zh">人在环路中的智能方案</span>
+        </div>
+        <div>
+          <strong>fmr</strong>
+          <span class="en">local-first product shipping</span>
+          <span class="zh">本地优先产品推进中</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <section class="wrap" id="work">
+      <p class="section-label">
+        <span class="en">Selected work</span><span class="zh">代表作品</span>
+      </p>
+      <h2 class="section-title en">Things that have to <i>work.</i></h2>
+      <h2 class="section-title zh">必须真正<i>能用</i>的东西。</h2>
+      <div class="cards">
+        <a class="card" href="https://agreyfox.github.io/fmr/">
+          <p class="tag">
+            <span class="en">Product · In progress</span>
+            <span class="zh">产品 · 开发中</span>
+          </p>
+          <h3>fmr</h3>
+          <p class="en">
+            Family medical records—encrypted on device. Import lab photos and PDFs, review AI-extracted metrics in a table, then confirm before save. Free core; optional BYOK, local Ollama, or a limited cloud demo.
+          </p>
+          <p class="zh">
+            家庭医疗档案——默认本地加密存储。导入化验单照片与 PDF，在表格中审核 AI 提取的指标，确认后再入库。核心功能免费；可选自备密钥、本地 Ollama，或有限次数的云端演示。
+          </p>
+          <span class="more">
+            <span class="en">Product site, privacy &amp; terms →</span>
+            <span class="zh">产品站 · 隐私政策 · 条款 →</span>
+          </span>
+        </a>
+        <a class="card" href="https://github.com/agreyfox" target="_blank" rel="noreferrer">
+          <p class="tag">GitHub</p>
+          <h3>@agreyfox</h3>
+          <p class="en">
+            Public code and experiments. Client work stays disciplined: clear architecture, shippable delivery, and AI that a human can still audit.
+          </p>
+          <p class="zh">
+            公开代码与实验。对外交付保持纪律：清晰架构、可上线成果，以及仍可被人工审计的 AI 行为。
+          </p>
+          <span class="more">github.com/agreyfox →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="wrap" id="approach">
+      <p class="section-label">
+        <span class="en">Approach</span><span class="zh">方法</span>
+      </p>
+      <h2 class="section-title en">How the work <i>grows.</i></h2>
+      <h2 class="section-title zh">工作如何<i>展开</i>。</h2>
+      <hr class="rule">
+      <p class="prose en">
+        Curiosity opens the problem. Engineering makes it reliable. AI multiplies effort only where judgment still belongs to people. Evidence and honest scope keep the system worth running.
+      </p>
+      <p class="prose zh">
+        以问题本身为起点；用工程保证可靠；仅在「判断仍应属于人」之处引入 AI。证据与诚实的边界，让系统值得长期运行。
+      </p>
+
+      <ol class="steps">
+        <li>
+          <h3 class="en">Start from the real constraint</h3>
+          <h3 class="zh">从真实约束出发</h3>
+          <p class="en">Who is blocked, what breaks, which decision cannot be made. Tools come second.</p>
+          <p class="zh">谁被卡住、哪里失效、哪个决策做不下去。工具永远排在问题之后。</p>
+          <span class="proof en">20+ years framing IT as problems to solve—not feature lists.</span>
+          <span class="proof zh">二十余年经验：把信息化当作待解问题，而非功能清单堆砌。</span>
+        </li>
+        <li>
+          <h3 class="en">Give it structure</h3>
+          <h3 class="zh">赋予结构</h3>
+          <p class="en">Boundaries, flows, failure modes, feedback. One test: does it work in production?</p>
+          <p class="zh">边界、流程、故障模式与反馈。唯一检验：上线之后是否仍能工作？</p>
+          <span class="proof en">Full-stack delivery: design → build → operate—not slideware handoffs.</span>
+          <span class="proof zh">全栈交付：设计 → 实现 → 运维，而非甩文档式交接。</span>
+        </li>
+        <li>
+          <h3 class="en">Use AI as leverage</h3>
+          <h3 class="zh">以 AI 作杠杆</h3>
+          <p class="en">Models search, draft, and challenge. People still own the decision. Review should feel natural—not a checkbox after damage is done.</p>
+          <p class="zh">模型负责检索、起草与质疑；决策仍在人。审核应是流程中的自然步骤，而非事后补救的勾选。</p>
+          <span class="proof en">fmr: metrics enter the archive only after human confirm. <a href="https://agreyfox.github.io/fmr/">Product →</a></span>
+          <span class="proof zh">fmr：指标须经人工确认后方可入库。<a href="https://agreyfox.github.io/fmr/">产品站 →</a></span>
+        </li>
+        <li>
+          <h3 class="en">Keep evidence close</h3>
+          <h3 class="zh">紧贴证据</h3>
+          <p class="en">Logs beat narratives. Missing evidence is a finding, not a footnote to skip.</p>
+          <p class="zh">日志胜过叙事。证据缺失本身就是发现，不是可以跳过的脚注。</p>
+          <span class="proof en">Requirements and acceptance criteria written so they can be tested.</span>
+          <span class="proof zh">需求与验收标准写到可被测试、可被复核。</span>
+        </li>
+        <li>
+          <h3 class="en">Respect incentives</h3>
+          <h3 class="zh">尊重真实激励</h3>
+          <p class="en">Systems fail when they ignore how people actually behave. Map stakeholders before architecture freezes.</p>
+          <p class="zh">忽视真实行为的系统终将失败。架构定型之前，先理清利益相关方与激励结构。</p>
+          <span class="proof en">Workshops that surface incentives early—before the wrong system is built.</span>
+          <span class="proof zh">在错误系统成形前，通过研讨尽早暴露激励与阻力。</span>
+        </li>
+        <li>
+          <h3 class="en">Leave judgment human</h3>
+          <h3 class="zh">判断留给人</h3>
+          <p class="en">What should technology serve? Where must a person stay in the loop? Those questions sit next to the backlog—not on a separate ethics slide.</p>
+          <p class="zh">技术服务谁？何处必须有人在环？这些问题与待办并列，而不是单独一页「伦理声明」。</p>
+          <span class="proof en">No silent auto-commit of sensitive AI output.</span>
+          <span class="proof zh">敏感 AI 结果禁止在无人确认时静默写入。</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="wrap" id="contact">
+      <div class="contact">
+        <h2 class="en">Let’s talk <i>clearly.</i></h2>
+        <h2 class="zh">欢迎<i>认真</i>地谈。</h2>
+        <p class="lead en">
+          Open to consulting, system delivery, and AI solution design—especially human-in-the-loop workflows, local-first products, and modernization that must keep running.
+        </p>
+        <p class="lead zh">
+          欢迎就咨询、系统交付与 AI 方案设计交流——尤其关注人在环路中的流程、本地优先产品，以及必须持续运行的系统现代化。
+        </p>
+        <ul class="scope">
+          <li class="en">In scope — IT advisory, full-stack delivery, AI integration under review</li>
+          <li class="zh">范围内 — IT 咨询、全栈交付、可审核的 AI 集成</li>
+          <li class="en">In scope — Architecture, implementation, pragmatic handoff</li>
+          <li class="zh">范围内 — 架构、实现、务实的交接与落地</li>
+          <li class="out en">Out of scope — Medical diagnosis products; pure volume outsourcing</li>
+          <li class="out zh">范围外 — 医疗诊断类产品；纯人力堆量外包</li>
+        </ul>
+        <a class="mail" href="mailto:e_raeb@yahoo.com?subject=agreyfox">e_raeb@yahoo.com</a>
+        <p class="contact-meta en">
+          中文 / English · Reply within a few business days · Not for medical emergencies<br>
+          <a href="https://github.com/agreyfox">GitHub</a>
+          · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+          · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
+          · <a href="case.html">One-pager</a>
+        </p>
+        <p class="contact-meta zh">
+          中文 / English · 通常数个工作日内回复 · 非医疗急救渠道<br>
+          <a href="https://github.com/agreyfox">GitHub</a>
+          · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+          · <a href="https://agreyfox.github.io/fmr/privacy.html">隐私政策</a>
+          · <a href="case.html">一页案例</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap-wide foot-row">
+      <span>© <span id="y">2026</span> agreyfox</span>
+      <span>
+        <a href="https://github.com/agreyfox">GitHub</a>
+        · <a href="https://agreyfox.github.io/fmr/">fmr</a>
+        · <a href="case.html"><span class="en">Case</span><span class="zh">案例</span></a>
+      </span>
+      <span class="en">Built for clarity, not noise.</span>
+      <span class="zh">为清晰而建，不为喧哗。</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var KEY = "agreyfox-lang";
+    // Default: English always (user request). User toggle persists.
+    function apply(lang) {
+      var isZh = lang === "zh";
+      document.documentElement.lang = isZh ? "zh-Hans" : "en";
+      var en = document.getElementById("langEn");
+      var zh = document.getElementById("langZh");
+      if (en && zh) {
+        en.setAttribute("aria-pressed", isZh ? "false" : "true");
+        zh.setAttribute("aria-pressed", isZh ? "true" : "false");
+      }
+      try { localStorage.setItem(KEY, isZh ? "zh" : "en"); } catch (e) {}
+    }
+    // Default English; only use saved preference if user has chosen before
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    apply(saved === "zh" ? "zh" : "en");
+
+    document.getElementById("langEn").addEventListener("click", function () { apply("en"); });
+    document.getElementById("langZh").addEventListener("click", function () { apply("zh"); });
+    document.getElementById("y").textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
