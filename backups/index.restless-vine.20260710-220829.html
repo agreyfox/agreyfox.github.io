@@ -6,32 +6,25 @@
 <title>agreyfox — The Restless Vine</title>
 <meta name="description" content="agreyfox — IT consultant, full-stack developer & AI collaborator. AI systems for work that still requires human judgment.">
 <meta property="og:title" content="agreyfox — The Restless Vine">
-<meta property="og:description" content="agreyfox — IT consultant, full-stack developer, AI collaborator. 20+ years. Systems that ship under real constraints.">
+<meta property="og:description" content="AI systems for work that still requires human judgment.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#edf1e8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#edf1e8;
   --paper-warm:#f5f0e7;
   --ink:#173828;
   --muted:#68746b;
-  /* two accents only: coral + forest; chapter hues = tints of these */
-  --coral:#c85a3c;
-  --accent:#c85a3c;
-  --blue:#2f5c48;
-  --plum:#3d6b58;
-  --bronze:#4a6f55;
+  --coral:#d86749;
+  --blue:#426f95;
+  --plum:#8c5578;
+  --bronze:#9b713f;
   --teal:#3f7d73;
-  --violet:#264a3a;
+  --violet:#6f678f;
   --stem:#38683f;
-  --stem-light:#6a9458;
-  --shadow:rgba(26,58,40,.16);
-  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --sans:"DM Sans",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --stem-light:#719653;
+  --shadow:rgba(26,58,40,.18);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -41,7 +34,7 @@ body{
     radial-gradient(circle at 82% 4%,rgba(216,103,73,.11),transparent 19%),
     radial-gradient(circle at 8% 52%,rgba(66,111,149,.08),transparent 24%),
     linear-gradient(180deg,#eef2e9 0%,#edf1e8 48%,#f4eee5 100%);
-  font-family:var(--sans);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 body:before{
   content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.08;
@@ -54,7 +47,7 @@ nav{
   backdrop-filter:blur(15px);border-bottom:1px solid rgba(23,56,40,.10)
 }
 .navin{height:72px;display:flex;align-items:center;justify-content:space-between}
-.brand{font:700 20px/1 var(--serif)}
+.brand{font:700 20px/1 Georgia,serif}
 .navlinks{display:flex;gap:24px;align-items:center;font-size:13px}
 .navlinks a:last-child{background:var(--coral);color:#fff;padding:10px 16px;border-radius:999px}
 
@@ -63,7 +56,7 @@ nav{
   display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center
 }
 .kicker{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)}
-.hero h1{font:700 clamp(58px,7vw,114px)/.88 var(--serif);letter-spacing:-.055em;margin:20px 0 30px}
+.hero h1{font:700 clamp(58px,7vw,114px)/.88 Georgia,serif;letter-spacing:-.055em;margin:20px 0 30px}
 .hero h1 em{font-weight:400;color:var(--coral)}
 .hero p{font-size:20px;line-height:1.64;color:#526057;max-width:700px}
 .hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
@@ -83,7 +76,7 @@ nav{
   background:rgba(203,220,145,.94);border-radius:8px 8px 66px 8px;transform:rotate(2deg);
   box-shadow:0 22px 50px var(--shadow)
 }
-.hero-note b{display:block;font:700 28px/1.05 var(--serif);margin-bottom:10px}
+.hero-note b{display:block;font:700 28px/1.05 Georgia,serif;margin-bottom:10px}
 .hero-note span{font-size:14px;color:#3e533f}
 
 .identity-strip{
@@ -91,11 +84,11 @@ nav{
   padding:20px 0;background:rgba(255,255,255,.18)
 }
 .identity-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:18px;align-items:center}
-.identity-grid strong{font-family:var(--serif);font-size:24px}
+.identity-grid strong{font-family:Georgia,serif;font-size:24px}
 .identity-grid span{font-size:13px;color:#566258}
 
 .intro{text-align:center;max-width:860px;margin:0 auto;padding:95px 0 58px}
-.intro h2{font:700 clamp(50px,6vw,92px)/.94 var(--serif);letter-spacing:-.05em;margin:0 0 24px;color:#315b46}
+.intro h2{font:700 clamp(50px,6vw,92px)/.94 Georgia,serif;letter-spacing:-.05em;margin:0 0 24px;color:#315b46}
 .intro p{font-size:20px;line-height:1.64;color:var(--muted)}
 
 .story-stage{position:relative;min-height:7200px}
@@ -106,10 +99,10 @@ nav{
   width:470px;max-width:40vw;text-align:center;z-index:26
 }
 .flower-quote .line{
-  font:700 clamp(30px,3.3vw,45px)/1.02 var(--serif);
+  font:700 clamp(30px,3.3vw,45px)/1.02 Georgia,serif;
   letter-spacing:-.045em;color:#214233;text-shadow:0 2px 18px rgba(255,255,255,.78)
 }
-.flower-quote .line em{font-weight:400;color:var(--coral)}
+.flower-quote .line em{font-weight:400;color:#b94c71}
 .flower-quote .sub{
   margin:12px auto 0;font-size:14px;color:#59675f;line-height:1.4;
   max-width:370px;text-shadow:0 1px 10px rgba(255,255,255,.9)
@@ -119,7 +112,7 @@ nav{
   width:min(840px,calc(100% - 40px));text-align:center;color:#4c453c;
 }
 .soil-labels h3{
-  margin:0 0 14px;font:700 30px/1.05 var(--serif);letter-spacing:-.03em;color:#4a3b2b;
+  margin:0 0 14px;font:700 30px/1.05 Georgia,serif;letter-spacing:-.03em;color:#4a3b2b;
 }
 .soil-labels .soil-words{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 .soil-labels span{
@@ -132,7 +125,7 @@ nav{
 .story-copy.left{left:0}.story-copy.right{right:0}
 .story-copy .n{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--chapter-color)}
 .story-copy h3{
-  font:700 43px/1.01 var(--serif);letter-spacing:-.04em;margin:12px 0 16px;
+  font:700 43px/1.01 Georgia,serif;letter-spacing:-.04em;margin:12px 0 16px;
   color:var(--chapter-color)
 }
 .story-copy p{font-size:16px;line-height:1.6;color:#5e6b62;margin:0}
@@ -152,7 +145,7 @@ nav{
   background:radial-gradient(circle at 50% 40%,rgba(16,49,27,.24),rgba(16,49,27,.17) 56%,rgba(16,49,27,.10) 76%,transparent 100%);
   border-radius:28px
 }
-.leaf-content h3{margin:0 0 8px;font:700 24px/1.05 var(--serif);letter-spacing:-.028em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.leaf-content h3{margin:0 0 8px;font:700 24px/1.05 Georgia,serif;letter-spacing:-.028em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)}
 .leaf-content p{margin:0;font-size:13.5px;line-height:1.42;color:rgba(255,255,255,.93);text-shadow:0 1px 1px rgba(0,0,0,.14)}
 .leaf-content.small{width:220px}.leaf-content.small h3{font-size:21px}
 .leaf-content.mid{width:250px}
@@ -165,19 +158,19 @@ nav{
 }
 .grasshopper svg{width:100%;height:100%;overflow:visible}
 .jump-note{
-  position:fixed;z-index:59;pointer-events:none;font-family:var(--sans);font-weight:600;letter-spacing:-.01em;
+  position:fixed;z-index:59;pointer-events:none;font-family:"Comic Sans MS","Bradley Hand",cursive;
   color:#406d44;font-size:14px;max-width:220px;opacity:0;transition:opacity .22s ease
 }
 
 .closing{padding:130px 0 50px;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:end}
-.closing h2{font:700 clamp(60px,7vw,108px)/.89 var(--serif);letter-spacing:-.055em;margin:0;color:#315b46}
+.closing h2{font:700 clamp(60px,7vw,108px)/.89 Georgia,serif;letter-spacing:-.055em;margin:0;color:#315b46}
 .closing h2 em{font-weight:400;color:var(--coral)}
 .closing p{font-size:20px;line-height:1.64;color:#59635a}
 .contact{
   margin:60px 0 0;background:#173828;color:white;border-radius:42px;padding:62px;
   display:grid;grid-template-columns:1.1fr .9fr;gap:50px
 }
-.contact h3{font:700 58px/.95 var(--serif);margin:0;color:#f2c6d2}
+.contact h3{font:700 58px/.95 Georgia,serif;margin:0;color:#f2c6d2}
 .contact p{font-size:18px;line-height:1.65;color:#c9d3ca}
 .contact a.mail{display:inline-block;margin-top:12px;padding:14px 20px;border-radius:999px;background:var(--coral);font-weight:750}
 .github-line{margin-top:18px;color:#c9d3ca;font-size:15px}
@@ -200,78 +193,22 @@ footer{padding:38px 0 50px;font-size:13px;color:#677067}
   .flower-quote{top:155px;width:280px;max-width:70vw}.flower-quote .line{font-size:24px}.flower-quote .sub{font-size:12px}
   .contact{padding:34px}
 }
-
-/* P0–P1: proof, work strip, hopper toggle, mobile linear */
-.proof{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
-.proof a{color:var(--coral);text-decoration:underline;text-underline-offset:2px}
-.work-strip{padding:48px 0 20px}
-.work-strip .kicker{margin-bottom:14px}
-.work-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
-@media(max-width:800px){.work-grid{grid-template-columns:1fr}}
-.work-card{
-  display:block;padding:26px 28px;border-radius:28px;
-  background:rgba(255,255,255,.45);border:1px solid rgba(23,56,40,.12);
-  transition:border-color .15s,transform .15s,box-shadow .15s
-}
-.work-card:hover{border-color:rgba(200,90,60,.4);transform:translateY(-2px);box-shadow:0 16px 40px var(--shadow)}
-.work-card .meta{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:0 0 10px}
-.work-card h3{font:700 28px/1.05 var(--serif);margin:0 0 10px;letter-spacing:-.03em}
-.work-card p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
-.work-card .go{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--coral)}
-.scope-list{margin:16px 0 0;padding:0;list-style:none}
-.scope-list li{margin:8px 0;padding-left:14px;position:relative;font-size:15px;color:#c9d3ca;line-height:1.45}
-.scope-list li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--coral)}
-.scope-list .out{opacity:.55}
-.hopper-toggle{
-  position:fixed;right:16px;bottom:16px;z-index:90;
-  padding:10px 14px;border-radius:999px;border:1px solid rgba(23,56,40,.18);
-  background:rgba(237,241,232,.92);backdrop-filter:blur(10px);
-  font:600 12px/1 var(--sans);color:var(--ink);cursor:pointer;
-  box-shadow:0 8px 24px var(--shadow)
-}
-.hopper-toggle:hover{border-color:var(--coral);color:var(--coral)}
-.hopper-toggle[aria-pressed="false"]{opacity:.85}
-body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
-.linear-path{display:none;padding:10px 0 40px}
-.linear-path article{
-  margin:0 0 18px;padding:22px 22px 20px;border-radius:22px;
-  background:rgba(255,255,255,.42);border:1px solid rgba(23,56,40,.1)
-}
-.linear-path .n{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--coral)}
-.linear-path h3{font:700 26px/1.08 var(--serif);margin:8px 0 10px;letter-spacing:-.03em}
-.linear-path p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
-.linear-path .proof{margin-top:12px}
-@media(max-width:680px){
-  .story-stage{display:none!important}
-  .linear-path{display:block}
-  .intro{padding:56px 0 24px}
-  .intro h2{font-size:clamp(36px,10vw,52px)}
-  .hero{padding:100px 0 40px;min-height:auto}
-  .hero h1{font-size:clamp(40px,11vw,64px)}
-  .hero-art{height:380px;margin-top:12px}
-  .hero-note{width:min(280px,88%);right:8px;bottom:16px}
-  .contact{padding:34px;border-radius:28px}
-  .contact h3{font-size:36px}
-  .closing{padding:70px 0 30px}
-  .closing h2{font-size:clamp(40px,11vw,64px)}
-  .identity-grid strong{font-size:20px}
-}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .grasshopper,.jump-note,.hopper-toggle{display:none!important}
+  .grasshopper,.jump-note{display:none!important}
 }
 </style>
 </head>
-<body class="hopper-off">
+<body>
 <nav>
   <div class="wrap navin">
     <div class="brand">agreyfox</div>
     <div class="navlinks">
-      <a href="#work">Work</a>
-      <a href="#story">Approach</a>
+      <a href="#story">Story</a>
+      <a href="#ideas">Ideas</a>
       <a href="#contact">Contact</a>
-      <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="mailto:e_raeb@yahoo.com">Email</a>
+      <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a>
+      <a href="mailto:e_raeb@yahoo.com">Write me an email</a>
     </div>
   </div>
 </nav>
@@ -279,17 +216,16 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
 <div class="wrap">
   <section class="hero">
     <div>
-      <div class="kicker">IT · Full-stack · AI systems</div>
+      <div class="kicker">A profile grown from curiosity</div>
       <h1>AI for work that still requires <em>judgment.</em></h1>
-      <p><strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.</p>
+      <p>I'm agreyfox — IT consultant, full-stack developer and AI collaborator, with 20+ years building systems for real work. I like intelligent systems. I like them even more when they actually start, solve something real, and leave people more capable than before.</p>
       <div class="hero-actions">
-        <a class="button" data-hop data-joke="scroll. the vine does the talking." data-hop-y=".05" href="#story">How I work</a>
-        <a class="button ghost" data-hop data-joke="product, then policy." data-hop-y=".05" href="#work">Selected work</a>
-        <a class="button ghost" data-hop data-joke="email is still a good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com">Email</a>
+        <a class="button" data-hop data-joke="first leaf, then another question." data-hop-y=".05" href="#story">Follow the vine</a>
+        <a class="button ghost" data-hop data-joke="email is still a surprisingly good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com">Write me an email</a>
       </div>
       <div class="handle-row">
-        <span class="handle-pill" data-hop data-joke="yes, the fox is grey." data-hop-y=".05">GitHub · <strong>@agreyfox</strong></span>
-        <span class="handle-pill" data-hop data-joke="direct line." data-hop-y=".05">Email · <strong>e_raeb@yahoo.com</strong></span>
+        <span class="handle-pill" data-hop data-joke="yes, the fox is grey." data-hop-y=".05">GitHub: <strong>@agreyfox</strong></span>
+        <span class="handle-pill" data-hop data-joke="RFC 5322 approved. probably." data-hop-y=".05">Email: <strong>e_raeb@yahoo.com</strong></span>
       </div>
     </div>
 
@@ -335,70 +271,51 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
           <path d="M0 -68 C45 -45 59 3 43 47 C30 82 -31 82 -45 48 C-62 6 -45 -46 0 -68Z" fill="url(#avocadoSkin)"/>
           <path d="M0 -50 C34 -31 44 5 32 39 C22 64 -22 64 -33 40 C-46 8 -34 -32 0 -50Z" fill="url(#avocadoFlesh)"/>
           <circle cx="0" cy="22" r="20" fill="#9b7449"/>
-          <text x="0" y="-18" text-anchor="middle" font-family="var(--serif)" font-size="14" font-weight="700" fill="#274331">Ask better</text>
-          <text x="0" y="-2" text-anchor="middle" font-family="var(--serif)" font-size="14" font-weight="700" fill="#274331">questions</text>
+          <text x="0" y="-18" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#274331">Ask better</text>
+          <text x="0" y="-2" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#274331">questions</text>
         </g>
 
         <g transform="translate(177 273) rotate(10)" filter="url(#heroShadow)">
           <path d="M0 -62 C42 -41 55 2 40 43 C27 76 -28 77 -42 44 C-58 5 -42 -42 0 -62Z" fill="url(#avocadoSkin)"/>
           <path d="M0 -46 C31 -29 42 4 30 35 C20 59 -20 60 -31 37 C-43 6 -31 -30 0 -46Z" fill="url(#avocadoFlesh)"/>
           <circle cx="0" cy="18" r="18" fill="#9b7449"/>
-          <text x="0" y="-14" text-anchor="middle" font-family="var(--serif)" font-size="13" font-weight="700" fill="#274331">See the</text>
-          <text x="0" y="1" text-anchor="middle" font-family="var(--serif)" font-size="13" font-weight="700" fill="#274331">pattern</text>
+          <text x="0" y="-14" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#274331">See the</text>
+          <text x="0" y="1" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#274331">pattern</text>
         </g>
 
         <g transform="translate(229 155) rotate(-9)" filter="url(#heroShadow)">
           <path d="M0 -57 C38 -38 50 0 37 38 C25 68 -25 69 -38 40 C-52 4 -38 -39 0 -57Z" fill="url(#avocadoSkin)"/>
           <path d="M0 -42 C29 -27 38 3 28 31 C18 52 -18 53 -29 33 C-40 5 -29 -27 0 -42Z" fill="url(#avocadoFlesh)"/>
           <circle cx="0" cy="17" r="16" fill="#9b7449"/>
-          <text x="0" y="-11" text-anchor="middle" font-family="var(--serif)" font-size="12" font-weight="700" fill="#274331">Keep judgment</text>
-          <text x="0" y="3" text-anchor="middle" font-family="var(--serif)" font-size="12" font-weight="700" fill="#274331">human</text>
+          <text x="0" y="-11" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#274331">Keep judgment</text>
+          <text x="0" y="3" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#274331">human</text>
         </g>
 
         <path d="M338 63 C329 30 358 18 372 39 C383 57 360 72 348 56 C339 44 350 35 357 43"
               fill="none" stroke="#789d59" stroke-width="6" stroke-linecap="round"/>
       </svg>
-      <div class="hero-note" data-hop data-joke="ship, then refine." data-hop-y=".03">
-        <b>Still shipping.</b>
-        <span>Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.</span>
+      <div class="hero-note" data-hop data-joke="no résumé bullet survived unexamined." data-hop-y=".03">
+        <b>A living profile.<br>Not a résumé.</b>
+        <span>The point is not to list skills. The point is to show how a mind grows.</span>
       </div>
     </div>
   </section>
 </div>
 
-<section class="identity-strip" aria-label="Credentials">
+<section class="identity-strip">
   <div class="wrap identity-grid">
-    <div><strong>agreyfox</strong><br><span>IT consultant · full-stack · AI collaborator</span></div>
-    <div><strong>20+</strong><br><span>years in information systems</span></div>
-    <div><strong>AI</strong><br><span>solutions under human judgment</span></div>
-    <div><strong>fmr</strong><br><span>local-first product · <a href="https://agreyfox.github.io/fmr/">site</a></span></div>
+    <strong data-hop data-joke="still easier to spell than a product roadmap." data-hop-y=".05">agreyfox</strong>
+    <span data-hop data-joke="AI, but with adult supervision." data-hop-y=".05">AI systems · human judgment</span>
+    <span data-hop data-joke="relations keep escaping tables." data-hop-y=".05">Graph thinking · agent workflows</span>
+    <span data-hop data-joke="github.com/agreyfox" data-hop-y=".05">@agreyfox · open to new directions</span>
   </div>
 </section>
 
 <div class="wrap">
-
-<section class="work-strip wrap" id="work">
-  <div class="kicker">Selected work</div>
-  <div class="work-grid">
-    <a class="work-card" href="https://agreyfox.github.io/fmr/" data-hop data-joke="local-first, then cloud if you choose." data-hop-y=".04">
-      <p class="meta">Product · Shipping</p>
-      <h3>fmr — family medical records</h3>
-      <p>Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.</p>
-      <span class="go">Product site · Privacy · Terms →</span>
-    </a>
-    <a class="work-card" href="https://github.com/agreyfox" target="_blank" rel="noreferrer" data-hop data-joke="code when it helps the story." data-hop-y=".04">
-      <p class="meta">Open · GitHub</p>
-      <h3>@agreyfox</h3>
-      <p>Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.</p>
-      <span class="go">github.com/agreyfox →</span>
-    </a>
-  </div>
-</section>
-
-  <section class="intro" id="story" data-hop data-joke="roots before flowers." data-hop-y=".08">
-    <div class="kicker">Approach</div>
+  <section class="intro" id="story" data-hop data-joke="the story is longer than the README." data-hop-y=".08">
+    <div class="kicker">The story grows downward</div>
     <h2>The flower is visible.<br>The growth happened below.</h2>
-    <p>Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.</p>
+    <p>Curiosity became the seed. Engineering gave it structure. AI gave it leverage. Law taught it to reason. Markets taught it to read stories. Philosophy keeps asking whether any of this is worth doing.</p>
   </section>
 
   <section class="story-stage" id="ideas">
@@ -406,38 +323,32 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
 
     <div class="flower-quote" data-hop data-joke="wisdom, now available in flower format." data-hop-y=".02">
       <div class="line">Grown from curiosity.<br><em>Shared as judgment.</em></div>
-      <div class="sub">IT · full-stack · AI under human review — useful before ornamental.</div>
+      <div class="sub">Useful wisdom becomes beautiful after it becomes useful to people.</div>
     </div>
 
-    <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. then ship." data-hop-y=".04">
+    <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. confidence later." data-hop-y=".04">
       <div class="n">01 / THE SEED</div><h3>Curiosity became the seed.</h3>
-      <p>Start from the real constraint: who fails, what breaks, what decision is blocked. Tools come second.</p>
-      <span class="proof">Proof · 20+ years of IT programs framed as problems, not feature lists.</span>
+      <p>I keep asking why systems behave the way they do, why people decide the way they do, and why complicated things still fail at simple human needs.</p>
     </div>
-    <div class="story-copy right structure" style="top:1780px" data-hop data-joke="if it only works in the demo, it does not work." data-hop-y=".04">
+    <div class="story-copy right structure" style="top:1780px" data-hop data-joke="structure: the polite name for controlled obsession." data-hop-y=".04">
       <div class="n">02 / STRUCTURE</div><h3>Engineering gave it structure.</h3>
-      <p>Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?</p>
-      <span class="proof">Proof · Full-stack delivery: design → build → operate, not slideware handoffs.</span>
+      <p>Boundaries, flows, failure modes, feedback — and one practical question: does it actually work?</p>
     </div>
     <div class="story-copy left leverage" style="top:2870px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
       <div class="n">03 / LEVERAGE</div><h3>AI gave it leverage.</h3>
-      <p>Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.</p>
-      <span class="proof">Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a></span>
+      <p>AI can search, compare, calculate, remember and challenge. My interest is not replacing the person. It is giving the person better ammunition.</p>
     </div>
-    <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="show the evidence path." data-hop-y=".04">
-      <div class="n">04 / REASONING</div><h3>Evidence keeps it honest.</h3>
-      <p>Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.</p>
-      <span class="proof">Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.</span>
+    <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="objection noted. evidence requested." data-hop-y=".04">
+      <div class="n">04 / REASONING</div><h3>Law taught it to reason.</h3>
+      <p>Facts are not opinions. Rules are not facts. Evidence matters. Missing evidence matters too.</p>
     </div>
-    <div class="story-copy left stories" style="top:5070px" data-hop data-joke="incentives explain more than features." data-hop-y=".04">
-      <div class="n">05 / STORIES</div><h3>Incentives shape the system.</h3>
-      <p>Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.</p>
-      <span class="proof">Proof · Stakeholder workshops that map incentives before architecture freezes.</span>
+    <div class="story-copy left stories" style="top:5070px" data-hop data-joke="the chart moved. everyone wrote a story." data-hop-y=".04">
+      <div class="n">05 / STORIES</div><h3>Markets taught it stories.</h3>
+      <p>Markets are data, incentives, fear, belief and narrative colliding at speed. I became interested in what the market is doing — and what people think it is doing.</p>
     </div>
-    <div class="story-copy right compass" style="top:6120px" data-hop data-joke="judgment stays human." data-hop-y=".04">
-      <div class="n">06 / THE COMPASS</div><h3>Judgment stays human.</h3>
-      <p>What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.</p>
-      <span class="proof">Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).</span>
+    <div class="story-copy right compass" style="top:6120px" data-hop data-joke="existential detour. back in five minutes." data-hop-y=".04">
+      <div class="n">06 / THE COMPASS</div><h3>Philosophy keeps it honest.</h3>
+      <p>What should technology serve? What remains human when systems become powerful? I do not always have answers. I keep the questions around.</p>
     </div>
 
     <article class="leaf-content xwide" data-id="curious" data-hop data-joke="curiosity takes the scenic route" data-hop-y=".04"><div class="panel"><h3>Curious by Nature</h3><p>He starts with questions most people walk past.</p></div></article>
@@ -464,30 +375,21 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
     </div>
   </section>
 
-  <section class="closing" data-hop data-joke="still iterating." data-hop-y=".03">
-    <h2>Still building what has to <em>work.</em></h2>
-    <p>Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.</p>
+  <section class="closing" data-hop data-joke="the vine refuses to call this a final release." data-hop-y=".03">
+    <h2>The vine is still <em>growing.</em></h2>
+    <p>New business. New work. New directions. I am interested in problems that are messy, consequential, difficult to automate, and worth solving properly.</p>
   </section>
 
-  <section class="contact" id="contact" data-hop data-joke="humans may still email humans." data-hop-y=".04">
-    <h3>Let’s talk.</h3>
+  <section class="contact" id="contact" data-hop data-joke="yes, humans may still contact humans directly." data-hop-y=".04">
+    <h3>Write me an email.</h3>
     <div>
-      <p>Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.</p>
-      <ul class="scope-list">
-        <li>In scope · IT advisory, full-stack delivery, AI integration under review</li>
-        <li>In scope · Architecture, implementation, pragmatic handoff</li>
-        <li class="out">Out of scope · Medical diagnosis products, pure spam-volume outsourcing</li>
-      </ul>
-      <a class="mail" href="mailto:e_raeb@yahoo.com?subject=agreyfox%20inquiry">e_raeb@yahoo.com →</a>
-      <div class="github-line">GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a>
-        · Product: <a href="https://agreyfox.github.io/fmr/">fmr</a>
-        · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a></div>
-      <p class="github-line" style="margin-top:10px;opacity:.75;font-size:13px">Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies</p>
+      <p>If you're building an AI product, rethinking professional work, exploring human-in-the-loop systems, or simply have a problem that refuses to fit in a neat box, we probably have something to talk about.</p>
+      <a class="mail" href="mailto:e_raeb@yahoo.com">e_raeb@yahoo.com →</a>
+      <div class="github-line">GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a></div>
     </div>
   </section>
 </div>
 
-<button type="button" class="hopper-toggle" id="hopperToggle" aria-pressed="false" title="Toggle grasshopper">Hopper: off</button>
 <div class="grasshopper" id="grasshopper" aria-hidden="true">
   <svg viewBox="0 0 132 90">
     <g>
@@ -512,11 +414,9 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
 
 <footer>
   <div class="wrap footer">
-    <span>© 2026 agreyfox · personal</span>
-    <span><a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
-      · <a href="https://agreyfox.github.io/fmr/">fmr</a>
-      · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a></span>
-    <span>Still building what has to work.</span>
+    <span>© 2026 agreyfox</span>
+    <span>GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a></span>
+    <span>Still asking better questions.</span>
   </div>
 </footer>
 
@@ -532,18 +432,6 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
   const antB=document.getElementById("antB");
   const eye=document.getElementById("eyeLid");
   const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hopperEnabled=()=>!document.body.classList.contains("hopper-off")&&!reduced;
-  const hopperToggle=document.getElementById("hopperToggle");
-  if(hopperToggle){
-    hopperToggle.addEventListener("click",()=>{
-      const on=document.body.classList.toggle("hopper-off");
-      // class hopper-off means OFF; aria-pressed true when ON
-      const enabled=!document.body.classList.contains("hopper-off");
-      hopperToggle.setAttribute("aria-pressed", enabled?"true":"false");
-      hopperToggle.textContent=enabled?"Hopper: on":"Hopper: off";
-      if(enabled){scheduleNext()}else{clearTimeout(state.timer);hideNote()}
-    });
-  }
 
   const leaves=[
     {id:"curious",t:.13,side:1,type:"castor",r:235,lobes:9,rot:-3},
@@ -830,7 +718,7 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
     return scored[scored.length-1].el
   }
   async function jump(target){
-    if(!hopperEnabled()||state.mode!=="RESTING"||!target)return;
+    if(state.mode!=="RESTING"||!target)return;
     state.mode="ANTICIPATING";
     const from=state.target?anchorPoint(state.target):{x:innerWidth*.5,y:innerHeight*.7};
     let to=anchorPoint(target);
@@ -881,7 +769,7 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
   }
   function scheduleNext(){
     clearTimeout(state.timer);
-    if(!hopperEnabled()||document.hidden)return;
+    if(reduced||document.hidden)return;
     state.timer=setTimeout(async()=>{
       if(state.mode!=="RESTING"){scheduleNext();return}
       if(performance.now()-state.lastScroll<550){scheduleNext();return}
