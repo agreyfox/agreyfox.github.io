@@ -55,7 +55,7 @@ nav{
 }
 .navin{height:72px;display:flex;align-items:center;justify-content:space-between}
 .brand{font:700 20px/1 var(--serif)}
-.navlinks{display:flex;gap:12px 16px;align-items:center;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.navlinks{display:flex;gap:24px;align-items:center;font-size:13px}
 .navlinks a:last-child{background:var(--coral);color:#fff;padding:10px 16px;border-radius:999px}
 
 .hero{
@@ -232,20 +232,6 @@ footer{padding:38px 0 50px;font-size:13px;color:#677067}
 .hopper-toggle:hover{border-color:var(--coral);color:var(--coral)}
 .hopper-toggle[aria-pressed="false"]{opacity:.85}
 body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
-
-.lang-toggle{
-  display:inline-flex;align-items:center;gap:0;border:1px solid rgba(23,56,40,.16);
-  border-radius:999px;overflow:hidden;font-size:12px;font-weight:700
-}
-.lang-toggle button{
-  border:0;background:transparent;padding:8px 11px;cursor:pointer;
-  font:700 12px/1 var(--sans);color:var(--muted)
-}
-.lang-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
-@media print{
-  nav,.grasshopper,.jump-note,.hopper-toggle,.lang-toggle{display:none!important}
-}
-
 .linear-path{display:none;padding:10px 0 40px}
 .linear-path article{
   margin:0 0 18px;padding:22px 22px 20px;border-radius:22px;
@@ -281,16 +267,11 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
   <div class="wrap navin">
     <div class="brand">agreyfox</div>
     <div class="navlinks">
-      <a href="#work" data-i18n="nav_work">Work</a>
-      <a href="#story" data-i18n="nav_approach">Approach</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
-      <a href="case.html" data-i18n="nav_case">Case</a>
+      <a href="#work">Work</a>
+      <a href="#story">Approach</a>
+      <a href="#contact">Contact</a>
       <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="mailto:e_raeb@yahoo.com" data-i18n="nav_email">Email</a>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" id="langEn" aria-pressed="true">EN</button>
-        <button type="button" id="langZh" aria-pressed="false">中文</button>
-      </div>
+      <a href="mailto:e_raeb@yahoo.com">Email</a>
     </div>
   </div>
 </nav>
@@ -298,13 +279,13 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
 <div class="wrap">
   <section class="hero">
     <div>
-      <div class="kicker" data-i18n="hero_kicker">IT · Full-stack · AI systems</div>
-      <h1 data-i18n-html="hero_h1">AI for work that still requires <em>judgment.</em></h1>
-      <p data-i18n-html="hero_p"><strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.</p>
+      <div class="kicker">IT · Full-stack · AI systems</div>
+      <h1>AI for work that still requires <em>judgment.</em></h1>
+      <p><strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.</p>
       <div class="hero-actions">
-        <a class="button" data-hop data-joke="scroll. the vine does the talking." data-hop-y=".05" href="#story" data-i18n="hero_cta_work">How I work</a>
-        <a class="button ghost" data-hop data-joke="product, then policy." data-hop-y=".05" href="#work" data-i18n="hero_cta_selected">Selected work</a>
-        <a class="button ghost" data-hop data-joke="email is still a good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com" data-i18n="hero_cta_email">Email</a>
+        <a class="button" data-hop data-joke="scroll. the vine does the talking." data-hop-y=".05" href="#story">How I work</a>
+        <a class="button ghost" data-hop data-joke="product, then policy." data-hop-y=".05" href="#work">Selected work</a>
+        <a class="button ghost" data-hop data-joke="email is still a good protocol." data-hop-y=".05" href="mailto:e_raeb@yahoo.com">Email</a>
       </div>
       <div class="handle-row">
         <span class="handle-pill" data-hop data-joke="yes, the fox is grey." data-hop-y=".05">GitHub · <strong>@agreyfox</strong></span>
@@ -378,8 +359,8 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
               fill="none" stroke="#789d59" stroke-width="6" stroke-linecap="round"/>
       </svg>
       <div class="hero-note" data-hop data-joke="ship, then refine." data-hop-y=".03">
-        <b data-i18n="hero_note_b">Still shipping.</b>
-        <span data-i18n="hero_note_s">Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.</span>
+        <b>Still shipping.</b>
+        <span>Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.</span>
       </div>
     </div>
   </section>
@@ -387,37 +368,37 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
 
 <section class="identity-strip" aria-label="Credentials">
   <div class="wrap identity-grid">
-    <div><strong>agreyfox</strong><br><span data-i18n="id_role">IT consultant · full-stack · AI collaborator</span></div>
-    <div><strong>20+</strong><br><span data-i18n="id_years">years in information systems</span></div>
-    <div><strong>AI</strong><br><span data-i18n="id_ai">solutions under human judgment</span></div>
-    <div><strong>fmr</strong><br><span data-i18n-html="id_fmr">local-first product · <a href="https://agreyfox.github.io/fmr/">site</a></span></div>
+    <div><strong>agreyfox</strong><br><span>IT consultant · full-stack · AI collaborator</span></div>
+    <div><strong>20+</strong><br><span>years in information systems</span></div>
+    <div><strong>AI</strong><br><span>solutions under human judgment</span></div>
+    <div><strong>fmr</strong><br><span>local-first product · <a href="https://agreyfox.github.io/fmr/">site</a></span></div>
   </div>
 </section>
 
 <div class="wrap">
 
 <section class="work-strip wrap" id="work">
-  <div class="kicker" data-i18n="work_kicker">Selected work</div>
+  <div class="kicker">Selected work</div>
   <div class="work-grid">
     <a class="work-card" href="https://agreyfox.github.io/fmr/" data-hop data-joke="local-first, then cloud if you choose." data-hop-y=".04">
-      <p class="meta" data-i18n="work_fmr_meta">Product · Shipping</p>
-      <h3 data-i18n="work_fmr_h">fmr — family medical records</h3>
-      <p data-i18n="work_fmr_p">Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.</p>
-      <span class="go" data-i18n="work_fmr_go">Product site · Privacy · Terms →</span>
+      <p class="meta">Product · Shipping</p>
+      <h3>fmr — family medical records</h3>
+      <p>Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.</p>
+      <span class="go">Product site · Privacy · Terms →</span>
     </a>
     <a class="work-card" href="https://github.com/agreyfox" target="_blank" rel="noreferrer" data-hop data-joke="code when it helps the story." data-hop-y=".04">
-      <p class="meta" data-i18n="work_gh_meta">Open · GitHub</p>
+      <p class="meta">Open · GitHub</p>
       <h3>@agreyfox</h3>
-      <p data-i18n="work_gh_p">Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.</p>
+      <p>Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.</p>
       <span class="go">github.com/agreyfox →</span>
     </a>
   </div>
 </section>
 
   <section class="intro" id="story" data-hop data-joke="roots before flowers." data-hop-y=".08">
-    <div class="kicker" data-i18n="intro_kicker">Approach</div>
-    <h2 data-i18n-html="intro_h2">The flower is visible.<br>The growth happened below.</h2>
-    <p data-i18n="intro_p">Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.</p>
+    <div class="kicker">Approach</div>
+    <h2>The flower is visible.<br>The growth happened below.</h2>
+    <p>Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.</p>
   </section>
 
   <section class="story-stage" id="ideas">
@@ -429,34 +410,34 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
     </div>
 
     <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. then ship." data-hop-y=".04">
-      <div class="n">01 / THE SEED</div><h3 data-i18n="ch1_h">Curiosity became the seed.</h3>
+      <div class="n">01 / THE SEED</div><h3>Curiosity became the seed.</h3>
       <p>Start from the real constraint: who fails, what breaks, what decision is blocked. Tools come second.</p>
-      <span class="proof" data-i18n="ch1_proof">Proof · 20+ years of IT programs framed as problems, not feature lists.</span>
+      <span class="proof">Proof · 20+ years of IT programs framed as problems, not feature lists.</span>
     </div>
     <div class="story-copy right structure" style="top:1780px" data-hop data-joke="if it only works in the demo, it does not work." data-hop-y=".04">
-      <div class="n">02 / STRUCTURE</div><h3 data-i18n="ch2_h">Engineering gave it structure.</h3>
-      <p data-i18n="ch2_p">Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?</p>
-      <span class="proof" data-i18n="ch2_proof">Proof · Full-stack delivery: design → build → operate, not slideware handoffs.</span>
+      <div class="n">02 / STRUCTURE</div><h3>Engineering gave it structure.</h3>
+      <p>Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?</p>
+      <span class="proof">Proof · Full-stack delivery: design → build → operate, not slideware handoffs.</span>
     </div>
     <div class="story-copy left leverage" style="top:2870px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
-      <div class="n">03 / LEVERAGE</div><h3 data-i18n="ch3_h">AI gave it leverage.</h3>
-      <p data-i18n="ch3_p">Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.</p>
-      <span class="proof" data-i18n-html="ch3_proof">Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a></span>
+      <div class="n">03 / LEVERAGE</div><h3>AI gave it leverage.</h3>
+      <p>Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.</p>
+      <span class="proof">Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a></span>
     </div>
     <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="show the evidence path." data-hop-y=".04">
-      <div class="n">04 / REASONING</div><h3 data-i18n="ch4_h">Evidence keeps it honest.</h3>
-      <p data-i18n="ch4_p">Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.</p>
-      <span class="proof" data-i18n="ch4_proof">Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.</span>
+      <div class="n">04 / REASONING</div><h3>Evidence keeps it honest.</h3>
+      <p>Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.</p>
+      <span class="proof">Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.</span>
     </div>
     <div class="story-copy left stories" style="top:5070px" data-hop data-joke="incentives explain more than features." data-hop-y=".04">
-      <div class="n">05 / STORIES</div><h3 data-i18n="ch5_h">Incentives shape the system.</h3>
-      <p data-i18n="ch5_p">Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.</p>
-      <span class="proof" data-i18n="ch5_proof">Proof · Stakeholder workshops that map incentives before architecture freezes.</span>
+      <div class="n">05 / STORIES</div><h3>Incentives shape the system.</h3>
+      <p>Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.</p>
+      <span class="proof">Proof · Stakeholder workshops that map incentives before architecture freezes.</span>
     </div>
     <div class="story-copy right compass" style="top:6120px" data-hop data-joke="judgment stays human." data-hop-y=".04">
-      <div class="n">06 / THE COMPASS</div><h3 data-i18n="ch6_h">Judgment stays human.</h3>
-      <p data-i18n="ch6_p">What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.</p>
-      <span class="proof" data-i18n="ch6_proof">Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).</span>
+      <div class="n">06 / THE COMPASS</div><h3>Judgment stays human.</h3>
+      <p>What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.</p>
+      <span class="proof">Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).</span>
     </div>
 
     <article class="leaf-content xwide" data-id="curious" data-hop data-joke="curiosity takes the scenic route" data-hop-y=".04"><div class="panel"><h3>Curious by Nature</h3><p>He starts with questions most people walk past.</p></div></article>
@@ -484,25 +465,24 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
   </section>
 
   <section class="closing" data-hop data-joke="still iterating." data-hop-y=".03">
-    <h2 data-i18n-html="close_h2">Still building what has to <em>work.</em></h2>
-    <p data-i18n="close_p">Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.</p>
+    <h2>Still building what has to <em>work.</em></h2>
+    <p>Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.</p>
   </section>
 
   <section class="contact" id="contact" data-hop data-joke="humans may still email humans." data-hop-y=".04">
-    <h3 data-i18n="contact_h3">Let’s talk.</h3>
+    <h3>Let’s talk.</h3>
     <div>
-      <p data-i18n="contact_p">Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.</p>
+      <p>Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.</p>
       <ul class="scope-list">
-        <li data-i18n="scope1">In scope · IT advisory, full-stack delivery, AI integration under review</li>
-        <li data-i18n="scope2">In scope · Architecture, implementation, pragmatic handoff</li>
-        <li class="out" data-i18n="scope3">Out of scope · Medical diagnosis products, pure spam-volume outsourcing</li>
+        <li>In scope · IT advisory, full-stack delivery, AI integration under review</li>
+        <li>In scope · Architecture, implementation, pragmatic handoff</li>
+        <li class="out">Out of scope · Medical diagnosis products, pure spam-volume outsourcing</li>
       </ul>
       <a class="mail" href="mailto:e_raeb@yahoo.com?subject=agreyfox%20inquiry">e_raeb@yahoo.com →</a>
       <div class="github-line">GitHub: <a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">@agreyfox</a>
         · Product: <a href="https://agreyfox.github.io/fmr/">fmr</a>
-        · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a>
-        · <a href="case.html" data-i18n="contact_case">One-pager</a></div>
-      <p class="github-line" style="margin-top:10px;opacity:.75;font-size:13px" data-i18n="contact_meta">Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies</p>
+        · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a></div>
+      <p class="github-line" style="margin-top:10px;opacity:.75;font-size:13px">Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies</p>
     </div>
   </section>
 </div>
@@ -536,7 +516,7 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
     <span><a href="https://github.com/agreyfox" target="_blank" rel="noreferrer">GitHub</a>
       · <a href="https://agreyfox.github.io/fmr/">fmr</a>
       · <a href="https://agreyfox.github.io/fmr/privacy.html">Privacy</a></span>
-    <span><span data-i18n="footer_tag">Still building what has to work.</span></span>
+    <span>Still building what has to work.</span>
   </div>
 </footer>
 
@@ -935,130 +915,5 @@ body.hopper-off .grasshopper,body.hopper-off .jump-note{display:none!important}
   document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(state.timer);else scheduleNext()});
 })();
 </script>
-
-<script>
-(() => {
-  const I18N = {
-    en: {
-      nav_work:"Work", nav_approach:"Approach", nav_contact:"Contact", nav_case:"Case", nav_email:"Email",
-      hero_kicker:"IT · Full-stack · AI systems",
-      hero_h1:"AI for work that still requires <em>judgment.</em>",
-      hero_p:"<strong>IT advisor &amp; full-stack builder.</strong> Twenty-plus years shipping information systems — now pairing engineering discipline with AI that stays under human review.",
-      hero_cta_work:"How I work", hero_cta_selected:"Selected work", hero_cta_email:"Email",
-      hero_note_b:"Still shipping.",
-      hero_note_s:"Consulting · systems · AI that earns its place in the workflow — not just the pitch deck.",
-      id_role:"IT consultant · full-stack · AI collaborator",
-      id_years:"years in information systems",
-      id_ai:"solutions under human judgment",
-      id_fmr:'local-first product · <a href="https://agreyfox.github.io/fmr/">site</a>',
-      work_kicker:"Selected work",
-      work_fmr_meta:"Product · Shipping",
-      work_fmr_h:"fmr — family medical records",
-      work_fmr_p:"Local-first encrypted archive. Import lab photos/PDFs, review AI-extracted metrics, confirm before save. Free core · BYOK / Ollama / limited cloud demo.",
-      work_fmr_go:"Product site · Privacy · Terms →",
-      work_gh_meta:"Open · GitHub",
-      work_gh_p:"Public repos and experiments. Serious work stays disciplined: architecture, delivery, and AI that can be audited by a human in the loop.",
-      intro_kicker:"Approach",
-      intro_h2:"The flower is visible.<br>The growth happened below.",
-      intro_p:"Curiosity starts the work. Engineering makes it reliable. AI multiplies it — only where judgment still sits with people. Delivery, evidence, and honesty keep the system worth running.",
-      ch1_h:"Curiosity became the seed.", ch1_p:"Start from the real constraint: who fails, what breaks, what decision is blocked.",
-      ch1_proof:"Proof · 20+ years of IT programs framed as problems, not feature lists.",
-      ch2_h:"Engineering gave it structure.", ch2_p:"Boundaries, flows, failure modes, feedback — and one practical question: does it actually work in production?",
-      ch2_proof:"Proof · Full-stack delivery: design → build → operate, not slideware handoffs.",
-      ch3_h:"AI gave it leverage.", ch3_p:"Models search, draft, and challenge. People still own the decision. I design AI so review is natural — not a checkbox after the damage.",
-      ch3_proof:'Proof · fmr: AI metrics only land after human confirm · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a>',
-      ch4_h:"Evidence keeps it honest.", ch4_p:"Facts are not opinions. Logs beat narratives. Missing evidence is a finding — not a detail to skip.",
-      ch4_proof:"Proof · Consulting habit: requirements and acceptance criteria written so they can be tested.",
-      ch5_h:"Incentives shape the system.", ch5_p:"Data, incentives, and narrative collide. Good systems account for how people actually behave — not how a deck says they should.",
-      ch5_proof:"Proof · Stakeholder workshops that map incentives before architecture freezes.",
-      ch6_h:"Judgment stays human.", ch6_p:"What should technology serve? Where must a person remain in the loop? I keep those questions next to the backlog — not in a separate ethics slide.",
-      ch6_proof:"Proof · Product stance: no silent auto-commit of sensitive AI output (see fmr review flow).",
-      close_h2:"Still building what has to <em>work.</em>",
-      close_p:"Messy domains. Real constraints. AI only where it earns its place. I care about systems people can operate — not demos that collapse at the first exception.",
-      contact_h3:"Let’s talk.",
-      contact_p:"Open to consulting, system delivery, and AI solution design — especially human-in-the-loop workflows, local-first products, and modernization that must keep running.",
-      scope1:"In scope · IT advisory, full-stack delivery, AI integration under review",
-      scope2:"In scope · Architecture, implementation, pragmatic handoff",
-      scope3:"Out of scope · Medical diagnosis products, pure spam-volume outsourcing",
-      contact_case:"One-pager",
-      contact_meta:"Languages: 中文 / English · Typical reply: a few business days · Not for medical emergencies",
-      footer_tag:"Still building what has to work."
-    },
-    zh: {
-      nav_work:"作品", nav_approach:"方法", nav_contact:"联系", nav_case:"案例", nav_email:"邮件",
-      hero_kicker:"信息化 · 全栈 · AI 系统",
-      hero_h1:"为仍需<em>判断力</em>的工作构建 AI。",
-      hero_p:"<strong>IT 顾问与全栈构建者。</strong>二十年以上信息化系统交付经验——把工程纪律与「须经人审」的 AI 能力结合。",
-      hero_cta_work:"工作方式", hero_cta_selected:"代表作品", hero_cta_email:"发邮件",
-      hero_note_b:"仍在交付。",
-      hero_note_s:"咨询 · 系统 · 能进真实流程的 AI——不是只能讲 PPT 的方案。",
-      id_role:"IT 顾问 · 全栈 · AI 合作者",
-      id_years:"年信息化服务经验",
-      id_ai:"在人审之下的 AI 方案",
-      id_fmr:'本地优先产品 · <a href="https://agreyfox.github.io/fmr/">站点</a>',
-      work_kicker:"代表作品",
-      work_fmr_meta:"产品 · 推进中",
-      work_fmr_h:"fmr — 家庭医疗档案",
-      work_fmr_p:"本地优先加密归档。导入化验照片/PDF，审核 AI 提取指标，确认后再入库。免费核心 · BYOK / Ollama / 有限云演示。",
-      work_fmr_go:"产品站 · 隐私 · 条款 →",
-      work_gh_meta:"开源 · GitHub",
-      work_gh_p:"公开仓库与实验。严肃工作保持纪律：架构、交付、可被人工审计的 AI。",
-      intro_kicker:"方法",
-      intro_h2:"花在明处。<br>长在暗处。",
-      intro_p:"好奇启动工作。工程保证可靠。AI 放大能力——但判断仍在人。交付、证据与诚实，让系统值得继续运行。",
-      ch1_h:"好奇成为种子。", ch1_p:"从真实约束开始：谁受挫、哪里坏、什么决策被卡住。工具其次。",
-      ch1_proof:"证明 · 20+ 年以问题而非功能清单框定 IT 项目。",
-      ch2_h:"工程赋予结构。", ch2_p:"边界、流程、故障模式与反馈——一个实际问题：上线后是否真的工作？",
-      ch2_proof:"证明 · 全栈交付：设计 → 实现 → 运维，而非甩锅式交接。",
-      ch3_h:"AI 提供杠杆。", ch3_p:"模型检索、起草、质疑。人仍拥有决策。我设计 AI 让审核成为自然步骤——而非出事后的勾选。",
-      ch3_proof:'证明 · fmr：指标须经人确认才入库 · <a href="https://agreyfox.github.io/fmr/">agreyfox.github.io/fmr</a>',
-      ch4_h:"证据保持诚实。", ch4_p:"事实不是观点。日志胜过叙事。缺失证据本身就是发现——不是可跳过的细节。",
-      ch4_proof:"证明 · 咨询习惯：需求与验收标准写到可测试。",
-      ch5_h:"激励塑造系统。", ch5_p:"数据、激励与叙事会碰撞。好系统按人的真实行为设计——而非按幻灯片。",
-      ch5_proof:"证明 · 架构冻结前先做利益相关者激励映射。",
-      ch6_h:"判断留给人。", ch6_p:"技术服务谁？何处必须有人在环？我把这些问题放在 backlog 旁边——而不是单独的伦理页。",
-      ch6_proof:"证明 · 产品立场：敏感 AI 结果禁止静默自动入库（见 fmr 审核流）。",
-      close_h2:"仍在构建必须<em>能用</em>的东西。",
-      close_p:"messy 领域、真实约束、只在赚到位置时使用 AI。关心人能运维的系统——不是第一个异常就塌的演示。",
-      contact_h3:"可以聊聊。",
-      contact_p:"欢迎咨询、系统交付与 AI 方案设计——尤其是人在环流程、本地优先产品，以及必须持续运行的现代化改造。",
-      scope1:"范围内 · IT 顾问、全栈交付、可审核的 AI 集成",
-      scope2:"范围内 · 架构、实现、务实交接",
-      scope3:"范围外 · 医疗诊断类产品、纯刷量外包",
-      contact_case:"一页案例",
-      contact_meta:"语言：中文 / English · 通常数个工作日内回复 · 非医疗急救渠道",
-      footer_tag:"仍在构建必须能用的东西。"
-    }
-  };
-
-  function applyLang(lang){
-    const pack = I18N[lang] || I18N.en;
-    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const k = el.getAttribute("data-i18n");
-      if (pack[k] != null) el.textContent = pack[k];
-    });
-    document.querySelectorAll("[data-i18n-html]").forEach(el => {
-      const k = el.getAttribute("data-i18n-html");
-      if (pack[k] != null) el.innerHTML = pack[k];
-    });
-    const enBtn = document.getElementById("langEn");
-    const zhBtn = document.getElementById("langZh");
-    if (enBtn && zhBtn) {
-      enBtn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
-      zhBtn.setAttribute("aria-pressed", lang === "zh" ? "true" : "false");
-    }
-    try { localStorage.setItem("agreyfox-lang", lang); } catch (_) {}
-  }
-
-  const saved = (() => { try { return localStorage.getItem("agreyfox-lang"); } catch (_) { return null; } })();
-  const start = saved === "zh" || saved === "en" ? saved
-    : (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
-  applyLang(start);
-  document.getElementById("langEn")?.addEventListener("click", () => applyLang("en"));
-  document.getElementById("langZh")?.addEventListener("click", () => applyLang("zh"));
-})();
-</script>
-
 </body>
 </html>

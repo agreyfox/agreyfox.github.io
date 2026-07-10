@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>agreyfox — fmr one-pager</title>
+<meta name="description" content="One-page case: fmr by agreyfox — local-first family medical records.">
+<meta name="theme-color" content="#173828">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#173828;--muted:#5c6b61;--paper:#f7f5ef;--line:rgba(23,56,40,.14);
+  --coral:#c85a3c;--stem:#3f7d73;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+.page{
+  width:min(800px,calc(100% - 32px));margin:28px auto 48px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:36px 40px 32px;box-shadow:0 18px 50px rgba(23,56,40,.08)
+}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-bottom:22px}
+.brand{font:700 18px/1 var(--serif)}
+.brand span{color:var(--coral)}
+.meta{font-size:12px;color:var(--muted);text-align:right}
+h1{font:700 34px/1.1 var(--serif);letter-spacing:-.03em;margin:0 0 8px}
+.sub{margin:0 0 22px;color:var(--muted);font-size:15px;max-width:52ch}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.page{padding:24px}}
+.card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fbfaf7}
+.card h2{margin:0 0 8px;font:700 13px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
+.card ul{margin:0;padding-left:1.1rem;color:var(--muted);font-size:13.5px}
+.card li{margin:.28rem 0}
+.row{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+.proof{font-size:13.5px;color:var(--muted);margin:0}
+.proof strong{color:var(--ink)}
+.cta{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.cta a{color:var(--coral);font-weight:700;font-size:14px;text-decoration:none}
+.cta a:hover{text-decoration:underline}
+.btn{
+  display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;
+  background:var(--ink);color:#fff!important;text-decoration:none!important;font-size:13px
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.actions button,.actions a.ghost{
+  border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;
+  font:600 12px var(--sans);cursor:pointer;color:var(--ink);text-decoration:none
+}
+@media print{
+  body{background:#fff}
+  .actions{display:none!important}
+  .page{box-shadow:none;border:0;margin:0;width:100%;border-radius:0;padding:12mm}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="actions">
+    <a class="ghost" href="./">← Profile</a>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+    <a class="ghost" href="https://agreyfox.github.io/fmr/">fmr site</a>
+  </div>
+
+  <div class="top">
+    <div>
+      <div class="brand">agre<span>y</span>fox</div>
+      <h1>fmr — Family Medical Records</h1>
+      <p class="sub">Local-first encrypted archive for family lab reports. AI assists extraction; humans confirm before anything is saved.</p>
+    </div>
+    <div class="meta">
+      One-pager · Case snapshot<br>
+      Developer: agreyfox<br>
+      Package: com.agreyfox.fmr
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Problem</h2>
+      <ul>
+        <li>Family lab PDFs/photos scatter across phones and folders</li>
+        <li>Cloud health apps raise privacy concerns</li>
+        <li>OCR/AI dumps metrics without a clear review step</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Approach</h2>
+      <ul>
+        <li>Local encrypted storage by default</li>
+        <li>Import → AI parse → editable table → confirm</li>
+        <li>AI paths: BYOK → local Ollama → limited free demo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Role</h2>
+      <ul>
+        <li>Solo · product · design · engineering</li>
+        <li>IT consultant / full-stack / AI collaborator</li>
+        <li>20+ years information systems background</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Status</h2>
+      <ul>
+        <li>Android app in active development</li>
+        <li>Play listing prep · membership UI coming soon</li>
+        <li>Product site + Privacy live on GitHub Pages</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card">
+      <h2>Proof points</h2>
+      <p class="proof"><strong>Human-in-the-loop:</strong> no silent auto-commit of AI metrics.</p>
+      <p class="proof" style="margin-top:8px"><strong>Privacy-first:</strong> raw medical files stay on device unless the user opts into a cloud path.</p>
+      <p class="proof" style="margin-top:8px"><strong>Stack:</strong> Flutter · Riverpod · Drift/SQLCipher · go_router.</p>
+    </div>
+    <div class="card">
+      <h2>Links</h2>
+      <p class="proof"><strong>Product:</strong> agreyfox.github.io/fmr</p>
+      <p class="proof" style="margin-top:8px"><strong>Privacy:</strong> …/fmr/privacy.html</p>
+      <p class="proof" style="margin-top:8px"><strong>Profile:</strong> agreyfox.github.io</p>
+      <p class="proof" style="margin-top:8px"><strong>GitHub:</strong> github.com/agreyfox</p>
+      <p class="proof" style="margin-top:8px"><strong>Contact:</strong> e_raeb@yahoo.com</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a class="btn" href="mailto:e_raeb@yahoo.com?subject=fmr%20/%20consulting">Email agreyfox</a>
+    <a href="https://agreyfox.github.io/fmr/">Product site →</a>
+    <a href="https://agreyfox.github.io/">Full profile →</a>
+  </div>
+</div>
+</body>
+</html>
