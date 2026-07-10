@@ -141,20 +141,8 @@ nav{
   font-size:13px;color:#594c3d;
 }
 
-.story-copy{
-  position:absolute;width:min(340px,34vw);z-index:40;--chapter-color:var(--coral);
-  /* Keep chapter text above green leaves (leaf-content z=25) */
-  background:linear-gradient(160deg,rgba(248,250,244,.96),rgba(237,241,232,.93));
-  border:1px solid rgba(23,56,40,.12);
-  border-radius:14px;
-  padding:16px 18px 18px;
-  box-shadow:0 14px 40px rgba(24,54,37,.12);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  box-sizing:border-box;
-}
-.story-copy.left{left:12px;right:auto}
-.story-copy.right{right:12px;left:auto}
+.story-copy{position:absolute;width:340px;z-index:20;--chapter-color:var(--coral)}
+.story-copy.left{left:0}.story-copy.right{right:0}
 .story-copy .n{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--chapter-color)}
 .story-copy h3{
   font:700 43px/1.01 Georgia,serif;letter-spacing:-.04em;margin:12px 0 16px;
@@ -169,7 +157,7 @@ nav{
 .story-copy.compass{--chapter-color:var(--violet)}
 
 .leaf-content{
-  position:absolute;z-index:22;transform:translate(-50%,-50%);pointer-events:none;
+  position:absolute;z-index:25;transform:translate(-50%,-50%);pointer-events:none;
   display:flex;align-items:center;justify-content:center;text-align:center
 }
 .leaf-content .panel{
@@ -213,7 +201,7 @@ footer{padding:38px 0 50px;font-size:13px;color:#677067}
   .hero{grid-template-columns:1fr}.hero-art{height:560px}
   .navlinks a:not(:last-child){display:none}
   .identity-grid{grid-template-columns:1fr 1fr}
-  .story-copy{width:min(250px,38vw)}.story-copy.left{left:8px}.story-copy.right{right:8px}.story-copy h3{font-size:32px}
+  .story-copy{width:250px}.story-copy h3{font-size:32px}
   .leaf-content{transform:translate(-50%,-50%) scale(.84)}
   .flower-quote{
     left:calc(50% + 150px);top:190px;width:min(260px,36vw);max-width:280px;
@@ -223,7 +211,7 @@ footer{padding:38px 0 50px;font-size:13px;color:#677067}
 }
 @media(max-width:680px){
   .identity-grid{grid-template-columns:1fr}
-  .story-copy{width:min(46%,280px)}.story-copy.left{left:6px}.story-copy.right{right:6px}.story-copy h3{font-size:26px}.story-copy p{font-size:14px}
+  .story-copy{width:44%}.story-copy h3{font-size:27px}.story-copy p{font-size:14px}
   .leaf-content{transform:translate(-50%,-50%) scale(.70)}
   .flower-quote{
     left:50%;top:auto;bottom:auto;
@@ -484,7 +472,7 @@ html[lang="zh-Hans"] .jump-note{
 }
 @media(max-width:680px){
   html[lang="zh-Hans"] .hero h1{font-size:clamp(32px,9vw,44px); line-height:1.35}
-  html[lang="zh-Hans"] .story-copy{width:min(300px,42vw)}
+  html[lang="zh-Hans"] .story-copy{width:46%}
   html[lang="zh-Hans"] .story-copy h3{font-size:22px}
   html[lang="zh-Hans"] .story-copy p{font-size:13.5px; line-height:1.75}
   html[lang="zh-Hans"] .leaf-content h3{font-size:15px !important}
@@ -625,32 +613,32 @@ html[lang="zh-Hans"] .jump-note{
       <div class="sub"><span class="en">IT, full-stack, and AI under human review.</span><span class="zh">IT、全栈开发，以及始终由人把关的 AI。</span></div>
     </div>
 
-    <div class="story-copy left seed" style="top:780px" data-hop data-joke="question first. confidence later." data-hop-y=".04">
+    <div class="story-copy left seed" style="top:830px" data-hop data-joke="question first. confidence later." data-hop-y=".04">
       <div class="n">01 / THE SEED</div>
       <h3><span class="en">Curiosity became the seed.</span><span class="zh">好奇是那颗种子。</span></h3>
       <p><span class="en">I keep asking why systems behave the way they do, why people decide the way they do, and why complicated things still fail at simple human needs.</span><span class="zh">我会追问：系统为什么这样跑，人为什么这样决定，复杂方案又为什么总在最简单的需求上翻车。</span></p>
     </div>
-    <div class="story-copy right structure" style="top:1620px" data-hop data-joke="structure: the polite name for controlled obsession." data-hop-y=".04">
+    <div class="story-copy right structure" style="top:1780px" data-hop data-joke="structure: the polite name for controlled obsession." data-hop-y=".04">
       <div class="n">02 / STRUCTURE</div>
       <h3><span class="en">Engineering gave it structure.</span><span class="zh">用工程搭好结构。</span></h3>
       <p><span class="en">Boundaries, flows, failure modes, feedback, and one practical question: does it actually work?</span><span class="zh">边界、流程、故障与反馈，最后只问一句：上线了，它还能不能用？</span></p>
     </div>
-    <div class="story-copy left leverage" style="top:2780px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
+    <div class="story-copy left leverage" style="top:2870px" data-hop data-joke="leverage is nice. brakes are also nice." data-hop-y=".04">
       <div class="n">03 / LEVERAGE</div>
       <h3><span class="en">AI gave it leverage.</span><span class="zh">把 AI 当杠杆用。</span></h3>
       <p><span class="en">AI can search, compare, calculate, remember and challenge. My interest is not replacing the person. It is giving the person better ammunition.</span><span class="zh">AI 能检索、对比、计算、记忆，也能提出质疑。我要的不是取代人，而是让人手里有更好的工具。</span></p>
     </div>
-    <div class="story-copy right reasoning" style="top:3920px" data-hop data-joke="objection noted. evidence requested." data-hop-y=".04">
+    <div class="story-copy right reasoning" style="top:3980px" data-hop data-joke="objection noted. evidence requested." data-hop-y=".04">
       <div class="n">04 / REASONING</div>
       <h3><span class="en">Evidence taught it to reason.</span><span class="zh">用证据来想清楚。</span></h3>
       <p><span class="en">Facts are not opinions. Rules are not facts. Evidence matters. Missing evidence matters too.</span><span class="zh">事实不是观点，规则也不是事实。有证据很重要，没有证据同样说明问题。</span></p>
     </div>
-    <div class="story-copy left stories" style="top:5020px" data-hop data-joke="the chart moved. everyone wrote a story." data-hop-y=".04">
+    <div class="story-copy left stories" style="top:5070px" data-hop data-joke="the chart moved. everyone wrote a story." data-hop-y=".04">
       <div class="n">05 / STORIES</div>
       <h3><span class="en">Incentives teach stories.</span><span class="zh">激励会改写故事。</span></h3>
       <p><span class="en">Data, incentives, fear, belief and narrative collide at speed. I care what is really happening, and what people believe is happening.</span><span class="zh">数据、利益、情绪和说法常常缠在一起。我既看实际发生了什么，也看人们以为发生了什么。</span></p>
     </div>
-    <div class="story-copy right compass" style="top:6080px" data-hop data-joke="existential detour. back in five minutes." data-hop-y=".04">
+    <div class="story-copy right compass" style="top:6120px" data-hop data-joke="existential detour. back in five minutes." data-hop-y=".04">
       <div class="n">06 / THE COMPASS</div>
       <h3><span class="en">Judgment keeps it honest.</span><span class="zh">靠判断保持诚实。</span></h3>
       <p><span class="en">What should technology serve? What remains human when systems become powerful? I do not always have answers. I keep the questions close.</span><span class="zh">技术为谁服务？系统越强，哪些事仍必须留给人？答案未必现成，但这些问题我会一直带着。</span></p>
