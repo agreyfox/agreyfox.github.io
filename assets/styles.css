@@ -100,61 +100,9 @@ a:hover {
   opacity: 1;
 }
 
-/* waterfall blocks — no section chrome */
+/* waterfall spacing — always visible (no opacity:0 trap) */
 .drop {
   margin: 0 0 2.75rem;
-  opacity: 0;
-  transform: translateY(28px);
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.drop:nth-child(1) {
-  animation-delay: 0.05s;
-}
-.drop:nth-child(2) {
-  animation-delay: 0.12s;
-}
-.drop:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.drop:nth-child(4) {
-  animation-delay: 0.28s;
-}
-.drop:nth-child(5) {
-  animation-delay: 0.36s;
-}
-.drop:nth-child(6) {
-  animation-delay: 0.44s;
-}
-.drop:nth-child(7) {
-  animation-delay: 0.52s;
-}
-.drop:nth-child(8) {
-  animation-delay: 0.6s;
-}
-.drop:nth-child(9) {
-  animation-delay: 0.68s;
-}
-.drop:nth-child(10) {
-  animation-delay: 0.76s;
-}
-.drop:nth-child(11) {
-  animation-delay: 0.84s;
-}
-
-@keyframes rise {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .drop {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
 }
 
 /* typography cascade */

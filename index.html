@@ -9,14 +9,291 @@
       content="agreyfox — 专业 IT 顾问、全栈软件开发者与 AI 合作者。20 年以上信息化服务经验。AI 解决方案提供者。"
     />
     <meta name="theme-color" content="#050505" />
-    <link rel="stylesheet" href="assets/styles.css" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <!-- 绝对路径 + 内联双保险，避免相对路径/缓存导致“无样式” -->
+    <link rel="stylesheet" href="/assets/styles.css?v=3" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <style>
+      /* critical + full theme inlined — page always formatted */
+      :root {
+        --bg: #050505;
+        --bg-elev: #111111;
+        --ink: #f2f2f2;
+        --muted: #9a9a9a;
+        --dim: #666666;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #5eead4;
+        --warm: #f59e0b;
+        --font: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+          "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        --max: 720px;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font);
+        color: var(--ink);
+        background: #050505;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background: radial-gradient(
+            ellipse 80% 50% at 50% -20%,
+            rgba(94, 234, 212, 0.08),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 100% 100%,
+            rgba(245, 158, 11, 0.05),
+            transparent 50%
+          );
+      }
+      a {
+        color: var(--accent);
+      }
+      a:hover {
+        color: #99f6e4;
+      }
+      .stream {
+        position: relative;
+        z-index: 1;
+        width: min(100% - 2.5rem, var(--max));
+        margin: 0 auto;
+        padding: 4rem 0 5rem;
+      }
+      .brand-float {
+        position: fixed;
+        top: 1.1rem;
+        left: 1.25rem;
+        z-index: 10;
+        font-weight: 800;
+        font-size: 0.9rem;
+        letter-spacing: -0.03em;
+        color: #f2f2f2;
+        text-decoration: none;
+        opacity: 0.75;
+      }
+      .brand-float span {
+        color: var(--accent);
+      }
+      .brand-float:hover {
+        opacity: 1;
+      }
+      /* 默认可见 — 不再用 opacity:0 当动画失败会整页空白 */
+      .drop {
+        margin: 0 0 2.75rem;
+      }
+      .hello {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 1rem;
+      }
+      h1.name {
+        margin: 0 0 0.35rem;
+        font-size: clamp(2.8rem, 10vw, 4.4rem);
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+        color: #fff;
+      }
+      .roles {
+        margin: 0.85rem 0 0;
+        font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+        font-weight: 600;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .roles em {
+        font-style: normal;
+        color: #fff;
+        font-weight: 700;
+      }
+      .one-liner {
+        margin: 0;
+        font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.45;
+        color: #fff;
+        max-width: 28ch;
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+      }
+      .breath {
+        height: 1px;
+        width: 3rem;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        margin: 0;
+        border: 0;
+      }
+      .years {
+        margin: 0;
+        font-size: clamp(3.2rem, 12vw, 5rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        line-height: 1;
+        color: var(--accent);
+      }
+      .years-caption {
+        margin: 0.5rem 0 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+        font-weight: 500;
+      }
+      .flow-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .flow-tags li {
+        padding: 0.5rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--bg-elev);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .narrative {
+        margin: 0;
+        font-size: 1.08rem;
+        color: var(--muted);
+        max-width: 36rem;
+      }
+      .narrative + .narrative {
+        margin-top: 1rem;
+      }
+      .narrative strong {
+        color: #fff;
+        font-weight: 700;
+      }
+      .work-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 1.4rem 1.45rem;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: #111;
+      }
+      .work-card:hover {
+        border-color: rgba(94, 234, 212, 0.4);
+        color: inherit;
+      }
+      .work-card .meta {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 0.55rem;
+      }
+      .work-card h2 {
+        margin: 0 0 0.45rem;
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: #fff;
+      }
+      .work-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+      .work-card .go {
+        display: inline-block;
+        margin-top: 0.95rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .mail {
+        display: inline-block;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 0.2rem;
+      }
+      .mail:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .mail-hint {
+        margin: 0.7rem 0 0;
+        font-size: 0.9rem;
+        color: var(--dim);
+      }
+      .links-inline {
+        margin: 1.35rem 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .links-inline a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+      .links-inline a:hover {
+        color: var(--accent);
+      }
+      .foot {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        font-size: 0.82rem;
+        color: var(--dim);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        justify-content: space-between;
+      }
+      .foot a {
+        color: var(--dim);
+        text-decoration: none;
+      }
+      .ghost-af {
+        position: fixed;
+        right: -0.05em;
+        bottom: -0.15em;
+        font-size: min(40vw, 18rem);
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.03);
+        pointer-events: none;
+        z-index: 0;
+        user-select: none;
+      }
+    </style>
   </head>
   <body>
-    <a class="brand-float" href="./">agre<span>y</span>fox</a>
+    <a class="brand-float" href="/">agre<span>y</span>fox</a>
     <div class="ghost-af" aria-hidden="true">af</div>
 
-    <!-- 瀑布流：一条连续阅读流，无分栏 section 标题 -->
     <main class="stream">
       <div class="drop">
         <p class="hello">Hello</p>
@@ -28,9 +305,7 @@
       </div>
 
       <div class="drop">
-        <p class="one-liner">
-          把复杂系统做成可落地的软件与 AI 方案。
-        </p>
+        <p class="one-liner">把复杂系统做成可落地的软件与 AI 方案。</p>
       </div>
 
       <div class="drop">
@@ -85,10 +360,9 @@
       </div>
 
       <div class="drop foot">
-        <span>© <span id="y"></span> agreyfox</span>
+        <span>© <span id="y">2026</span> agreyfox</span>
         <span
-          ><a href="https://agreyfox.github.io/fmr/">fmr product</a> ·
-          black canvas · waterfall</span
+          ><a href="https://agreyfox.github.io/fmr/">fmr product</a></span
         >
       </div>
     </main>
